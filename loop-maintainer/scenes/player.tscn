@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://bpn30yrhhwxw6"]
+[gd_scene load_steps=20 format=3 uid="uid://bpn30yrhhwxw6"]
 
 [ext_resource type="Texture2D" uid="uid://buuvkfmd3dpti" path="res://sprites/player/head_idle.png" id="1_dqkch"]
+[ext_resource type="Script" uid="uid://c65gdpjv7mg0q" path="res://scripts/player.gd" id="1_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://ce2eh2yfpj57" path="res://sprites/player/body_idle.png" id="2_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://dd465xapvk7ic" path="res://sprites/player/arms_idle.png" id="3_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://cu2ew8mb7xk6i" path="res://sprites/player/legs.png" id="4_fjrip"]
@@ -95,7 +96,12 @@ size = Vector2(10, 14)
 [sub_resource type="CircleShape2D" id="CircleShape2D_2hs0m"]
 radius = 7.0
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("head", "body", "arms", "legs")]
+script = ExtResource("1_qlg0r")
+head = NodePath("head")
+body = NodePath("body")
+arms = NodePath("arms")
+legs = NodePath("legs")
 
 [node name="head" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1)
