@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd465xapvk7ic"
-path="res://.godot/imported/arms_idle.png-2ce0c802b8bf987869d270353c7b8fb0.ctex"
+uid="uid://buckudt1havp8"
+path="res://.godot/imported/robot.png-b4ac73f22e0a1cf9e30b54b7b6efc12e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/arms_idle.png"
-dest_files=["res://.godot/imported/arms_idle.png-2ce0c802b8bf987869d270353c7b8fb0.ctex"]
+source_file="res://sprites/robot.png"
+dest_files=["res://.godot/imported/robot.png-b4ac73f22e0a1cf9e30b54b7b6efc12e.ctex"]
 
 [params]
 

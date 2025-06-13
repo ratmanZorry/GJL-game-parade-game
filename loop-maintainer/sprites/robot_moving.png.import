@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu2ew8mb7xk6i"
-path="res://.godot/imported/legs.png-23b7e77db5ebd98ce75756344f3259bd.ctex"
+uid="uid://bdd6xo3t7huo0"
+path="res://.godot/imported/robot_moving.png-8c2574c747f627cdd649c140b9c04788.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/legs.png"
-dest_files=["res://.godot/imported/legs.png-23b7e77db5ebd98ce75756344f3259bd.ctex"]
+source_file="res://sprites/robot_moving.png"
+dest_files=["res://.godot/imported/robot_moving.png-8c2574c747f627cdd649c140b9c04788.ctex"]
 
 [params]
 
