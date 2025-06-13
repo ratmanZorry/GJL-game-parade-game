@@ -4,13 +4,11 @@ extends CharacterBody2D
 @export var JUMP_VELOCITY: float = -300.0
 
 @export var JUMPBUFFERTIMER: Timer
-@export var jump_animation_timer: Timer
 @export var anim: AnimatedSprite2D
 
 var canBufferJump: bool = false
 var current_state: String = "idle"
 var was_on_floor: bool = true
-var jump_anim_lock: bool = false
 
 func _ready():
 	anim.play("idle")
@@ -38,39 +36,31 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	if is_on_floor() and not was_on_floor:
-		jump_anim_lock = false
 		if direction:
 			set_animation_state("walking")
 		else:
 			set_animation_state("idle")
 
-	if is_on_floor() and not jump_anim_lock:
+	if is_on_floor():
 		if direction and current_state != "walking":
 			set_animation_state("walking")
 		elif direction == 0 and current_state != "idle":
 			set_animation_state("idle")
+	else:
+		if velocity.y > 0 and current_state != "falling":
+			set_animation_state("falling")
+		elif velocity.y <= 0 and current_state != "jumping":
+			set_animation_state("jumping")
 
-	elif not is_on_floor() and not jump_anim_lock and current_state != "jumping":
-		set_animation_state("jumping")
-	
-	if velocity.y > 0 and not is_on_floor():
-		anim.play("falling")
-	
 	move_and_slide()
 	was_on_floor = is_on_floor()
 
 func Jump():
 	velocity.y = JUMP_VELOCITY
-	set_animation_state("jump_start")
-	jump_anim_lock = true
-	jump_animation_timer.start()
+	set_animation_state("jumping")
 
 func _on_jump_buffer_timer_timeout() -> void:
 	canBufferJump = false
-
-func _on_jump_animation_timer_timeout() -> void:
-	jump_anim_lock = false
-	set_animation_state("jumping")
 
 func set_animation_state(state: String) -> void:
 	if current_state == state:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bd27q2d1ytent"]
+[gd_scene load_steps=19 format=3 uid="uid://bd27q2d1ytent"]
 
 [ext_resource type="Texture2D" uid="uid://7sllbl35ynkf" path="res://sprites/player_idle.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://b2xhjljprx6wu" path="res://scripts/player.gd" id="1_qlg0r"]
@@ -13,14 +13,6 @@ region = Rect2(0, 0, 13, 31)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("1_3vyb7")
 region = Rect2(13, 0, 13, 31)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
-atlas = ExtResource("3_dqkch")
-region = Rect2(0, 0, 13, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
-atlas = ExtResource("3_dqkch")
-region = Rect2(13, 0, 13, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
 atlas = ExtResource("3_dqkch")
@@ -80,17 +72,6 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.4,
-"texture": SubResource("AtlasTexture_3v2ag")
-}, {
-"duration": 0.4,
-"texture": SubResource("AtlasTexture_jej6c")
-}],
-"loop": true,
-"name": &"jump_start",
-"speed": 5.0
-}, {
-"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oprun")
 }],
@@ -131,17 +112,14 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
 radius = 5.0
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("JUMPBUFFERTIMER", "jump_animation_timer", "anim")]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("JUMPBUFFERTIMER", "anim")]
 script = ExtResource("1_qlg0r")
 JUMPBUFFERTIMER = NodePath("jump_buffer_timer")
-jump_animation_timer = NodePath("jump_animation_timer")
 anim = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dqkch")
-animation = &"jump_start"
-frame = 1
-frame_progress = 0.00226632
+animation = &"falling"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_g2els")
