@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1gf36s45q30l"]
+[gd_scene load_steps=10 format=3 uid="uid://b1gf36s45q30l"]
 
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bfdmc0dnw73ru" path="res://sprites/blue_tilemap.png" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://dhl7cylro7aac" path="res://sprites/brick_tilemap.png" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://mnrtaxsycxga" path="res://scenes/big_spike.tscn" id="4_jyhfs"]
+[ext_resource type="Script" uid="uid://dc4v7q65j238f" path="res://scripts/obstacle_spawner.gd" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dlhtcivj0htu8" path="res://scenes/little_spike.tscn" id="6_tefeu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
 texture = ExtResource("2_0wfyh")
@@ -89,3 +91,7 @@ position_smoothing_enabled = true
 
 [node name="big_spike" parent="." instance=ExtResource("4_jyhfs")]
 position = Vector2(52, 40)
+
+[node name="obstacle_spawner" type="Node" parent="."]
+script = ExtResource("5_tbgi4")
+easy_obstacles = Array[PackedScene]([ExtResource("4_jyhfs"), ExtResource("6_tefeu")])
