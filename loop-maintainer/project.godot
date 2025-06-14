@@ -18,6 +18,10 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 
 JumpLocationManager="*res://scripts/jump_location_manager.gd"
 
+[global_group]
+
+kill_hitbox=""
+
 [input]
 
 left={

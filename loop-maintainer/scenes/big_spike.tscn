@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://mnrtaxsycxga"]
+
+[ext_resource type="Texture2D" uid="uid://cplrymrycipk0" path="res://sprites/big_spike.png" id="1_ani81"]
+
+[node name="big_spike" type="Node2D" groups=["kill_hitbox"]]
+
+[node name="BigSpike" type="Sprite2D" parent="."]
+texture = ExtResource("1_ani81")
+
+[node name="Area2D" type="Area2D" parent="." groups=["kill_hitbox"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(0, 1)
+polygon = PackedVector2Array(0, -9, 8, 7, -8, 7, -1, -9)

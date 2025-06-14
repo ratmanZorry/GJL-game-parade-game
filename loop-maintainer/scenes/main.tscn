@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1gf36s45q30l"]
+[gd_scene load_steps=8 format=3 uid="uid://b1gf36s45q30l"]
 
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bfdmc0dnw73ru" path="res://sprites/blue_tilemap.png" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://dhl7cylro7aac" path="res://sprites/brick_tilemap.png" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://mnrtaxsycxga" path="res://scenes/big_spike.tscn" id="4_jyhfs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
 texture = ExtResource("2_0wfyh")
@@ -85,3 +86,6 @@ position = Vector2(5, 19)
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
+
+[node name="big_spike" parent="." instance=ExtResource("4_jyhfs")]
+position = Vector2(52, 40)

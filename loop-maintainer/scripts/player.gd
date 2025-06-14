@@ -6,13 +6,18 @@ extends CharacterBody2D
 @export var JUMPBUFFERTIMER: Timer
 @export var anim: AnimatedSprite2D
 
-var canBufferJump: bool = false
-var was_on_floor: bool = true
+var canBufferJump := false
+var was_on_floor := true
+
+var is_dead := false
 
 func _ready():
 	anim.play("idle")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float):
+	if is_dead:
+		return
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -59,5 +64,14 @@ func Jump():
 	anim.play("jumping")
 	JumpLocationManager.jump_locations.append(global_position)
 
+
 func _on_jump_buffer_timer_timeout() -> void:
 	canBufferJump = false
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("kill_hitbox"):
+		is_dead = true
+		anim.play("death")
+		await get_tree().create_timer(0.65).timeout
+		anim.queue_free()
