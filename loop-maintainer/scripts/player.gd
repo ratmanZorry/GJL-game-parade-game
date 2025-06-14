@@ -7,7 +7,6 @@ extends CharacterBody2D
 @export var anim: AnimatedSprite2D
 
 var canBufferJump: bool = false
-var current_state: String = "idle"
 var was_on_floor: bool = true
 
 func _ready():
@@ -37,33 +36,28 @@ func _physics_process(delta: float) -> void:
 
 	if is_on_floor() and not was_on_floor:
 		if direction:
-			set_animation_state("walking")
+			anim.play("walking")
 		else:
-			set_animation_state("idle")
+			anim.play("idle")
 
 	if is_on_floor():
-		if direction and current_state != "walking":
-			set_animation_state("walking")
-		elif direction == 0 and current_state != "idle":
-			set_animation_state("idle")
+		if direction:
+			anim.play("walking")
+		else:
+			anim.play("idle")
 	else:
-		if velocity.y > 0 and current_state != "falling":
-			set_animation_state("falling")
-		elif velocity.y <= 0 and current_state != "jumping":
-			set_animation_state("jumping")
+		if velocity.y > 0:
+			anim.play("falling")
+		else:
+			anim.play("jumping")
 
 	move_and_slide()
 	was_on_floor = is_on_floor()
 
 func Jump():
 	velocity.y = JUMP_VELOCITY
-	set_animation_state("jumping")
+	anim.play("jumping")
+	JumpLocationManager.jump_locations.append(global_position)
 
 func _on_jump_buffer_timer_timeout() -> void:
 	canBufferJump = false
-
-func set_animation_state(state: String) -> void:
-	if current_state == state:
-		return
-	current_state = state
-	anim.play(state)
