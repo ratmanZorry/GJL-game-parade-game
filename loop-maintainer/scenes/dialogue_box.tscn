@@ -1,16 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4di3ir7ia2dl"]
+[gd_scene load_steps=5 format=3 uid="uid://c4di3ir7ia2dl"]
 
 [ext_resource type="Texture2D" uid="uid://cno46mgqx8vga" path="res://sprites/dialogue_box.png" id="1_fu8b5"]
+[ext_resource type="Script" uid="uid://deh4mdn7ltvgl" path="res://scripts/dialogue_box.gd" id="1_hvmm2"]
 [ext_resource type="Texture2D" uid="uid://bips5r3dapnid" path="res://sprites/player_profile.png" id="2_tm68y"]
 [ext_resource type="FontFile" uid="uid://dt6gge7psusof" path="res://fonts/DePixelKlein.ttf" id="3_tm68y"]
 
-[node name="dialogue_box" type="Node2D"]
+[node name="dialogue_box" type="Node2D" node_paths=PackedStringArray("text", "profile", "typing_timer")]
+script = ExtResource("1_hvmm2")
+text = NodePath("RichTextLabel")
+profile = NodePath("character_profile")
+typing_timer = NodePath("typing_timer")
 
 [node name="DialogueBox" type="Sprite2D" parent="."]
 position = Vector2(32, 0)
 texture = ExtResource("1_fu8b5")
 
-[node name="PlayerProfile" type="Sprite2D" parent="."]
+[node name="character_profile" type="Sprite2D" parent="."]
 position = Vector2(-16, 0)
 texture = ExtResource("2_tm68y")
 
@@ -23,3 +28,8 @@ scale = Vector2(0.03, 0.021)
 theme_override_fonts/normal_font = ExtResource("3_tm68y")
 theme_override_font_sizes/normal_font_size = 130
 text = "I need some cheese. I should go to the super market"
+
+[node name="typing_timer" type="Timer" parent="."]
+wait_time = 0.05
+
+[connection signal="timeout" from="typing_timer" to="." method="_on_typing_timer_timeout"]

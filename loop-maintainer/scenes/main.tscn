@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1gf36s45q30l"]
+[gd_scene load_steps=13 format=3 uid="uid://b1gf36s45q30l"]
 
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bfdmc0dnw73ru" path="res://sprites/blue_tilemap.png" id="2_0wfyh"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://dc4v7q65j238f" path="res://scripts/obstacle_spawner.gd" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dlhtcivj0htu8" path="res://scenes/little_spike.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://c4di3ir7ia2dl" path="res://scenes/dialogue_box.tscn" id="7_o6xl0"]
+[ext_resource type="Script" uid="uid://bqqaxdvki6me7" path="res://scripts/dialogue_manager.gd" id="8_tipki"]
+[ext_resource type="Texture2D" uid="uid://bips5r3dapnid" path="res://sprites/player_profile.png" id="9_85g3d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
 texture = ExtResource("2_0wfyh")
@@ -99,3 +101,9 @@ easy_obstacles = Array[PackedScene]([ExtResource("4_jyhfs"), ExtResource("6_tefe
 [node name="dialogue_box" parent="CanvasLayer" instance=ExtResource("7_o6xl0")]
 position = Vector2(520, 533)
 scale = Vector2(6.84, 6.84)
+
+[node name="dialogue_manager" type="Node" parent="."]
+script = ExtResource("8_tipki")
+profiles = Array[Texture2D]([ExtResource("9_85g3d")])
+
+[connection signal="dialogue" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue"]
