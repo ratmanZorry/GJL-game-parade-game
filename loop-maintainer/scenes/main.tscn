@@ -222,8 +222,9 @@ easy_obstacles = Array[PackedScene]([ExtResource("4_jyhfs"), ExtResource("6_tefe
 position = Vector2(520, 533)
 scale = Vector2(6.84, 6.84)
 
-[node name="dialogue_manager" type="Node" parent="."]
+[node name="dialogue_manager" type="Node" parent="." node_paths=PackedStringArray("dialogue_box")]
 script = ExtResource("8_tipki")
+dialogue_box = NodePath("../CanvasLayer/dialogue_box")
 
 [node name="big_spike" parent="." instance=ExtResource("11_ya4ey")]
 position = Vector2(1000, 128)
@@ -307,3 +308,4 @@ position = Vector2(3624.5, 125.5)
 shape = SubResource("RectangleShape2D_eb6dy")
 
 [connection signal="dialogue" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue"]
+[connection signal="dialogue_end" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue_end"]

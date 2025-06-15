@@ -91,7 +91,9 @@ shape = SubResource("RectangleShape2D_rk7hg")
 position = Vector2(520, 533)
 scale = Vector2(6.84, 6.84)
 
-[node name="dialogue_manager" parent="." instance=ExtResource("5_3bgk5")]
+[node name="dialogue_manager" parent="." node_paths=PackedStringArray("dialogue_box") instance=ExtResource("5_3bgk5")]
 start_dialogue = Array[ExtResource("6_ptc3g")]([SubResource("Resource_bwc8c"), SubResource("Resource_ptc3g")])
+dialogue_box = NodePath("../CanvasLayer/dialogue_box")
 
 [connection signal="dialogue" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue"]
+[connection signal="dialogue_end" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue_end"]
