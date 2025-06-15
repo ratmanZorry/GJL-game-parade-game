@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4bjb78kcpkhn"]
+[gd_scene load_steps=13 format=3 uid="uid://c4bjb78kcpkhn"]
 
 [ext_resource type="Texture2D" uid="uid://dcd7nwii0i1fu" path="res://sprites/house_tilemap.png" id="1_d7po0"]
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="2_qtlar"]
 [ext_resource type="Texture2D" uid="uid://cumobmconwi5d" path="res://sprites/cardboard_box.png" id="3_rk7hg"]
 [ext_resource type="PackedScene" uid="uid://c4di3ir7ia2dl" path="res://scenes/dialogue_box.tscn" id="4_se78b"]
 [ext_resource type="PackedScene" uid="uid://bw7agl3mm7e1q" path="res://scenes/dialogue_manager.tscn" id="5_3bgk5"]
+[ext_resource type="Script" uid="uid://cbpoo80fjfr4m" path="res://scripts/dialogue_line.gd" id="6_ptc3g"]
+[ext_resource type="Texture2D" uid="uid://bips5r3dapnid" path="res://sprites/player_profile.png" id="7_wcu0q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qtlar"]
 texture = ExtResource("1_d7po0")
@@ -43,6 +45,18 @@ sources/0 = SubResource("TileSetAtlasSource_qtlar")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rk7hg"]
 size = Vector2(22, 11)
 
+[sub_resource type="Resource" id="Resource_bwc8c"]
+script = ExtResource("6_ptc3g")
+text = "Man, I sure am hungry"
+profile = ExtResource("7_wcu0q")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_ptc3g"]
+script = ExtResource("6_ptc3g")
+text = "I should go to the super market to buy some cheese"
+profile = ExtResource("7_wcu0q")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
 [node name="house" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -78,5 +92,6 @@ position = Vector2(520, 533)
 scale = Vector2(6.84, 6.84)
 
 [node name="dialogue_manager" parent="." instance=ExtResource("5_3bgk5")]
+start_dialogue = Array[ExtResource("6_ptc3g")]([SubResource("Resource_bwc8c"), SubResource("Resource_ptc3g")])
 
 [connection signal="dialogue" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue"]
