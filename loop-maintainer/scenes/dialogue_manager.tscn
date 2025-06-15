@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw7agl3mm7e1q"]
+
+[ext_resource type="Script" uid="uid://bqqaxdvki6me7" path="res://scripts/dialogue_manager.gd" id="1_516v5"]
+[ext_resource type="Texture2D" uid="uid://bips5r3dapnid" path="res://sprites/player_profile.png" id="2_smvbx"]
+
+[node name="dialogue_manager" type="Node"]
+script = ExtResource("1_516v5")
+profiles = Array[Texture2D]([ExtResource("2_smvbx")])

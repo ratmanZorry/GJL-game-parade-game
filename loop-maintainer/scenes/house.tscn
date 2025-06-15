@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4bjb78kcpkhn"]
+[gd_scene load_steps=9 format=3 uid="uid://c4bjb78kcpkhn"]
 
 [ext_resource type="Texture2D" uid="uid://dcd7nwii0i1fu" path="res://sprites/house_tilemap.png" id="1_d7po0"]
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="2_qtlar"]
+[ext_resource type="Texture2D" uid="uid://cumobmconwi5d" path="res://sprites/cardboard_box.png" id="3_rk7hg"]
+[ext_resource type="PackedScene" uid="uid://c4di3ir7ia2dl" path="res://scenes/dialogue_box.tscn" id="4_se78b"]
+[ext_resource type="PackedScene" uid="uid://bw7agl3mm7e1q" path="res://scenes/dialogue_manager.tscn" id="5_3bgk5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qtlar"]
 texture = ExtResource("1_d7po0")
@@ -37,16 +40,43 @@ physics_layer_0/collision_layer = 255
 physics_layer_0/collision_mask = 255
 sources/0 = SubResource("TileSetAtlasSource_qtlar")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rk7hg"]
+size = Vector2(22, 11)
+
 [node name="house" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+z_index = -2
+position = Vector2(5, 0)
 tile_set = SubResource("TileSet_x8wvn")
 format = 2
-layer_0/tile_data = PackedInt32Array(262138, 131072, 3, 262139, 196608, 3, 262140, 131072, 3, 262141, 196608, 3, 262142, 0, 3, 262143, 65536, 3, 196608, 131072, 3, 196609, 196608, 3, 196610, 0, 3, 196611, 65536, 3, 196612, 131072, 3, 196613, 196608, 3, -196613, 0, 1, -196612, 0, 1, -196611, 0, 1, -196610, 0, 1, -196609, 0, 1, -262144, 0, 1, -262143, 0, 1, -262142, 0, 1, -262141, 0, 1, -262140, 0, 1, -262139, 0, 1, -196603, 0, 2, -131067, 0, 1, -65531, 0, 2, -196614, 0, 1, -196615, 0, 1, -131079, 0, 1, -65543, 0, 1, -7, 0, 1, 65529, 0, 1, 131065, 0, 1, 196601, 0, 1, 262137, 0, 3, -131073, 65536, 1, -131078, 65536, 2, -65542, 65536, 2, -6, 65536, 2, 65530, 65536, 2, 131066, 65536, 2, 196602, 65536, 2, -131077, 65536, 2, -65541, 65536, 2, -5, 65536, 2, 65531, 65536, 2, 131067, 65536, 2, 196603, 65536, 2, -131076, 65536, 2, -65540, 65536, 2, -4, 65536, 2, 65532, 65536, 2, 131068, 65536, 2, 196604, 65536, 2, -131075, 65536, 2, -65539, 65536, 2, -3, 65536, 2, 65533, 65536, 2, 131069, 65536, 2, 196605, 65536, 2, -131074, 65536, 2, -65538, 65536, 2, -2, 65536, 2, 65534, 65536, 2, 131070, 65536, 2, 196606, 65536, 2, -65537, 65536, 2, -1, 65536, 2, 65535, 65536, 2, 131071, 65536, 2, 196607, 65536, 2, -131072, 65536, 2, -65536, 65536, 2, 0, 65536, 2, 65536, 65536, 2, 131072, 65536, 2, -131071, 65536, 2, -65535, 65536, 2, 1, 65536, 2, 65537, 65536, 2, 131073, 65536, 2, -131070, 65536, 2, -65534, 65536, 2, 2, 65536, 2, 65538, 65536, 2, 131074, 65536, 2, -196608, 65536, 2, -196607, 65536, 2, -196606, 65536, 2, -196605, 65536, 2, -131069, 65536, 2, -65533, 65536, 2, 3, 65536, 2, 65539, 65536, 2, 131075, 65536, 2, -196604, 65536, 2, -131068, 65536, 2, -65532, 65536, 2, 4, 65536, 2, 65540, 65536, 2, 131076, 65536, 2, 5, 196608, 2, 65541, 65536, 2, 131077, 65536, 2)
+layer_0/tile_data = PackedInt32Array(262138, 131072, 3, 262139, 196608, 3, 262140, 131072, 3, 262141, 196608, 3, 262142, 0, 3, 262143, 65536, 3, 196608, 131072, 3, 196609, 196608, 3, 196610, 0, 3, 196611, 65536, 3, 196612, 131072, 3, 196613, 196608, 3, -196613, 0, 1, -196612, 0, 1, -196611, 0, 1, -196610, 0, 1, -196609, 0, 1, -262144, 0, 1, -262143, 0, 1, -262142, 0, 1, -262141, 0, 1, -262140, 0, 1, -262139, 0, 1, -196603, 0, 2, -131067, 0, 1, -65531, 0, 2, -196614, 0, 1, -196615, 0, 1, -131079, 0, 1, -65543, 0, 1, -7, 0, 1, 65529, 0, 1, 131065, 0, 1, 196601, 0, 1, 262137, 0, 3, -131073, 65536, 1, -131078, 65536, 2, -65542, 65536, 2, -6, 65536, 2, 65530, 65536, 2, 131066, 65536, 2, 196602, 65536, 2, -131077, 65536, 2, -65541, 65536, 2, -5, 65536, 2, 65531, 65536, 2, 131067, 65536, 2, 196603, 65536, 2, -131076, 65536, 2, -65540, 65536, 2, -4, 65536, 2, 65532, 65536, 2, 131068, 65536, 2, 196604, 65536, 2, -131075, 65536, 2, -65539, 65536, 2, -3, 65536, 2, 65533, 65536, 2, 131069, 65536, 2, 196605, 65536, 2, -131074, 65536, 2, -65538, 65536, 2, -2, 65536, 2, 65534, 65536, 2, 131070, 65536, 2, 196606, 65536, 2, -65537, 65536, 2, -1, 65536, 2, 65535, 65536, 2, 131071, 65536, 2, 196607, 65536, 2, -131072, 65536, 2, -65536, 65536, 2, 0, 65536, 2, 65536, 65536, 2, 131072, 65536, 2, -131071, 65536, 2, -65535, 65536, 2, 1, 65536, 2, 65537, 65536, 2, 131073, 65536, 2, -131070, 65536, 2, -65534, 65536, 2, 2, 65536, 2, 65538, 65536, 2, 131074, 65536, 2, -196608, 65536, 2, -196607, 65536, 2, -196606, 65536, 2, -196605, 65536, 2, -131069, 65536, 2, -65533, 65536, 2, 3, 65536, 2, 65539, 65536, 2, 131075, 65536, 2, -196604, 65536, 2, -131068, 65536, 2, -65532, 65536, 2, 4, 65536, 2, 65540, 65536, 2, 131076, 65536, 2, 5, 196608, 2, 65541, 65536, 2, 131077, 65536, 2, 196614, 65536, 3, 196615, 65536, 3)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-8, 1)
+position = Vector2(-4, 6)
 zoom = Vector2(5.66, 5.66)
 
 [node name="player" parent="." instance=ExtResource("2_qtlar")]
-position = Vector2(-35, 43)
+position = Vector2(-70, 37.315)
+is_sitting = true
+
+[node name="CardboardBox" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-75, 43)
+texture = ExtResource("3_rk7hg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CardboardBox"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardboardBox/StaticBody2D"]
+position = Vector2(0, -0.0499992)
+shape = SubResource("RectangleShape2D_rk7hg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="dialogue_box" parent="CanvasLayer" instance=ExtResource("4_se78b")]
+position = Vector2(520, 533)
+scale = Vector2(6.84, 6.84)
+
+[node name="dialogue_manager" parent="." instance=ExtResource("5_3bgk5")]
+
+[connection signal="dialogue" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue"]

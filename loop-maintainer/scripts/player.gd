@@ -6,6 +6,11 @@ extends CharacterBody2D
 @export var JUMPBUFFERTIMER: Timer
 @export var anim: AnimatedSprite2D
 
+@export var ground_cast_1: RayCast2D
+@export var ground_cast_2: RayCast2D
+
+@export var is_sitting := false
+
 var canBufferJump := false
 var was_on_floor := true
 
@@ -16,6 +21,9 @@ func _ready():
 
 func _physics_process(delta: float):
 	if is_dead:
+		return
+	if is_sitting:
+		anim.play("sitting")
 		return
 	
 	if not is_on_floor():
@@ -62,7 +70,9 @@ func _physics_process(delta: float):
 func Jump():
 	velocity.y = JUMP_VELOCITY
 	anim.play("jumping")
-	JumpLocationManager.jump_locations.append(global_position)
+	
+	if ground_cast_1.is_colliding() and ground_cast_2.is_colliding():
+		JumpLocationManager.jump_locations.append(global_position)
 
 
 func _on_jump_buffer_timer_timeout() -> void:
