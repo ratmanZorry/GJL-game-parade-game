@@ -1,0 +1,196 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccyb2yo0pxon3"]
+
+[ext_resource type="Texture2D" uid="uid://s0b8axcrevre" path="res://sprites/grocery_store_floor.png" id="1_v33jl"]
+[ext_resource type="Texture2D" uid="uid://bemb020csaa0m" path="res://sprites/cashier.png" id="2_wf4cn"]
+[ext_resource type="Texture2D" uid="uid://pw2ydvscff3x" path="res://sprites/shelf_2.png" id="3_biarb"]
+[ext_resource type="Texture2D" uid="uid://byb0ekikshcff" path="res://sprites/shelf_1.png" id="4_5dc52"]
+[ext_resource type="Texture2D" uid="uid://by2rllra5la2l" path="res://sprites/shelf_3.png" id="5_k6thg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wf4cn"]
+texture = ExtResource("1_v33jl")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_djpfe"]
+physics_layer_0/collision_layer = 255
+physics_layer_0/collision_mask = 255
+sources/0 = SubResource("TileSetAtlasSource_wf4cn")
+
+[node name="grocery_store" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_djpfe")
+format = 2
+layer_0/tile_data = PackedInt32Array(65530, 196608, 1, 65531, 0, 1, 65532, 65536, 1, 65533, 131072, 1, 65534, 196608, 1, 65535, 0, 1, 0, 65536, 1, 1, 131072, 1, 2, 196608, 1, 3, 0, 1, 4, 65536, 1, 5, 131072, 1, 6, 196608, 1, 7, 0, 1, 8, 65536, 1, 9, 131072, 1, 10, 196608, 1, 65522, 196608, 1, 65523, 0, 1, 65524, 65536, 1, 65525, 131072, 1, 65526, 196608, 1, 65527, 0, 1, 65528, 65536, 1, 65529, 131072, 1, 11, 0, 1, 12, 65536, 1, 13, 131072, 1, -655374, 0, 0, -589838, 0, 0, -524302, 0, 0, -458766, 0, 0, -393230, 0, 0, -327694, 0, 0, -262158, 0, 0, -196622, 0, 0, -720910, 0, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-81, -65)
+zoom = Vector2(4.295, 4.295)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -6
+offset_left = -219.0
+offset_top = -190.0
+offset_right = -179.0
+offset_bottom = -150.0
+scale = Vector2(7.89881, 4.96)
+color = Color(0.182887, 0.446782, 0.604269, 1)
+
+[node name="Cashier" type="Sprite2D" parent="."]
+position = Vector2(-145, -17)
+texture = ExtResource("2_wf4cn")
+
+[node name="Shelf2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(-112, -12.49)
+texture = ExtResource("3_biarb")
+
+[node name="Shelf4" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(-137, -12.49)
+texture = ExtResource("4_5dc52")
+
+[node name="Shelf6" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(-87, -12.49)
+texture = ExtResource("5_k6thg")
+
+[node name="Shelf3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(-188, -12.5)
+texture = ExtResource("3_biarb")
+
+[node name="Shelf5" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(-213, -12.5)
+texture = ExtResource("4_5dc52")
+
+[node name="Shelf7" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(-163, -12.5)
+texture = ExtResource("5_k6thg")
+
+[node name="Shelf9" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(-11, -12.5)
+texture = ExtResource("5_k6thg")
+
+[node name="Shelf10" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(-62, -12.5)
+texture = ExtResource("4_5dc52")
+
+[node name="Shelf11" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(-37, -12.5)
+texture = ExtResource("3_biarb")
+
+[node name="Shelf16" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(63, -12.49)
+texture = ExtResource("4_5dc52")
+
+[node name="Shelf17" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(38, -12.5)
+texture = ExtResource("3_biarb")
+
+[node name="Shelf18" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(13, -12.43)
+texture = ExtResource("5_k6thg")
+
+[node name="Shelf8" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(-112, -36.49)
+texture = ExtResource("3_biarb")
+
+[node name="Shelf12" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(-137, -36.49)
+texture = ExtResource("4_5dc52")
+
+[node name="Shelf13" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(-87, -36.49)
+texture = ExtResource("5_k6thg")
+
+[node name="Shelf14" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(-188, -36.5)
+texture = ExtResource("3_biarb")
+
+[node name="Shelf15" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(-213, -36.5)
+texture = ExtResource("4_5dc52")
+
+[node name="Shelf19" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(-163, -36.5)
+texture = ExtResource("5_k6thg")
+
+[node name="Shelf20" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(-11, -36.5)
+texture = ExtResource("5_k6thg")
+
+[node name="Shelf21" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(-62, -36.5)
+texture = ExtResource("4_5dc52")
+
+[node name="Shelf22" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(-37, -36.5)
+texture = ExtResource("3_biarb")
+
+[node name="Shelf23" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(63, -36.49)
+texture = ExtResource("4_5dc52")
+
+[node name="Shelf24" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(38, -36.5)
+texture = ExtResource("3_biarb")
+
+[node name="Shelf25" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+z_index = -2
+position = Vector2(13, -36.43)
+texture = ExtResource("5_k6thg")

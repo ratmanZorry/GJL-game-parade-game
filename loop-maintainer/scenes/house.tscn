@@ -55,7 +55,7 @@ metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_ptc3g"]
 script = ExtResource("6_ptc3g")
-text = "I should go to the super market to buy some cheese"
+text = "I should go to the grocery store to buy some cheese"
 profile = ExtResource("7_wcu0q")
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
