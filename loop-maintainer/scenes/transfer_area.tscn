@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://blds3ousifp5w"]
+
+[ext_resource type="Script" uid="uid://ddoux000vuw02" path="res://scripts/transfer_area.gd" id="1_ordo3"]
+
+[node name="transfer_area" type="Area2D"]
+script = ExtResource("1_ordo3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

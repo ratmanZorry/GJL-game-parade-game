@@ -9,6 +9,7 @@ signal dialogue_end
 
 func _ready() -> void:
 	if get_tree().current_scene.name == "house":
+		await get_tree().create_timer(1.5).timeout
 		for line in start_dialogue:
 			emit_signal("dialogue", line.text, line.profile)
 			await wait_for_dialogue_key()
@@ -16,9 +17,10 @@ func _ready() -> void:
 
 func wait_for_dialogue_key() -> void:
 	while true:
-		await get_tree().process_frame
-		if Input.is_action_just_pressed("dialogue"):
-			if dialogue_box.is_typing:
-				dialogue_box.skip_typing()
-			else:
-				break
+		if get_tree().process_frame:
+			await get_tree().process_frame
+			if Input.is_action_just_pressed("dialogue"):
+				if dialogue_box.is_typing:
+					dialogue_box.skip_typing()
+				else:
+					break

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4bjb78kcpkhn"]
+[gd_scene load_steps=16 format=3 uid="uid://c4bjb78kcpkhn"]
 
 [ext_resource type="Texture2D" uid="uid://dcd7nwii0i1fu" path="res://sprites/house_tilemap.png" id="1_d7po0"]
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="2_qtlar"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bw7agl3mm7e1q" path="res://scenes/dialogue_manager.tscn" id="5_3bgk5"]
 [ext_resource type="Script" uid="uid://cbpoo80fjfr4m" path="res://scripts/dialogue_line.gd" id="6_ptc3g"]
 [ext_resource type="Texture2D" uid="uid://bips5r3dapnid" path="res://sprites/player_profile.png" id="7_wcu0q"]
+[ext_resource type="Script" uid="uid://ddoux000vuw02" path="res://scripts/transfer_area.gd" id="8_wcu0q"]
+[ext_resource type="PackedScene" uid="uid://b1gf36s45q30l" path="res://scenes/main.tscn" id="9_bwc8c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qtlar"]
 texture = ExtResource("1_d7po0")
@@ -57,6 +59,9 @@ text = "I should go to the super market to buy some cheese"
 profile = ExtResource("7_wcu0q")
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcu0q"]
+size = Vector2(20, 112)
+
 [node name="house" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -95,5 +100,15 @@ scale = Vector2(6.84, 6.84)
 start_dialogue = Array[ExtResource("6_ptc3g")]([SubResource("Resource_bwc8c"), SubResource("Resource_ptc3g")])
 dialogue_box = NodePath("../CanvasLayer/dialogue_box")
 
+[node name="transfer_area" type="Area2D" parent="."]
+script = ExtResource("8_wcu0q")
+transfer_scene = ExtResource("9_bwc8c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="transfer_area"]
+position = Vector2(123, -8)
+shape = SubResource("RectangleShape2D_wcu0q")
+
 [connection signal="dialogue" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue"]
+[connection signal="dialogue_end" from="dialogue_manager" to="player" method="_on_dialogue_manager_dialogue_end"]
 [connection signal="dialogue_end" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue_end"]
+[connection signal="body_entered" from="transfer_area" to="transfer_area" method="_on_body_entered"]
