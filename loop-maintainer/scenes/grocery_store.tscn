@@ -107,6 +107,7 @@ color = Color(0.182887, 0.446782, 0.604269, 1)
 
 [node name="transfer_area" parent="." instance=ExtResource("2_x0xxj")]
 position = Vector2(-224, -25)
+transfer_scene_path = "res://scenes/main.tscn"
 transfer_position = Vector2(2460, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="transfer_area"]
@@ -274,6 +275,7 @@ position = Vector2(-201, 0)
 can_move = false
 
 [node name="dialogue_manager" parent="." instance=ExtResource("7_k6thg")]
+pre_dialogue_wait_time = 0.5
 start_dialogue = Array[ExtResource("9_n8a13")]([SubResource("Resource_y2ovd")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
