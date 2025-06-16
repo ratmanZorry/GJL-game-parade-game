@@ -59,14 +59,12 @@ size = Vector2(22, 11)
 script = ExtResource("6_ptc3g")
 text = "Man, I sure am hungry"
 profile = ExtResource("7_wcu0q")
-is_one_shot = false
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_65la3"]
 script = ExtResource("6_ptc3g")
 text = "I should go to the grocery store to buy some cheese"
 profile = ExtResource("7_wcu0q")
-is_one_shot = false
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_mhx8p"]

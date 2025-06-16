@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ccyb2yo0pxon3"]
+[gd_scene load_steps=27 format=3 uid="uid://ccyb2yo0pxon3"]
 
 [ext_resource type="Texture2D" uid="uid://s0b8axcrevre" path="res://sprites/grocery_store_floor.png" id="1_v33jl"]
 [ext_resource type="Texture2D" uid="uid://bemb020csaa0m" path="res://sprites/cashier.png" id="2_wf4cn"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cbpoo80fjfr4m" path="res://scripts/dialogue_line.gd" id="8_10eql"]
 [ext_resource type="PackedScene" uid="uid://c4di3ir7ia2dl" path="res://scenes/dialogue_box.tscn" id="8_mkny6"]
 [ext_resource type="Texture2D" uid="uid://bips5r3dapnid" path="res://sprites/player_profile.png" id="9_6mn44"]
+[ext_resource type="Script" uid="uid://dfpuv4o3jhve8" path="res://scripts/loop_dialogue_number.gd" id="9_n8a13"]
 [ext_resource type="Texture2D" uid="uid://cd4fq0wrklx7r" path="res://sprites/cashier_profile.png" id="10_dhkcc"]
 [ext_resource type="Texture2D" uid="uid://cxyuq4k2bimtt" path="res://sprites/player_profile_happy.png" id="11_g4ymn"]
 [ext_resource type="Texture2D" uid="uid://jxwldbsvh36v" path="res://sprites/player_profile_sad.png" id="12_n8a13"]
@@ -42,47 +43,47 @@ size = Vector2(20, 96)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8a13"]
 size = Vector2(42, 77)
 
-[sub_resource type="Resource" id="Resource_dhkcc"]
-script = ExtResource("8_10eql")
-text = "Um, hi!"
-profile = ExtResource("9_6mn44")
-is_one_shot = false
-metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
-
-[sub_resource type="Resource" id="Resource_g4ymn"]
-script = ExtResource("8_10eql")
-text = "Hello sir will that be all?"
-profile = ExtResource("10_dhkcc")
-is_one_shot = false
-metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
-
-[sub_resource type="Resource" id="Resource_n8a13"]
-script = ExtResource("8_10eql")
-text = "Yep!"
-profile = ExtResource("11_g4ymn")
-is_one_shot = false
-metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
-
 [sub_resource type="Resource" id="Resource_x0xxj"]
 script = ExtResource("8_10eql")
-text = "Cash or card?"
-profile = ExtResource("10_dhkcc")
-is_one_shot = false
+text = "Uh, Hi!"
+profile = ExtResource("9_6mn44")
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_k5xca"]
 script = ExtResource("8_10eql")
-text = "Uh, I'm pretty broke right now so could you please bill me when I have money?"
+text = "Hello sir, would this be all?"
+profile = ExtResource("10_dhkcc")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_0rxo4"]
+script = ExtResource("8_10eql")
+text = "Yep!"
+profile = ExtResource("11_g4ymn")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_iuru6"]
+script = ExtResource("8_10eql")
+text = "Cash or card?"
+profile = ExtResource("10_dhkcc")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_phhnt"]
+script = ExtResource("8_10eql")
+text = "Uh... Well I'm kinda broke right now, can I please pay you when I have the money?"
 profile = ExtResource("12_n8a13")
-is_one_shot = false
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_we41u"]
+script = ExtResource("8_10eql")
+text = "couldn't care less sir have a good day."
+profile = ExtResource("10_dhkcc")
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_y2ovd"]
-script = ExtResource("8_10eql")
-text = "Couldn't care less sir have a good day."
-profile = ExtResource("10_dhkcc")
-is_one_shot = false
-metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+script = ExtResource("9_n8a13")
+loop_number = 1
+lines = Array[ExtResource("8_10eql")]([SubResource("Resource_x0xxj"), SubResource("Resource_k5xca"), SubResource("Resource_0rxo4"), SubResource("Resource_iuru6"), SubResource("Resource_phhnt"), SubResource("Resource_we41u")])
+metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
 
 [node name="grocery_store" type="Node2D"]
 
@@ -273,7 +274,7 @@ position = Vector2(-201, 0)
 can_move = false
 
 [node name="dialogue_manager" parent="." instance=ExtResource("7_k6thg")]
-start_dialogue = Array[ExtResource("8_10eql")]([SubResource("Resource_dhkcc"), SubResource("Resource_g4ymn"), SubResource("Resource_n8a13"), SubResource("Resource_x0xxj"), SubResource("Resource_k5xca"), SubResource("Resource_y2ovd")])
+start_dialogue = Array[ExtResource("9_n8a13")]([SubResource("Resource_y2ovd")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
