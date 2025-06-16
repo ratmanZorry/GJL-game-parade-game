@@ -108,7 +108,7 @@ color = Color(0.182887, 0.446782, 0.604269, 1)
 [node name="transfer_area" parent="." instance=ExtResource("2_x0xxj")]
 position = Vector2(-224, -25)
 transfer_scene_path = "res://scenes/main.tscn"
-transfer_position = Vector2(2460, 32)
+transfer_position = Vector2(2504, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="transfer_area"]
 position = Vector2(-12, 5)
