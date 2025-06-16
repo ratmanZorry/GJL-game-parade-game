@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4bjb78kcpkhn"]
+[gd_scene load_steps=17 format=3 uid="uid://c4bjb78kcpkhn"]
 
 [ext_resource type="Texture2D" uid="uid://dcd7nwii0i1fu" path="res://sprites/house_tilemap.png" id="1_d7po0"]
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="2_qtlar"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c4di3ir7ia2dl" path="res://scenes/dialogue_box.tscn" id="4_se78b"]
 [ext_resource type="PackedScene" uid="uid://bw7agl3mm7e1q" path="res://scenes/dialogue_manager.tscn" id="5_3bgk5"]
 [ext_resource type="Script" uid="uid://cbpoo80fjfr4m" path="res://scripts/dialogue_line.gd" id="6_ptc3g"]
+[ext_resource type="Script" uid="uid://dfpuv4o3jhve8" path="res://scripts/loop_dialogue_number.gd" id="6_wcu0q"]
 [ext_resource type="Texture2D" uid="uid://bips5r3dapnid" path="res://sprites/player_profile.png" id="7_wcu0q"]
 [ext_resource type="Script" uid="uid://ddoux000vuw02" path="res://scripts/transfer_area.gd" id="8_wcu0q"]
 
@@ -61,12 +62,18 @@ profile = ExtResource("7_wcu0q")
 is_one_shot = false
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
-[sub_resource type="Resource" id="Resource_ptc3g"]
+[sub_resource type="Resource" id="Resource_65la3"]
 script = ExtResource("6_ptc3g")
 text = "I should go to the grocery store to buy some cheese"
 profile = ExtResource("7_wcu0q")
 is_one_shot = false
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_mhx8p"]
+script = ExtResource("6_wcu0q")
+loop_number = 0
+lines = Array[ExtResource("6_ptc3g")]([SubResource("Resource_bwc8c"), SubResource("Resource_65la3")])
+metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcu0q"]
 size = Vector2(20, 112)
@@ -106,7 +113,7 @@ position = Vector2(520, 533)
 scale = Vector2(6.84, 6.84)
 
 [node name="dialogue_manager" parent="." instance=ExtResource("5_3bgk5")]
-start_dialogue = Array[ExtResource("6_ptc3g")]([SubResource("Resource_bwc8c"), SubResource("Resource_ptc3g")])
+start_dialogue = Array[ExtResource("6_wcu0q")]([SubResource("Resource_mhx8p")])
 
 [node name="transfer_area" type="Area2D" parent="."]
 script = ExtResource("8_wcu0q")

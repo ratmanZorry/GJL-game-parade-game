@@ -4,20 +4,21 @@ signal dialogue(dialogue_text: String, profile_texture: Texture2D)
 signal dialogue_end
 
 @export var pre_dialogue_wait_time: float
-@export var start_dialogue: Array[DialogueLine]
+@export var start_dialogue: Array[loop_dialogue_number]
 @onready var dialogue_box: Node2D = get_tree().get_first_node_in_group("dialogue_box")
-
-var used_loop := -1 # this is the loop where the dialogue already happened
-
 
 func _ready() -> void:
 	await get_tree().create_timer(pre_dialogue_wait_time).timeout
-	if used_loop < GameManager.loop_number:
-		for line in start_dialogue:
-			emit_signal("dialogue", line.text, line.profile)
-			await wait_for_dialogue_key()
-		emit_signal("dialogue_end")
-		GameManager.loop_number += 1
+
+	for block in start_dialogue:
+		if block.loop_number == GameManager.loop_number:
+			for line in block.lines:
+				emit_signal("dialogue", line.text, line.profile)
+				await wait_for_dialogue_key()
+			break
+
+	emit_signal("dialogue_end")
+	GameManager.loop_number += 1
 
 func wait_for_dialogue_key() -> void:
 	while true:
