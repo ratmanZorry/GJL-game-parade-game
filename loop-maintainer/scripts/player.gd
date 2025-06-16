@@ -18,8 +18,13 @@ var was_on_floor := true
 
 var is_dead := false
 
+var spawn_location
+
+
 func _ready():
+	spawn_location = global_position
 	anim.play("idle")
+	global_position = spawn_location
 
 func _physics_process(delta: float):
 	if is_dead:

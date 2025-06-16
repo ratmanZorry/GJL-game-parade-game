@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jxwldbsvh36v"
-path="res://.godot/imported/cashier_profile_sad.png-6e1e589224568e9a7d447969209064e6.ctex"
+uid="uid://cxyuq4k2bimtt"
+path="res://.godot/imported/player_profile_happy.png-cb5c290dd6504e9e53e7cca75a675c02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cashier_profile_sad.png"
-dest_files=["res://.godot/imported/cashier_profile_sad.png-6e1e589224568e9a7d447969209064e6.ctex"]
+source_file="res://sprites/player_profile_happy.png"
+dest_files=["res://.godot/imported/player_profile_happy.png-cb5c290dd6504e9e53e7cca75a675c02.ctex"]
 
 [params]
 
