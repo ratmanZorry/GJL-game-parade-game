@@ -18,8 +18,6 @@ var was_on_floor := true
 
 var is_dead := false
 
-var spawn_location := Vector2.ZERO
-
 func _ready():
 	if GameManager.next_player_spawn_position != Vector2.INF:
 		global_position = GameManager.next_player_spawn_position

@@ -111,7 +111,7 @@ start_dialogue = Array[ExtResource("6_ptc3g")]([SubResource("Resource_bwc8c"), S
 [node name="transfer_area" type="Area2D" parent="."]
 script = ExtResource("8_wcu0q")
 transfer_scene_path = "res://scenes/main.tscn"
-transfer_position = Vector2(-60, 48)
+transfer_position = Vector2(-100, 48)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="transfer_area"]
 position = Vector2(123, -8)
