@@ -12,8 +12,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 	if body.is_in_group("player"):
 		GameManager.next_player_spawn_position = transfer_position
+		await get_tree().create_timer(0.1).timeout
 		get_tree().change_scene_to_packed(transfer_scene)
 
 	set_deferred("monitoring", false)
-	await get_tree().create_timer(0.1).timeout
-	get_tree().change_scene_to_packed(transfer_scene)

@@ -22,8 +22,8 @@ var spawn_location := Vector2.ZERO
 
 func _ready():
 	if GameManager.next_player_spawn_position != Vector2.INF:
-		global_position = GameManager.next_spawn_position
-		GameManager.next_spawn_position = Vector2.INF
+		global_position = GameManager.next_player_spawn_position
+		GameManager.next_player_spawn_position = Vector2.INF
 	anim.play("idle")
 
 func _physics_process(delta: float):
