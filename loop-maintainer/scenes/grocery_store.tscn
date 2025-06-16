@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ccyb2yo0pxon3"]
+[gd_scene load_steps=23 format=3 uid="uid://ccyb2yo0pxon3"]
 
 [ext_resource type="Texture2D" uid="uid://s0b8axcrevre" path="res://sprites/grocery_store_floor.png" id="1_v33jl"]
 [ext_resource type="Texture2D" uid="uid://bemb020csaa0m" path="res://sprites/cashier.png" id="2_wf4cn"]
@@ -34,6 +34,9 @@ texture = ExtResource("1_v33jl")
 physics_layer_0/collision_layer = 255
 physics_layer_0/collision_mask = 255
 sources/0 = SubResource("TileSetAtlasSource_wf4cn")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8a13"]
+size = Vector2(42, 77)
 
 [sub_resource type="Resource" id="Resource_dhkcc"]
 script = ExtResource("8_10eql")
@@ -96,6 +99,12 @@ color = Color(0.182887, 0.446782, 0.604269, 1)
 [node name="Cashier" type="Sprite2D" parent="bg_elements"]
 position = Vector2(-145, -17)
 texture = ExtResource("2_wf4cn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="bg_elements/Cashier"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg_elements/Cashier/StaticBody2D"]
+position = Vector2(0, -21.5)
+shape = SubResource("RectangleShape2D_n8a13")
 
 [node name="Shelf2" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
@@ -255,4 +264,5 @@ position = Vector2(520, 121)
 scale = Vector2(6.84, 6.84)
 
 [connection signal="dialogue" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue"]
+[connection signal="dialogue_end" from="dialogue_manager" to="bg_elements/player" method="_on_dialogue_manager_dialogue_end"]
 [connection signal="dialogue_end" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue_end"]
