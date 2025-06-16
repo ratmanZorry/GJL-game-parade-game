@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccyb2yo0pxon3"]
+[gd_scene load_steps=16 format=3 uid="uid://ccyb2yo0pxon3"]
 
 [ext_resource type="Texture2D" uid="uid://s0b8axcrevre" path="res://sprites/grocery_store_floor.png" id="1_v33jl"]
 [ext_resource type="Texture2D" uid="uid://bemb020csaa0m" path="res://sprites/cashier.png" id="2_wf4cn"]
@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://byb0ekikshcff" path="res://sprites/shelf_1.png" id="4_5dc52"]
 [ext_resource type="Texture2D" uid="uid://by2rllra5la2l" path="res://sprites/shelf_3.png" id="5_k6thg"]
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="6_5dc52"]
+[ext_resource type="PackedScene" uid="uid://bw7agl3mm7e1q" path="res://scenes/dialogue_manager.tscn" id="7_k6thg"]
+[ext_resource type="Script" uid="uid://cbpoo80fjfr4m" path="res://scripts/dialogue_line.gd" id="8_10eql"]
+[ext_resource type="PackedScene" uid="uid://c4di3ir7ia2dl" path="res://scenes/dialogue_box.tscn" id="8_mkny6"]
+[ext_resource type="Texture2D" uid="uid://bips5r3dapnid" path="res://sprites/player_profile.png" id="9_6mn44"]
+[ext_resource type="Texture2D" uid="uid://cd4fq0wrklx7r" path="res://sprites/cashier_profile.png" id="10_dhkcc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wf4cn"]
 texture = ExtResource("1_v33jl")
@@ -27,6 +32,18 @@ texture = ExtResource("1_v33jl")
 physics_layer_0/collision_layer = 255
 physics_layer_0/collision_mask = 255
 sources/0 = SubResource("TileSetAtlasSource_wf4cn")
+
+[sub_resource type="Resource" id="Resource_dhkcc"]
+script = ExtResource("8_10eql")
+text = "Um, hi!"
+profile = ExtResource("9_6mn44")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_g4ymn"]
+script = ExtResource("8_10eql")
+text = "Hello sir will that be all?"
+profile = ExtResource("10_dhkcc")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [node name="grocery_store" type="Node2D"]
 
@@ -201,3 +218,13 @@ texture = ExtResource("5_k6thg")
 [node name="player" parent="bg_elements" instance=ExtResource("6_5dc52")]
 position = Vector2(-201, 0)
 can_move = false
+
+[node name="dialogue_manager" parent="." node_paths=PackedStringArray("dialogue_box") instance=ExtResource("7_k6thg")]
+start_dialogue = Array[ExtResource("8_10eql")]([SubResource("Resource_dhkcc"), SubResource("Resource_g4ymn")])
+dialogue_box = NodePath("../CanvasLayer/dialogue_box")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="dialogue_box" parent="CanvasLayer" instance=ExtResource("8_mkny6")]
+position = Vector2(520, 533)
+scale = Vector2(6.84, 6.84)
