@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b1gf36s45q30l"]
+[gd_scene load_steps=27 format=3 uid="uid://b1gf36s45q30l"]
 
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bfdmc0dnw73ru" path="res://sprites/blue_tilemap.png" id="2_0wfyh"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://bd1152v6j1pkl" path="res://scenes/rusted_little_spike.tscn" id="13_trceg"]
 [ext_resource type="Texture2D" uid="uid://ckeym6l54ht6h" path="res://sprites/wall_block.png" id="16_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://blds3ousifp5w" path="res://scenes/transfer_area.tscn" id="17_muem4"]
-[ext_resource type="PackedScene" uid="uid://c4bjb78kcpkhn" path="res://scenes/house.tscn" id="18_dp3eg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
 texture = ExtResource("2_0wfyh")
@@ -360,7 +359,7 @@ texture = ExtResource("16_jbj1t")
 
 [node name="transfer_area" parent="." instance=ExtResource("17_muem4")]
 position = Vector2(-126, 27)
-transfer_scene = ExtResource("18_dp3eg")
+transfer_scene_path = "res://scenes/house.tscn"
 transfer_position = Vector2(90, 48)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="transfer_area"]

@@ -1,10 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://ccyb2yo0pxon3"]
+[gd_scene load_steps=25 format=3 uid="uid://ccyb2yo0pxon3"]
 
 [ext_resource type="Texture2D" uid="uid://s0b8axcrevre" path="res://sprites/grocery_store_floor.png" id="1_v33jl"]
 [ext_resource type="Texture2D" uid="uid://bemb020csaa0m" path="res://sprites/cashier.png" id="2_wf4cn"]
 [ext_resource type="PackedScene" uid="uid://blds3ousifp5w" path="res://scenes/transfer_area.tscn" id="2_x0xxj"]
 [ext_resource type="Texture2D" uid="uid://pw2ydvscff3x" path="res://sprites/shelf_2.png" id="3_biarb"]
-[ext_resource type="PackedScene" uid="uid://b1gf36s45q30l" path="res://scenes/main.tscn" id="3_k5xca"]
 [ext_resource type="Texture2D" uid="uid://byb0ekikshcff" path="res://sprites/shelf_1.png" id="4_5dc52"]
 [ext_resource type="Texture2D" uid="uid://by2rllra5la2l" path="res://sprites/shelf_3.png" id="5_k6thg"]
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="6_5dc52"]
@@ -47,36 +46,42 @@ size = Vector2(42, 77)
 script = ExtResource("8_10eql")
 text = "Um, hi!"
 profile = ExtResource("9_6mn44")
+is_one_shot = false
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_g4ymn"]
 script = ExtResource("8_10eql")
 text = "Hello sir will that be all?"
 profile = ExtResource("10_dhkcc")
+is_one_shot = false
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_n8a13"]
 script = ExtResource("8_10eql")
 text = "Yep!"
 profile = ExtResource("11_g4ymn")
+is_one_shot = false
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_x0xxj"]
 script = ExtResource("8_10eql")
 text = "Cash or card?"
 profile = ExtResource("10_dhkcc")
+is_one_shot = false
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_k5xca"]
 script = ExtResource("8_10eql")
 text = "Uh, I'm pretty broke right now so could you please bill me when I have money?"
 profile = ExtResource("12_n8a13")
+is_one_shot = false
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_y2ovd"]
 script = ExtResource("8_10eql")
 text = "Couldn't care less sir have a good day."
 profile = ExtResource("10_dhkcc")
+is_one_shot = false
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [node name="grocery_store" type="Node2D"]
@@ -101,7 +106,6 @@ color = Color(0.182887, 0.446782, 0.604269, 1)
 
 [node name="transfer_area" parent="." instance=ExtResource("2_x0xxj")]
 position = Vector2(-224, -25)
-transfer_scene = ExtResource("3_k5xca")
 transfer_position = Vector2(2460, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="transfer_area"]

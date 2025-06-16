@@ -18,13 +18,13 @@ var was_on_floor := true
 
 var is_dead := false
 
-var spawn_location
-
+var spawn_location := Vector2.ZERO
 
 func _ready():
-	spawn_location = global_position
+	if GameManager.next_player_spawn_position != Vector2.INF:
+		global_position = GameManager.next_spawn_position
+		GameManager.next_spawn_position = Vector2.INF
 	anim.play("idle")
-	global_position = spawn_location
 
 func _physics_process(delta: float):
 	if is_dead:
