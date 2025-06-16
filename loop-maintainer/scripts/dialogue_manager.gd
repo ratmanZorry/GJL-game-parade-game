@@ -5,7 +5,7 @@ signal dialogue_end
 
 @export var pre_dialogue_wait_time: float
 @export var start_dialogue: Array[DialogueLine]
-@export var dialogue_box: Node2D
+@onready var dialogue_box: Node2D = get_tree().get_first_node_in_group("dialogue_box")
 
 
 func _ready() -> void:

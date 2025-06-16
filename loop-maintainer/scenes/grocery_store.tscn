@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ccyb2yo0pxon3"]
+[gd_scene load_steps=22 format=3 uid="uid://ccyb2yo0pxon3"]
 
 [ext_resource type="Texture2D" uid="uid://s0b8axcrevre" path="res://sprites/grocery_store_floor.png" id="1_v33jl"]
 [ext_resource type="Texture2D" uid="uid://bemb020csaa0m" path="res://sprites/cashier.png" id="2_wf4cn"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://c4di3ir7ia2dl" path="res://scenes/dialogue_box.tscn" id="8_mkny6"]
 [ext_resource type="Texture2D" uid="uid://bips5r3dapnid" path="res://sprites/player_profile.png" id="9_6mn44"]
 [ext_resource type="Texture2D" uid="uid://cd4fq0wrklx7r" path="res://sprites/cashier_profile.png" id="10_dhkcc"]
+[ext_resource type="Texture2D" uid="uid://cxyuq4k2bimtt" path="res://sprites/cashier_profile_happy.png" id="11_g4ymn"]
+[ext_resource type="Texture2D" uid="uid://jxwldbsvh36v" path="res://sprites/cashier_profile_sad.png" id="12_n8a13"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wf4cn"]
 texture = ExtResource("1_v33jl")
@@ -42,6 +44,30 @@ metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 [sub_resource type="Resource" id="Resource_g4ymn"]
 script = ExtResource("8_10eql")
 text = "Hello sir will that be all?"
+profile = ExtResource("10_dhkcc")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_n8a13"]
+script = ExtResource("8_10eql")
+text = "Yep!"
+profile = ExtResource("11_g4ymn")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_x0xxj"]
+script = ExtResource("8_10eql")
+text = "Cash or card?"
+profile = ExtResource("10_dhkcc")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_k5xca"]
+script = ExtResource("8_10eql")
+text = "Uh, I'm pretty broke right now so could you please bill me when I have money?"
+profile = ExtResource("12_n8a13")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_y2ovd"]
+script = ExtResource("8_10eql")
+text = "Couldn't care less sir have a good day."
 profile = ExtResource("10_dhkcc")
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
@@ -219,12 +245,14 @@ texture = ExtResource("5_k6thg")
 position = Vector2(-201, 0)
 can_move = false
 
-[node name="dialogue_manager" parent="." node_paths=PackedStringArray("dialogue_box") instance=ExtResource("7_k6thg")]
-start_dialogue = Array[ExtResource("8_10eql")]([SubResource("Resource_dhkcc"), SubResource("Resource_g4ymn")])
-dialogue_box = NodePath("../CanvasLayer/dialogue_box")
+[node name="dialogue_manager" parent="." instance=ExtResource("7_k6thg")]
+start_dialogue = Array[ExtResource("8_10eql")]([SubResource("Resource_dhkcc"), SubResource("Resource_g4ymn"), SubResource("Resource_n8a13"), SubResource("Resource_x0xxj"), SubResource("Resource_k5xca"), SubResource("Resource_y2ovd")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="dialogue_box" parent="CanvasLayer" instance=ExtResource("8_mkny6")]
-position = Vector2(520, 533)
+position = Vector2(520, 121)
 scale = Vector2(6.84, 6.84)
+
+[connection signal="dialogue" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue"]
+[connection signal="dialogue_end" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue_end"]

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bips5r3dapnid" path="res://sprites/player_profile.png" id="2_tm68y"]
 [ext_resource type="FontFile" uid="uid://dt6gge7psusof" path="res://fonts/DePixelKlein.ttf" id="3_tm68y"]
 
-[node name="dialogue_box" type="Node2D" node_paths=PackedStringArray("text", "profile", "typing_timer")]
+[node name="dialogue_box" type="Node2D" node_paths=PackedStringArray("text", "profile", "typing_timer") groups=["dialogue_box"]]
 script = ExtResource("1_hvmm2")
 text = NodePath("RichTextLabel")
 profile = NodePath("character_profile")

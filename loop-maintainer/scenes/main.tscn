@@ -222,9 +222,8 @@ easy_obstacles = Array[PackedScene]([ExtResource("4_jyhfs"), ExtResource("6_tefe
 position = Vector2(520, 533)
 scale = Vector2(6.84, 6.84)
 
-[node name="dialogue_manager" type="Node" parent="." node_paths=PackedStringArray("dialogue_box")]
+[node name="dialogue_manager" type="Node" parent="."]
 script = ExtResource("8_tipki")
-dialogue_box = NodePath("../CanvasLayer/dialogue_box")
 
 [node name="big_spike" parent="." instance=ExtResource("11_ya4ey")]
 position = Vector2(1000, 128)
@@ -248,37 +247,30 @@ rotation = -0.259053
 [node name="rusted_little_spike" parent="big_spike" instance=ExtResource("13_trceg")]
 position = Vector2(951, -57)
 rotation = 1.39804
-scale = Vector2(1, 1)
 
 [node name="rusted_little_spike2" parent="big_spike" instance=ExtResource("13_trceg")]
 position = Vector2(984, -31)
 rotation = -0.277072
-scale = Vector2(1, 1)
 
 [node name="rusted_little_spike3" parent="big_spike" instance=ExtResource("13_trceg")]
 position = Vector2(1002, -72)
 rotation = -2.21881
-scale = Vector2(1, 1)
 
 [node name="rusted_little_spike4" parent="big_spike" instance=ExtResource("13_trceg")]
 position = Vector2(951, -77)
 rotation = -4.32098
-scale = Vector2(1, 1)
 
 [node name="rusted_little_spike6" parent="big_spike" instance=ExtResource("13_trceg")]
 position = Vector2(951, -87)
 rotation = -5.15149
-scale = Vector2(1, 1)
 
 [node name="rusted_little_spike7" parent="big_spike" instance=ExtResource("13_trceg")]
 position = Vector2(1002, -80)
 rotation = -7.46279
-scale = Vector2(1, 1)
 
 [node name="rusted_little_spike5" parent="big_spike" instance=ExtResource("13_trceg")]
 position = Vector2(988, -47)
 rotation = -6.6603
-scale = Vector2(1, 1)
 
 [node name="big_spike" parent="big_spike" instance=ExtResource("11_ya4ey")]
 z_index = -1
