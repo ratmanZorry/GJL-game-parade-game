@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccyb2yo0pxon3"]
+[gd_scene load_steps=9 format=3 uid="uid://ccyb2yo0pxon3"]
 
 [ext_resource type="Texture2D" uid="uid://s0b8axcrevre" path="res://sprites/grocery_store_floor.png" id="1_v33jl"]
 [ext_resource type="Texture2D" uid="uid://bemb020csaa0m" path="res://sprites/cashier.png" id="2_wf4cn"]
 [ext_resource type="Texture2D" uid="uid://pw2ydvscff3x" path="res://sprites/shelf_2.png" id="3_biarb"]
 [ext_resource type="Texture2D" uid="uid://byb0ekikshcff" path="res://sprites/shelf_1.png" id="4_5dc52"]
 [ext_resource type="Texture2D" uid="uid://by2rllra5la2l" path="res://sprites/shelf_3.png" id="5_k6thg"]
+[ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="6_5dc52"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wf4cn"]
 texture = ExtResource("1_v33jl")
@@ -47,150 +48,156 @@ offset_bottom = -150.0
 scale = Vector2(7.89881, 4.96)
 color = Color(0.182887, 0.446782, 0.604269, 1)
 
-[node name="Cashier" type="Sprite2D" parent="."]
+[node name="bg_elements" type="Node" parent="."]
+
+[node name="Cashier" type="Sprite2D" parent="bg_elements"]
 position = Vector2(-145, -17)
 texture = ExtResource("2_wf4cn")
 
-[node name="Shelf2" type="Sprite2D" parent="."]
+[node name="Shelf2" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(-112, -12.49)
 texture = ExtResource("3_biarb")
 
-[node name="Shelf4" type="Sprite2D" parent="."]
+[node name="Shelf4" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(-137, -12.49)
 texture = ExtResource("4_5dc52")
 
-[node name="Shelf6" type="Sprite2D" parent="."]
+[node name="Shelf6" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(-87, -12.49)
 texture = ExtResource("5_k6thg")
 
-[node name="Shelf3" type="Sprite2D" parent="."]
+[node name="Shelf3" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(-188, -12.5)
 texture = ExtResource("3_biarb")
 
-[node name="Shelf5" type="Sprite2D" parent="."]
+[node name="Shelf5" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(-213, -12.5)
 texture = ExtResource("4_5dc52")
 
-[node name="Shelf7" type="Sprite2D" parent="."]
+[node name="Shelf7" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(-163, -12.5)
 texture = ExtResource("5_k6thg")
 
-[node name="Shelf9" type="Sprite2D" parent="."]
+[node name="Shelf9" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(-11, -12.5)
 texture = ExtResource("5_k6thg")
 
-[node name="Shelf10" type="Sprite2D" parent="."]
+[node name="Shelf10" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(-62, -12.5)
 texture = ExtResource("4_5dc52")
 
-[node name="Shelf11" type="Sprite2D" parent="."]
+[node name="Shelf11" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(-37, -12.5)
 texture = ExtResource("3_biarb")
 
-[node name="Shelf16" type="Sprite2D" parent="."]
+[node name="Shelf16" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(63, -12.49)
 texture = ExtResource("4_5dc52")
 
-[node name="Shelf17" type="Sprite2D" parent="."]
+[node name="Shelf17" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(38, -12.5)
 texture = ExtResource("3_biarb")
 
-[node name="Shelf18" type="Sprite2D" parent="."]
+[node name="Shelf18" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(13, -12.43)
 texture = ExtResource("5_k6thg")
 
-[node name="Shelf8" type="Sprite2D" parent="."]
+[node name="Shelf8" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(-112, -36.49)
 texture = ExtResource("3_biarb")
 
-[node name="Shelf12" type="Sprite2D" parent="."]
+[node name="Shelf12" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(-137, -36.49)
 texture = ExtResource("4_5dc52")
 
-[node name="Shelf13" type="Sprite2D" parent="."]
+[node name="Shelf13" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(-87, -36.49)
 texture = ExtResource("5_k6thg")
 
-[node name="Shelf14" type="Sprite2D" parent="."]
+[node name="Shelf14" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(-188, -36.5)
 texture = ExtResource("3_biarb")
 
-[node name="Shelf15" type="Sprite2D" parent="."]
+[node name="Shelf15" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(-213, -36.5)
 texture = ExtResource("4_5dc52")
 
-[node name="Shelf19" type="Sprite2D" parent="."]
+[node name="Shelf19" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(-163, -36.5)
 texture = ExtResource("5_k6thg")
 
-[node name="Shelf20" type="Sprite2D" parent="."]
+[node name="Shelf20" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(-11, -36.5)
 texture = ExtResource("5_k6thg")
 
-[node name="Shelf21" type="Sprite2D" parent="."]
+[node name="Shelf21" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(-62, -36.5)
 texture = ExtResource("4_5dc52")
 
-[node name="Shelf22" type="Sprite2D" parent="."]
+[node name="Shelf22" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(-37, -36.5)
 texture = ExtResource("3_biarb")
 
-[node name="Shelf23" type="Sprite2D" parent="."]
+[node name="Shelf23" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(63, -36.49)
 texture = ExtResource("4_5dc52")
 
-[node name="Shelf24" type="Sprite2D" parent="."]
+[node name="Shelf24" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(38, -36.5)
 texture = ExtResource("3_biarb")
 
-[node name="Shelf25" type="Sprite2D" parent="."]
+[node name="Shelf25" type="Sprite2D" parent="bg_elements"]
 modulate = Color(1, 1, 1, 0.505882)
 z_index = -2
 position = Vector2(13, -36.43)
 texture = ExtResource("5_k6thg")
+
+[node name="player" parent="bg_elements" instance=ExtResource("6_5dc52")]
+position = Vector2(-201, 0)
+can_move = false

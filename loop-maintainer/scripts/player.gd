@@ -11,6 +11,8 @@ extends CharacterBody2D
 
 @export var is_sitting := false
 
+@export var can_move := true
+
 var canBufferJump := false
 var was_on_floor := true
 
@@ -41,20 +43,20 @@ func _physics_process(delta: float):
 		velocity.y = 0
 	
 	var direction := Input.get_axis("left", "right")
-	if direction:
+	if direction and can_move:
 		velocity.x = direction * SPEED
 		anim.flip_h = direction < 0
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	if is_on_floor() and not was_on_floor:
-		if direction:
+		if direction and can_move:
 			anim.play("walking")
 		else:
 			anim.play("idle")
 
 	if is_on_floor():
-		if direction:
+		if direction and can_move:
 			anim.play("walking")
 		else:
 			anim.play("idle")
@@ -68,6 +70,9 @@ func _physics_process(delta: float):
 	was_on_floor = is_on_floor()
 
 func Jump():
+	if not can_move:
+		return
+	
 	velocity.y = JUMP_VELOCITY
 	anim.play("jumping")
 	
