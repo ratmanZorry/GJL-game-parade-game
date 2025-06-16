@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgsa2dbfuj46b"]
+
+[ext_resource type="Texture2D" uid="uid://cyrs1hkgbxr6x" path="res://sprites/fire.png" id="1_52nqi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_52nqi"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqmqg"]
+atlas = ExtResource("1_52nqi")
+region = Rect2(0, 0, 36, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5mbl"]
+atlas = ExtResource("1_52nqi")
+region = Rect2(36, 0, 36, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rach5"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_xqmqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5mbl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="fire" type="Node2D" groups=["kill_hitbox"]]
+
+[node name="Area2D" type="Area2D" parent="." groups=["kill_hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_52nqi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rach5")
+autoplay = "default"
+frame_progress = 0.859878
