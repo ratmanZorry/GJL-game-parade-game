@@ -15,10 +15,10 @@ func _ready() -> void:
 			for line in block.lines:
 				emit_signal("dialogue", line.text, line.profile)
 				await wait_for_dialogue_key()
-			break
-
-	emit_signal("dialogue_end")
-	GameManager.loop_number += 1
+			emit_signal("dialogue_end")
+			GameManager.loop_number += 1
+			print(GameManager.loop_number)
+			return
 
 func wait_for_dialogue_key() -> void:
 	while true:

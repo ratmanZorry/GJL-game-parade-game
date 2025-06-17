@@ -91,7 +91,6 @@ zoom = Vector2(5.66, 5.66)
 
 [node name="player" parent="." instance=ExtResource("2_qtlar")]
 position = Vector2(-70, 37.315)
-is_sitting = true
 
 [node name="CardboardBox" type="Sprite2D" parent="."]
 z_index = -1

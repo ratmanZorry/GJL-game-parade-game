@@ -9,7 +9,9 @@ extends CharacterBody2D
 @export var ground_cast_1: RayCast2D
 @export var ground_cast_2: RayCast2D
 
-@export var is_sitting := false
+@export var camera: Camera2D
+
+var is_sitting := false
 
 @export var can_move := true
 
@@ -23,10 +25,22 @@ func _ready():
 		global_position = GameManager.next_player_spawn_position
 		GameManager.next_player_spawn_position = Vector2.INF
 	anim.play("idle")
+	
+	if camera:
+		camera.position_smoothing_enabled = false
+		await get_tree().create_timer(0.2).timeout
+		camera.position_smoothing_enabled = true
 
 func _physics_process(delta: float):
 	if is_dead:
 		return
+	
+	if GameManager.loop_number == 0 and get_tree().current_scene.name == "house":
+		is_sitting = true
+	else:
+		is_sitting = false
+		can_move = true
+	
 	if is_sitting:
 		anim.play("sitting")
 		return
