@@ -335,6 +335,7 @@ scale = Vector2(6.84, 6.84)
 
 [node name="dialogue_manager" type="Node" parent="." node_paths=PackedStringArray("dialogue_area")]
 script = ExtResource("8_tipki")
+pre_WIZARD_dialogue_wait_time = 0.55
 wizard_dialogue_1 = Array[ExtResource("15_2wyq8")]([SubResource("Resource_qkpxi")])
 dialogue_area = NodePath("../dialogue_area")
 
@@ -509,7 +510,7 @@ position = Vector2(2576, 206)
 position = Vector2(2481, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dialogue_area"]
-position = Vector2(-13, -39)
+position = Vector2(-93, -44)
 shape = SubResource("RectangleShape2D_pm3ni")
 
 [connection signal="dialogue" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue"]

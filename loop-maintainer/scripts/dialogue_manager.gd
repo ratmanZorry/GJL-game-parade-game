@@ -4,6 +4,7 @@ signal dialogue(dialogue_text: String, profile_texture: Texture2D)
 signal dialogue_end
 
 @export var pre_dialogue_wait_time: float
+@export var pre_WIZARD_dialogue_wait_time: float
 @export var start_dialogue: Array[loop_dialogue_number]
 
 @export var wizard_dialogue_1: Array[loop_dialogue_number]
@@ -42,7 +43,7 @@ func wait_for_dialogue_key() -> void:
 func _on_dialogue_area_body_entered(body: Node2D) -> void:
 	if dialogue_area and dialogue_area.is_in_group("wizard_dialogue_area"):
 		if GameManager.can_meet_wizard:
-			print("do it")
+			await get_tree().create_timer(pre_WIZARD_dialogue_wait_time).timeout
 			GameManager.can_meet_wizard = false
 			for block in wizard_dialogue_1:
 				if block.loop_number == GameManager.loop_number:

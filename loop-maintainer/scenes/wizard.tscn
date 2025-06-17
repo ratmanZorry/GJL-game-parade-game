@@ -106,10 +106,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="wizard" type="Node2D"]
+[node name="wizard" type="Node2D" node_paths=PackedStringArray("anim")]
 script = ExtResource("1_j4iv4")
+anim = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nnu41")
-animation = &"idle"
-frame_progress = 0.774965
+animation = &"poof_in"
+frame_progress = 0.952407
