@@ -1,0 +1,115 @@
+[gd_scene load_steps=17 format=3 uid="uid://c5u2fsnqsgr6u"]
+
+[ext_resource type="Script" uid="uid://cn8jxsj3tk50y" path="res://scripts/wizard.gd" id="1_j4iv4"]
+[ext_resource type="Texture2D" uid="uid://dktcjnivxivey" path="res://sprites/wizard_idle.png" id="1_leome"]
+[ext_resource type="Texture2D" uid="uid://b3f7f2mwut52d" path="res://sprites/wizard_poof.png" id="2_j4iv4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leome"]
+atlas = ExtResource("1_leome")
+region = Rect2(0, 0, 37, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4iv4"]
+atlas = ExtResource("1_leome")
+region = Rect2(37, 0, 37, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qlyk"]
+atlas = ExtResource("2_j4iv4")
+region = Rect2(148, 0, 37, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jkov"]
+atlas = ExtResource("2_j4iv4")
+region = Rect2(111, 0, 37, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba5mt"]
+atlas = ExtResource("2_j4iv4")
+region = Rect2(74, 0, 37, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_var7a"]
+atlas = ExtResource("2_j4iv4")
+region = Rect2(37, 0, 37, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1g42w"]
+atlas = ExtResource("2_j4iv4")
+region = Rect2(0, 0, 37, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otiyp"]
+atlas = ExtResource("2_j4iv4")
+region = Rect2(0, 0, 37, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1ugj"]
+atlas = ExtResource("2_j4iv4")
+region = Rect2(37, 0, 37, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v60b6"]
+atlas = ExtResource("2_j4iv4")
+region = Rect2(74, 0, 37, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbuw5"]
+atlas = ExtResource("2_j4iv4")
+region = Rect2(111, 0, 37, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1csj"]
+atlas = ExtResource("2_j4iv4")
+region = Rect2(148, 0, 37, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nnu41"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_leome")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_j4iv4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_8qlyk")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_4jkov")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_ba5mt")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_var7a")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_1g42w")
+}],
+"loop": true,
+"name": &"poof_in",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_otiyp")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_h1ugj")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_v60b6")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_sbuw5")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_t1csj")
+}],
+"loop": true,
+"name": &"poof_out",
+"speed": 5.0
+}]
+
+[node name="wizard" type="Node2D"]
+script = ExtResource("1_j4iv4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nnu41")
+animation = &"idle"
+frame_progress = 0.328324

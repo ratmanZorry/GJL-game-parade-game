@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ccyb2yo0pxon3"]
+[gd_scene load_steps=28 format=3 uid="uid://ccyb2yo0pxon3"]
 
 [ext_resource type="Texture2D" uid="uid://s0b8axcrevre" path="res://sprites/grocery_store_floor.png" id="1_v33jl"]
 [ext_resource type="Texture2D" uid="uid://bemb020csaa0m" path="res://sprites/cashier.png" id="2_wf4cn"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cd4fq0wrklx7r" path="res://sprites/cashier_profile.png" id="10_dhkcc"]
 [ext_resource type="Texture2D" uid="uid://cxyuq4k2bimtt" path="res://sprites/player_profile_happy.png" id="11_g4ymn"]
 [ext_resource type="Texture2D" uid="uid://jxwldbsvh36v" path="res://sprites/player_profile_sad.png" id="12_n8a13"]
+[ext_resource type="Script" uid="uid://dgci5i08uwa23" path="res://scripts/grocery_store_event_manager.gd" id="16_y2ovd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wf4cn"]
 texture = ExtResource("1_v33jl")
@@ -284,6 +285,10 @@ start_dialogue = Array[ExtResource("9_n8a13")]([SubResource("Resource_y2ovd")])
 position = Vector2(520, 121)
 scale = Vector2(6.84, 6.84)
 
+[node name="grocery_store_event_manager" type="Node" parent="."]
+script = ExtResource("16_y2ovd")
+
 [connection signal="dialogue" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue"]
 [connection signal="dialogue_end" from="dialogue_manager" to="bg_elements/player" method="_on_dialogue_manager_dialogue_end"]
 [connection signal="dialogue_end" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue_end"]
+[connection signal="dialogue_end" from="dialogue_manager" to="grocery_store_event_manager" method="_on_dialogue_manager_dialogue_end"]
