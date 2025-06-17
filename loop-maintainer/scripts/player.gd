@@ -12,7 +12,6 @@ extends CharacterBody2D
 @export var camera: Camera2D
 
 var is_sitting := false
-
 @export var can_move := true
 
 var canBufferJump := false
@@ -34,13 +33,10 @@ func _ready():
 func _physics_process(delta: float):
 	if is_dead:
 		return
-	
-	if GameManager.loop_number == 0 and get_tree().current_scene.name == "house":
-		is_sitting = true
-	else:
-		is_sitting = false
-		can_move = true
-	
+
+	is_sitting = GameManager.loop_number == 0 and get_tree().current_scene.name == "house"
+	can_move = not is_sitting and not GameManager.is_in_dialogue
+
 	if is_sitting:
 		anim.play("sitting")
 		return
@@ -96,10 +92,8 @@ func Jump():
 	if ground_cast_1.is_colliding() and ground_cast_2.is_colliding():
 		JumpLocationManager.jump_locations.append(global_position)
 
-
 func _on_jump_buffer_timer_timeout() -> void:
 	canBufferJump = false
-
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("kill_hitbox"):
@@ -107,7 +101,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		anim.play("death")
 		await get_tree().create_timer(0.65).timeout
 		anim.queue_free()
-
 
 func _on_dialogue_manager_dialogue_end() -> void:
 	is_sitting = false

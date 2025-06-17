@@ -273,7 +273,6 @@ texture = ExtResource("5_k6thg")
 
 [node name="player" parent="bg_elements" instance=ExtResource("6_5dc52")]
 position = Vector2(-201, 0)
-can_move = false
 
 [node name="dialogue_manager" parent="." instance=ExtResource("7_k6thg")]
 pre_dialogue_wait_time = 0.5

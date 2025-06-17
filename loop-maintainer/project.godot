@@ -22,6 +22,7 @@ GameManager="*res://scripts/game_manager.gd"
 [global_group]
 
 kill_hitbox=""
+wizard_dialogue_area=""
 
 [input]
 

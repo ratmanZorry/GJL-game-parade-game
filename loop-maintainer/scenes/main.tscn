@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b1gf36s45q30l"]
+[gd_scene load_steps=42 format=3 uid="uid://b1gf36s45q30l"]
 
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bfdmc0dnw73ru" path="res://sprites/blue_tilemap.png" id="2_0wfyh"]
@@ -16,11 +16,16 @@
 [ext_resource type="PackedScene" uid="uid://dgsa2dbfuj46b" path="res://scenes/fire.tscn" id="10_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://b17ojmyow5e2x" path="res://scenes/rusted_big_spike.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://bd1152v6j1pkl" path="res://scenes/rusted_little_spike.tscn" id="13_trceg"]
+[ext_resource type="Script" uid="uid://dfpuv4o3jhve8" path="res://scripts/loop_dialogue_number.gd" id="15_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://ckeym6l54ht6h" path="res://sprites/wall_block.png" id="16_jbj1t"]
+[ext_resource type="Script" uid="uid://cbpoo80fjfr4m" path="res://scripts/dialogue_line.gd" id="16_vxglm"]
+[ext_resource type="Texture2D" uid="uid://blr1ufeqp2vfm" path="res://sprites/wizard_profile_wide_eyed.png" id="17_2f3dj"]
 [ext_resource type="PackedScene" uid="uid://blds3ousifp5w" path="res://scenes/transfer_area.tscn" id="17_muem4"]
 [ext_resource type="FontFile" uid="uid://cw7naauc1o78l" path="res://fonts/pixeldown.ttf" id="18_gqmmt"]
+[ext_resource type="Texture2D" uid="uid://bvch6nob3ounf" path="res://sprites/player_profile_raised_eyebrow.png" id="18_yq6so"]
 [ext_resource type="Texture2D" uid="uid://7fsj41vaihsu" path="res://sprites/grocery_store_wall_piece.png" id="20_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://c5u2fsnqsgr6u" path="res://scenes/wizard.tscn" id="21_yc10j"]
+[ext_resource type="PackedScene" uid="uid://d3uf36e751mvi" path="res://scenes/dialogue_area.tscn" id="22_jscy8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
 texture = ExtResource("2_0wfyh")
@@ -270,6 +275,24 @@ sources/4 = SubResource("TileSetAtlasSource_jkv2x")
 sources/5 = SubResource("TileSetAtlasSource_jbj1t")
 sources/6 = SubResource("TileSetAtlasSource_yc10j")
 
+[sub_resource type="Resource" id="Resource_fv21b"]
+script = ExtResource("16_vxglm")
+text = "HELLO!!!"
+profile = ExtResource("17_2f3dj")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_tel4y"]
+script = ExtResource("16_vxglm")
+text = "Uh, hi?"
+profile = ExtResource("18_yq6so")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_qkpxi"]
+script = ExtResource("15_2wyq8")
+loop_number = 2
+lines = Array[ExtResource("16_vxglm")]([SubResource("Resource_fv21b"), SubResource("Resource_tel4y")])
+metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eb6dy"]
 size = Vector2(7269, 271)
 
@@ -278,6 +301,9 @@ size = Vector2(11, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqmmt"]
 size = Vector2(4, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pm3ni"]
+size = Vector2(4, 112)
 
 [node name="main" type="Node2D"]
 
@@ -307,8 +333,10 @@ visible = false
 position = Vector2(520, 533)
 scale = Vector2(6.84, 6.84)
 
-[node name="dialogue_manager" type="Node" parent="."]
+[node name="dialogue_manager" type="Node" parent="." node_paths=PackedStringArray("dialogue_area")]
 script = ExtResource("8_tipki")
+wizard_dialogue_1 = Array[ExtResource("15_2wyq8")]([SubResource("Resource_qkpxi")])
+dialogue_area = NodePath("../dialogue_area")
 
 [node name="big_spike" parent="." instance=ExtResource("11_ya4ey")]
 position = Vector2(1000, 128)
@@ -475,7 +503,16 @@ position = Vector2(8, -3)
 shape = SubResource("RectangleShape2D_gqmmt")
 
 [node name="wizard" parent="." instance=ExtResource("21_yc10j")]
-position = Vector2(2445, 11)
+position = Vector2(2576, 206)
+
+[node name="dialogue_area" parent="." groups=["wizard_dialogue_area"] instance=ExtResource("22_jscy8")]
+position = Vector2(2481, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogue_area"]
+position = Vector2(-13, -39)
+shape = SubResource("RectangleShape2D_pm3ni")
 
 [connection signal="dialogue" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue"]
 [connection signal="dialogue_end" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue_end"]
+[connection signal="body_entered" from="dialogue_area" to="dialogue_manager" method="_on_dialogue_area_body_entered"]
+[connection signal="body_entered" from="dialogue_area" to="wizard" method="_on_dialogue_area_body_entered"]
