@@ -58,4 +58,5 @@ func _on_dialogue_area_body_entered(body: Node2D) -> void:
 						await wait_for_dialogue_key()
 					GameManager.is_in_dialogue = false
 					emit_signal("dialogue_end")
+					GameManager.should_spawn_obstacles = true
 					return
