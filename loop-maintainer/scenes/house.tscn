@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c4bjb78kcpkhn"]
+[gd_scene load_steps=21 format=3 uid="uid://c4bjb78kcpkhn"]
 
 [ext_resource type="Texture2D" uid="uid://dcd7nwii0i1fu" path="res://sprites/house_tilemap.png" id="1_d7po0"]
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="2_qtlar"]
@@ -73,6 +73,30 @@ loop_number = 0
 lines = Array[ExtResource("6_ptc3g")]([SubResource("Resource_bwc8c"), SubResource("Resource_65la3")])
 metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
 
+[sub_resource type="Resource" id="Resource_qcuhb"]
+script = ExtResource("6_ptc3g")
+text = "Oh wait"
+profile = ExtResource("7_wcu0q")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_3853c"]
+script = ExtResource("6_ptc3g")
+text = "I don't have anything to eat the cheese with"
+profile = ExtResource("7_wcu0q")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_bhgw4"]
+script = ExtResource("6_ptc3g")
+text = "Well, no reason to be upset, I'll just go buy bread"
+profile = ExtResource("7_wcu0q")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_7685u"]
+script = ExtResource("6_wcu0q")
+loop_number = 3
+lines = Array[ExtResource("6_ptc3g")]([SubResource("Resource_qcuhb"), SubResource("Resource_3853c"), SubResource("Resource_bhgw4")])
+metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcu0q"]
 size = Vector2(20, 112)
 
@@ -111,6 +135,7 @@ scale = Vector2(6.84, 6.84)
 
 [node name="dialogue_manager" parent="." instance=ExtResource("5_3bgk5")]
 start_dialogue = Array[ExtResource("6_wcu0q")]([SubResource("Resource_mhx8p")])
+dialogue_2 = Array[ExtResource("6_wcu0q")]([SubResource("Resource_7685u")])
 
 [node name="transfer_area" type="Area2D" parent="."]
 script = ExtResource("8_wcu0q")

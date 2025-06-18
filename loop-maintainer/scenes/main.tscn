@@ -562,7 +562,7 @@ position = Vector2(8, -3)
 shape = SubResource("RectangleShape2D_gqmmt")
 
 [node name="wizard" parent="." instance=ExtResource("21_yc10j")]
-position = Vector2(2349, 11)
+position = Vector2(2308, 11)
 
 [node name="dialogue_area" parent="." groups=["wizard_dialogue_area"] instance=ExtResource("22_jscy8")]
 position = Vector2(2481, 15)
