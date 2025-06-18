@@ -112,5 +112,5 @@ anim = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nnu41")
-animation = &"poof_in"
-frame_progress = 0.952407
+animation = &"idle"
+frame_progress = 0.0330829

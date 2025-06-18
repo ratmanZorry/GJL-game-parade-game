@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://b1gf36s45q30l"]
+[gd_scene load_steps=55 format=3 uid="uid://b1gf36s45q30l"]
 
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bfdmc0dnw73ru" path="res://sprites/blue_tilemap.png" id="2_0wfyh"]
@@ -23,8 +23,12 @@
 [ext_resource type="PackedScene" uid="uid://blds3ousifp5w" path="res://scenes/transfer_area.tscn" id="17_muem4"]
 [ext_resource type="FontFile" uid="uid://cw7naauc1o78l" path="res://fonts/pixeldown.ttf" id="18_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://bvch6nob3ounf" path="res://sprites/player_profile_raised_eyebrow.png" id="18_yq6so"]
+[ext_resource type="Texture2D" uid="uid://bj6n7ua4renx4" path="res://sprites/wizard_profile.png" id="19_fv21b"]
 [ext_resource type="Texture2D" uid="uid://7fsj41vaihsu" path="res://sprites/grocery_store_wall_piece.png" id="20_gqmmt"]
+[ext_resource type="Texture2D" uid="uid://bips5r3dapnid" path="res://sprites/player_profile.png" id="20_tel4y"]
+[ext_resource type="Texture2D" uid="uid://jxwldbsvh36v" path="res://sprites/player_profile_sad.png" id="21_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://c5u2fsnqsgr6u" path="res://scenes/wizard.tscn" id="21_yc10j"]
+[ext_resource type="Texture2D" uid="uid://tf3m737pxyue" path="res://sprites/wizard_profile_devios.png" id="22_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://d3uf36e751mvi" path="res://scenes/dialogue_area.tscn" id="22_jscy8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
@@ -287,10 +291,63 @@ text = "Uh, hi?"
 profile = ExtResource("18_yq6so")
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
+[sub_resource type="Resource" id="Resource_dgi5k"]
+script = ExtResource("16_vxglm")
+text = "I AM THE AWESOMNESS WIZARD!!!"
+profile = ExtResource("17_2f3dj")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_j8jky"]
+script = ExtResource("16_vxglm")
+text = "Wow you sure are a whimsical little guy."
+profile = ExtResource("18_yq6so")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_kmb1v"]
+script = ExtResource("16_vxglm")
+text = "I AM BORED!!!"
+profile = ExtResource("19_fv21b")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_fuf3a"]
+script = ExtResource("16_vxglm")
+text = "Uh, so look so I was going to go home"
+profile = ExtResource("20_tel4y")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_pibwh"]
+script = ExtResource("16_vxglm")
+text = "HMM. OH I KNOW!!! I'LL CAST A SPELL!!!"
+profile = ExtResource("17_2f3dj")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_c6pm6"]
+script = ExtResource("16_vxglm")
+text = "Uh, look I really would like to go now, if you could maybe stop blocking the way?"
+profile = ExtResource("21_qkpxi")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_5he1u"]
+script = ExtResource("16_vxglm")
+text = "HAHA!!! EVERY PLACE YOU'VE JUMPED WILL NOW HAVE A SPIKE IN IT!!! THATS FUNNY!!!"
+profile = ExtResource("22_5q0nq")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_5poiv"]
+script = ExtResource("16_vxglm")
+text = "What!? Spikes?! But why!?!"
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_2cjbq"]
+script = ExtResource("16_vxglm")
+text = "BUH BYE!!!"
+profile = ExtResource("22_5q0nq")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
 [sub_resource type="Resource" id="Resource_qkpxi"]
 script = ExtResource("15_2wyq8")
 loop_number = 2
-lines = Array[ExtResource("16_vxglm")]([SubResource("Resource_fv21b"), SubResource("Resource_tel4y")])
+lines = Array[ExtResource("16_vxglm")]([SubResource("Resource_fv21b"), SubResource("Resource_tel4y"), SubResource("Resource_dgi5k"), SubResource("Resource_j8jky"), SubResource("Resource_kmb1v"), SubResource("Resource_fuf3a"), SubResource("Resource_pibwh"), SubResource("Resource_c6pm6"), SubResource("Resource_5he1u"), SubResource("Resource_5poiv"), SubResource("Resource_2cjbq")])
 metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eb6dy"]
@@ -504,7 +561,7 @@ position = Vector2(8, -3)
 shape = SubResource("RectangleShape2D_gqmmt")
 
 [node name="wizard" parent="." instance=ExtResource("21_yc10j")]
-position = Vector2(2576, 206)
+position = Vector2(2349, 11)
 
 [node name="dialogue_area" parent="." groups=["wizard_dialogue_area"] instance=ExtResource("22_jscy8")]
 position = Vector2(2481, 15)

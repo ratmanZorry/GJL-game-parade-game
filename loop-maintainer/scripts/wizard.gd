@@ -3,13 +3,14 @@ extends Node2D
 @export var anim: AnimatedSprite2D
 
 func _ready() -> void:
-	visible = false
+	self.visible = false
 
 
 func _on_dialogue_area_body_entered(body: Node2D) -> void:
-	print("damn it")
-	visible = true
-	anim.play("poof_in")
-	await get_tree().create_timer(0.55).timeout
-	anim.play("idle")
+	if GameManager.can_meet_wizard:
+		print("damn it")
+		self.visible = true
+		anim.play("poof_in")
+		await get_tree().create_timer(0.275).timeout
+		anim.play("idle")
 	

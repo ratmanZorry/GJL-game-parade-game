@@ -4,10 +4,15 @@ signal dialogue(dialogue_text: String, profile_texture: Texture2D)
 signal dialogue_end
 
 @export var pre_dialogue_wait_time: float
-@export var pre_WIZARD_dialogue_wait_time: float
+@export var pre_WIZARD_dialogue_wait_time: float = 0.275
 @export var start_dialogue: Array[loop_dialogue_number]
 
+@export_category("wizard dialogues")
 @export var wizard_dialogue_1: Array[loop_dialogue_number]
+@export var wizard_dialogue_2: Array[loop_dialogue_number]
+@export var wizard_dialogue_3: Array[loop_dialogue_number]
+@export var wizard_dialogue_4: Array[loop_dialogue_number]
+@export var wizard_dialogue_5: Array[loop_dialogue_number]
 
 @export var dialogue_area: Area2D
 
