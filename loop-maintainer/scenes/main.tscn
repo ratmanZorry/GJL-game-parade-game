@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://b1gf36s45q30l"]
+[gd_scene load_steps=56 format=3 uid="uid://b1gf36s45q30l"]
 
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bfdmc0dnw73ru" path="res://sprites/blue_tilemap.png" id="2_0wfyh"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://c5u2fsnqsgr6u" path="res://scenes/wizard.tscn" id="21_yc10j"]
 [ext_resource type="Texture2D" uid="uid://tf3m737pxyue" path="res://sprites/wizard_profile_devios.png" id="22_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://d3uf36e751mvi" path="res://scenes/dialogue_area.tscn" id="22_jscy8"]
+[ext_resource type="Texture2D" uid="uid://e5vgf3fhdel5" path="res://sprites/player_profile_sad_big_eyes.png" id="23_tel4y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
 texture = ExtResource("2_0wfyh")
@@ -329,13 +330,14 @@ metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_5he1u"]
 script = ExtResource("16_vxglm")
-text = "HAHA!!! EVERY PLACE YOU'VE JUMPED WILL NOW HAVE A SPIKE IN IT!!! THATS FUNNY!!!"
+text = "HAHA!!! I’VE CAST A SPELL SO THAT EVERY SINGLE SPOT YOU’VE EVER JUMPED ON... NOW HAS A SPIKE IN IT! ISN’T THAT FUNNY?!"
 profile = ExtResource("22_5q0nq")
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_5poiv"]
 script = ExtResource("16_vxglm")
 text = "What!? Spikes?! But why!?!"
+profile = ExtResource("23_tel4y")
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_2cjbq"]
