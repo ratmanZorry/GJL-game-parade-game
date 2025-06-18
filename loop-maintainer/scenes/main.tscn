@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b1gf36s45q30l"]
+[gd_scene load_steps=55 format=3 uid="uid://b1gf36s45q30l"]
 
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bfdmc0dnw73ru" path="res://sprites/blue_tilemap.png" id="2_0wfyh"]
@@ -15,12 +15,21 @@
 [ext_resource type="Script" uid="uid://bqqaxdvki6me7" path="res://scripts/dialogue_manager.gd" id="8_tipki"]
 [ext_resource type="PackedScene" uid="uid://b17ojmyow5e2x" path="res://scenes/rusted_big_spike.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://bd1152v6j1pkl" path="res://scenes/rusted_little_spike.tscn" id="13_trceg"]
+[ext_resource type="Script" uid="uid://dfpuv4o3jhve8" path="res://scripts/loop_dialogue_number.gd" id="15_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://ckeym6l54ht6h" path="res://sprites/wall_block.png" id="16_jbj1t"]
+[ext_resource type="Script" uid="uid://cbpoo80fjfr4m" path="res://scripts/dialogue_line.gd" id="16_vxglm"]
+[ext_resource type="Texture2D" uid="uid://blr1ufeqp2vfm" path="res://sprites/wizard_profile_wide_eyed.png" id="17_2f3dj"]
 [ext_resource type="PackedScene" uid="uid://blds3ousifp5w" path="res://scenes/transfer_area.tscn" id="17_muem4"]
 [ext_resource type="FontFile" uid="uid://cw7naauc1o78l" path="res://fonts/pixeldown.ttf" id="18_gqmmt"]
+[ext_resource type="Texture2D" uid="uid://bvch6nob3ounf" path="res://sprites/player_profile_raised_eyebrow.png" id="18_yq6so"]
+[ext_resource type="Texture2D" uid="uid://bj6n7ua4renx4" path="res://sprites/wizard_profile.png" id="19_fv21b"]
 [ext_resource type="Texture2D" uid="uid://7fsj41vaihsu" path="res://sprites/grocery_store_wall_piece.png" id="20_gqmmt"]
+[ext_resource type="Texture2D" uid="uid://bips5r3dapnid" path="res://sprites/player_profile.png" id="20_tel4y"]
+[ext_resource type="Texture2D" uid="uid://jxwldbsvh36v" path="res://sprites/player_profile_sad.png" id="21_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://c5u2fsnqsgr6u" path="res://scenes/wizard.tscn" id="21_yc10j"]
+[ext_resource type="Texture2D" uid="uid://tf3m737pxyue" path="res://sprites/wizard_profile_devios.png" id="22_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://d3uf36e751mvi" path="res://scenes/dialogue_area.tscn" id="22_jscy8"]
+[ext_resource type="Texture2D" uid="uid://e5vgf3fhdel5" path="res://sprites/player_profile_sad_big_eyes.png" id="23_tel4y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
 texture = ExtResource("2_0wfyh")
@@ -270,6 +279,77 @@ sources/4 = SubResource("TileSetAtlasSource_jkv2x")
 sources/5 = SubResource("TileSetAtlasSource_jbj1t")
 sources/6 = SubResource("TileSetAtlasSource_yc10j")
 
+[sub_resource type="Resource" id="Resource_fv21b"]
+script = ExtResource("16_vxglm")
+text = "HELLO!!!"
+profile = ExtResource("19_fv21b")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_tel4y"]
+script = ExtResource("16_vxglm")
+text = "Um, hi!"
+profile = ExtResource("18_yq6so")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_qkpxi"]
+script = ExtResource("16_vxglm")
+text = "I AM THE AWESOMNESS WIZARD!!!"
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_5q0nq"]
+script = ExtResource("16_vxglm")
+text = "Wow you sure are a whimsical little guy"
+profile = ExtResource("18_yq6so")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_dgi5k"]
+script = ExtResource("16_vxglm")
+text = "I AM BORED!!!"
+profile = ExtResource("19_fv21b")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_j8jky"]
+script = ExtResource("16_vxglm")
+text = "Uh look, so I was about to go home"
+profile = ExtResource("20_tel4y")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_kmb1v"]
+script = ExtResource("16_vxglm")
+text = "OH I KNOW WHAT TO DO!!! I'LL CAST A SPELL!!! HMM... BUT WHICH ONE!?!?"
+profile = ExtResource("17_2f3dj")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_fuf3a"]
+script = ExtResource("16_vxglm")
+text = "Look I should really get going"
+profile = ExtResource("21_qkpxi")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_pibwh"]
+script = ExtResource("16_vxglm")
+text = "OH I KNOW!!! IT'S A VERY SILLY ONE!!! EVERY PLACE THAT YOU'VE JUMPED IN WILL NOW HAVE A SPIKE ON IT!!! NOW THATS FUNNY!!!"
+profile = ExtResource("17_2f3dj")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_c6pm6"]
+script = ExtResource("16_vxglm")
+text = "Wait what?!? but why?!?"
+profile = ExtResource("23_tel4y")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_5he1u"]
+script = ExtResource("16_vxglm")
+text = "BUH BYE!!!"
+profile = ExtResource("22_5q0nq")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_5poiv"]
+script = ExtResource("15_2wyq8")
+loop_number = 2
+lines = Array[ExtResource("16_vxglm")]([SubResource("Resource_fv21b"), SubResource("Resource_tel4y"), SubResource("Resource_qkpxi"), SubResource("Resource_5q0nq"), SubResource("Resource_dgi5k"), SubResource("Resource_j8jky"), SubResource("Resource_kmb1v"), SubResource("Resource_fuf3a"), SubResource("Resource_pibwh"), SubResource("Resource_c6pm6"), SubResource("Resource_5he1u")])
+metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eb6dy"]
 size = Vector2(7269, 271)
 
@@ -313,6 +393,7 @@ scale = Vector2(6.84, 6.84)
 [node name="dialogue_manager" type="Node" parent="." node_paths=PackedStringArray("dialogue_area")]
 script = ExtResource("8_tipki")
 pre_WIZARD_dialogue_wait_time = 0.55
+wizard_dialogue = Array[ExtResource("15_2wyq8")]([SubResource("Resource_5poiv")])
 dialogue_area = NodePath("../dialogue_area")
 
 [node name="big_spike" parent="." instance=ExtResource("11_ya4ey")]

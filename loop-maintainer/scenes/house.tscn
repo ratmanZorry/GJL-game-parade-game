@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c4bjb78kcpkhn"]
+[gd_scene load_steps=22 format=3 uid="uid://c4bjb78kcpkhn"]
 
 [ext_resource type="Texture2D" uid="uid://dcd7nwii0i1fu" path="res://sprites/house_tilemap.png" id="1_d7po0"]
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="2_qtlar"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dfpuv4o3jhve8" path="res://scripts/loop_dialogue_number.gd" id="6_wcu0q"]
 [ext_resource type="Texture2D" uid="uid://bips5r3dapnid" path="res://sprites/player_profile.png" id="7_wcu0q"]
 [ext_resource type="Script" uid="uid://ddoux000vuw02" path="res://scripts/transfer_area.gd" id="8_wcu0q"]
+[ext_resource type="Texture2D" uid="uid://cxyuq4k2bimtt" path="res://sprites/player_profile_happy.png" id="9_mhx8p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qtlar"]
 texture = ExtResource("1_d7po0")
@@ -73,6 +74,30 @@ loop_number = 0
 lines = Array[ExtResource("6_ptc3g")]([SubResource("Resource_bwc8c"), SubResource("Resource_65la3")])
 metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
 
+[sub_resource type="Resource" id="Resource_qcuhb"]
+script = ExtResource("6_ptc3g")
+text = "Nice! I finaly got home! Oh wait, I forgot, I don't have anything to put that cheese on"
+profile = ExtResource("7_wcu0q")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_7685u"]
+script = ExtResource("6_ptc3g")
+text = "Well! No need to be upset, it happens to all of us."
+profile = ExtResource("7_wcu0q")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_3853c"]
+script = ExtResource("6_ptc3g")
+text = "I should go to buy some bread, yeah that would be good"
+profile = ExtResource("9_mhx8p")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_bhgw4"]
+script = ExtResource("6_wcu0q")
+loop_number = 2
+lines = Array[ExtResource("6_ptc3g")]([SubResource("Resource_qcuhb"), SubResource("Resource_7685u"), SubResource("Resource_3853c")])
+metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcu0q"]
 size = Vector2(20, 112)
 
@@ -110,7 +135,7 @@ position = Vector2(520, 533)
 scale = Vector2(6.84, 6.84)
 
 [node name="dialogue_manager" parent="." instance=ExtResource("5_3bgk5")]
-start_dialogue = Array[ExtResource("6_wcu0q")]([SubResource("Resource_mhx8p")])
+start_dialogue = Array[ExtResource("6_wcu0q")]([SubResource("Resource_mhx8p"), SubResource("Resource_bhgw4")])
 
 [node name="transfer_area" type="Area2D" parent="."]
 script = ExtResource("8_wcu0q")
