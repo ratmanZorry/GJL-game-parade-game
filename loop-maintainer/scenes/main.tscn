@@ -287,7 +287,7 @@ metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_tel4y"]
 script = ExtResource("16_vxglm")
-text = "Um, hi!"
+text = "Um, hi?"
 profile = ExtResource("18_yq6so")
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 

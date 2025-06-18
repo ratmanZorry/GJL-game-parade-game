@@ -82,7 +82,7 @@ metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_7685u"]
 script = ExtResource("6_ptc3g")
-text = "Well! No need to be upset, it happens to all of us."
+text = "Well! No need to be upset, it happens to everyone.."
 profile = ExtResource("7_wcu0q")
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
