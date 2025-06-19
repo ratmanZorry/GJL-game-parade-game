@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://b1gf36s45q30l"]
+[gd_scene load_steps=68 format=3 uid="uid://b1gf36s45q30l"]
 
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bfdmc0dnw73ru" path="res://sprites/blue_tilemap.png" id="2_0wfyh"]
@@ -31,7 +31,6 @@
 [ext_resource type="PackedScene" uid="uid://d3uf36e751mvi" path="res://scenes/dialogue_area.tscn" id="22_jscy8"]
 [ext_resource type="Texture2D" uid="uid://e5vgf3fhdel5" path="res://sprites/player_profile_sad_big_eyes.png" id="23_tel4y"]
 [ext_resource type="Texture2D" uid="uid://bxikbplukbayc" path="res://sprites/cashier_profile_grumpy.png" id="24_qkpxi"]
-[ext_resource type="PackedScene" uid="uid://d3jac5c3nvj5s" path="res://scenes/horned_enemy.tscn" id="31_tel4y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
 texture = ExtResource("2_0wfyh")
@@ -450,7 +449,6 @@ position_smoothing_enabled = true
 [node name="obstacle_spawner" type="Node" parent="."]
 script = ExtResource("5_tbgi4")
 spike_obstacles = Array[PackedScene]([ExtResource("4_jyhfs"), ExtResource("6_tefeu")])
-patroll_enemy_obstacles = Array[PackedScene]([ExtResource("31_tel4y")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

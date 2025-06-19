@@ -56,7 +56,7 @@ func _on_dialogue_area_body_entered(body: Node2D) -> void:
 					
 					match GameManager.loop_number:
 						4:
-							GameManager.allow_spikes = false
+							GameManager.allow_spike_obstacles = false
 							GameManager.allow_patrol_obstacles = true
 					
 					GameManager.should_spawn_obstacles = true
