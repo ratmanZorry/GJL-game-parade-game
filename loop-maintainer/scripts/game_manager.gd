@@ -5,7 +5,7 @@ var did_game_start := false
 var is_in_dialogue := false
 var can_meet_wizard := false
 
-var allow_spikes := true
+var allow_spike_obstacles := true
 
 var allow_patrol_obstacles := false
 #var allow_flying_obstacles := false  # example for future types
