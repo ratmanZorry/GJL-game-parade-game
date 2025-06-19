@@ -96,7 +96,7 @@ func _on_jump_buffer_timer_timeout() -> void:
 	canBufferJump = false
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.is_in_group("kill_hitbox"):
+	if area.is_in_group("kill_hitbox") and not is_dead:
 		is_dead = true
 		anim.play("death")
 		await get_tree().create_timer(0.65).timeout

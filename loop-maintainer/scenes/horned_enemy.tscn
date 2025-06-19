@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3jac5c3nvj5s"]
+[gd_scene load_steps=11 format=3 uid="uid://d3jac5c3nvj5s"]
 
 [ext_resource type="Texture2D" uid="uid://cfuyltyinc0rd" path="res://sprites/horned_enemy_running.png" id="1_rppp1"]
 [ext_resource type="Script" uid="uid://bmi5utxg0tmk3" path="res://scripts/patrolling_enemy.gd" id="1_xvtyq"]
+[ext_resource type="Texture2D" uid="uid://djk0on0hfr4oa" path="res://sprites/horned_enemy_dead.png" id="2_mhsj3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xvtyq"]
 atlas = ExtResource("1_rppp1")
@@ -17,6 +18,14 @@ region = Rect2(56, 0, 28, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vvoay"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mhsj3")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 0.5,
 "texture": SubResource("AtlasTexture_xvtyq")
@@ -34,20 +43,39 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rppp1"]
 radius = 7.0
-height = 16.0
+height = 14.0
 
-[node name="horned_enemy" type="CharacterBody2D" node_paths=PackedStringArray("anim")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvtyq"]
+size = Vector2(16, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhsj3"]
+size = Vector2(20, 2)
+
+[node name="horned_enemy" type="CharacterBody2D" node_paths=PackedStringArray("anim", "kill_area")]
 script = ExtResource("1_xvtyq")
 SPEED = 4500.0
 anim = NodePath("AnimatedSprite2D")
+kill_area = NodePath("kill_area")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vvoay")
-animation = &"running"
+animation = &"dead"
 autoplay = "running"
-frame = 1
-frame_progress = 0.682482
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_rppp1")
+
+[node name="kill_area" type="Area2D" parent="." groups=["kill_hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill_area"]
+position = Vector2(0, 10.5)
+shape = SubResource("RectangleShape2D_xvtyq")
+
+[node name="death_collider" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death_collider"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_mhsj3")
+
+[connection signal="area_entered" from="death_collider" to="." method="_on_death_collider_area_entered"]

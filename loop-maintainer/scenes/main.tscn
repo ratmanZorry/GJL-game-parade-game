@@ -562,8 +562,7 @@ position = Vector2(-93, -44)
 shape = SubResource("RectangleShape2D_pm3ni")
 
 [node name="horned_enemy" parent="." instance=ExtResource("31_tel4y")]
-position = Vector2(91, 36)
-SPEED = 4500.0
+position = Vector2(111, 36)
 
 [connection signal="dialogue" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue"]
 [connection signal="dialogue_end" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue_end"]
