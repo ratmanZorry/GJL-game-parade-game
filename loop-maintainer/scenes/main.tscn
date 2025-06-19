@@ -296,6 +296,7 @@ metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 [sub_resource type="Resource" id="Resource_qkpxi"]
 script = ExtResource("16_vxglm")
 text = "I AM THE AWESOMNESS WIZARD!!!"
+profile = ExtResource("17_2f3dj")
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_5q0nq"]
