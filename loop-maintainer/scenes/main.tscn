@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b1gf36s45q30l"]
+[gd_scene load_steps=69 format=3 uid="uid://b1gf36s45q30l"]
 
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bfdmc0dnw73ru" path="res://sprites/blue_tilemap.png" id="2_0wfyh"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://tf3m737pxyue" path="res://sprites/wizard_profile_devios.png" id="22_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://d3uf36e751mvi" path="res://scenes/dialogue_area.tscn" id="22_jscy8"]
 [ext_resource type="Texture2D" uid="uid://e5vgf3fhdel5" path="res://sprites/player_profile_sad_big_eyes.png" id="23_tel4y"]
+[ext_resource type="Texture2D" uid="uid://bxikbplukbayc" path="res://sprites/cashier_profile_grumpy.png" id="24_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://d3jac5c3nvj5s" path="res://scenes/horned_enemy.tscn" id="31_tel4y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
@@ -351,6 +352,71 @@ loop_number = 2
 lines = Array[ExtResource("16_vxglm")]([SubResource("Resource_fv21b"), SubResource("Resource_tel4y"), SubResource("Resource_qkpxi"), SubResource("Resource_5q0nq"), SubResource("Resource_dgi5k"), SubResource("Resource_j8jky"), SubResource("Resource_kmb1v"), SubResource("Resource_fuf3a"), SubResource("Resource_pibwh"), SubResource("Resource_c6pm6"), SubResource("Resource_5he1u")])
 metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
 
+[sub_resource type="Resource" id="Resource_chjal"]
+script = ExtResource("16_vxglm")
+text = "HELLO AGAIN!!!"
+profile = ExtResource("17_2f3dj")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_cjqg0"]
+script = ExtResource("16_vxglm")
+text = "Oh no."
+profile = ExtResource("21_qkpxi")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_vchkt"]
+script = ExtResource("16_vxglm")
+text = "IT SEEMS YOU HAVE FORGOTTEN THE BREAD!!!"
+profile = ExtResource("17_2f3dj")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_txyw0"]
+script = ExtResource("16_vxglm")
+text = "What?!? How did you know!?!"
+profile = ExtResource("21_qkpxi")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Gradient" id="Gradient_vc5cj"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nvyfr"]
+gradient = SubResource("Gradient_vc5cj")
+
+[sub_resource type="Resource" id="Resource_ty1g6"]
+script = ExtResource("16_vxglm")
+text = "I AM ALL KNOWING!!!"
+profile = SubResource("GradientTexture1D_nvyfr")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_j2jfr"]
+script = ExtResource("16_vxglm")
+text = "Right."
+profile = ExtResource("24_qkpxi")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_bjg73"]
+script = ExtResource("16_vxglm")
+text = "IT HAS BEEN FUNNY HOW YOU ALMOST DIDN'T SURVIVE!!! NOW EVERY PLACE YOU JUMPED ON THE WAY HERE WILL HAVE A GOOFY GOOBER IN IT!!!"
+profile = ExtResource("22_5q0nq")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_bu4jf"]
+script = ExtResource("16_vxglm")
+text = "A goofy goober?"
+profile = ExtResource("18_yq6so")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_o7ddy"]
+script = ExtResource("16_vxglm")
+text = "YES!!!"
+profile = ExtResource("22_5q0nq")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_2cjbq"]
+script = ExtResource("15_2wyq8")
+loop_number = 4
+lines = Array[ExtResource("16_vxglm")]([SubResource("Resource_chjal"), SubResource("Resource_cjqg0"), SubResource("Resource_vchkt"), SubResource("Resource_txyw0"), SubResource("Resource_ty1g6"), SubResource("Resource_j2jfr"), SubResource("Resource_bjg73"), SubResource("Resource_bu4jf"), SubResource("Resource_o7ddy")])
+metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eb6dy"]
 size = Vector2(7269, 271)
 
@@ -395,7 +461,7 @@ scale = Vector2(6.84, 6.84)
 [node name="dialogue_manager" type="Node" parent="." node_paths=PackedStringArray("dialogue_area")]
 script = ExtResource("8_tipki")
 pre_WIZARD_dialogue_wait_time = 0.55
-wizard_dialogue = Array[ExtResource("15_2wyq8")]([SubResource("Resource_5poiv")])
+wizard_dialogue = Array[ExtResource("15_2wyq8")]([SubResource("Resource_5poiv"), SubResource("Resource_2cjbq")])
 dialogue_area = NodePath("../dialogue_area")
 
 [node name="big_spike" parent="." instance=ExtResource("11_ya4ey")]
