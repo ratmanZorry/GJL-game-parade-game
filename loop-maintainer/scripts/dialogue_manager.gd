@@ -55,7 +55,7 @@ func _on_dialogue_area_body_entered(body: Node2D) -> void:
 					emit_signal("dialogue_end")
 					
 					match GameManager.loop_number:
-						4:
+						3:
 							GameManager.allow_patrol_obstacles = true
 					
 					GameManager.should_spawn_obstacles = true
