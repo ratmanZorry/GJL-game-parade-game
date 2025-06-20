@@ -1,0 +1,167 @@
+[gd_scene load_steps=18 format=3 uid="uid://bem3gxacrbuar"]
+
+[ext_resource type="Script" uid="uid://bmi5utxg0tmk3" path="res://scripts/patrolling_enemy.gd" id="1_dlyym"]
+[ext_resource type="Texture2D" uid="uid://buarfdhxmy4hr" path="res://sprites/box_enemy_dead.png" id="2_22lmp"]
+[ext_resource type="Texture2D" uid="uid://ct30i5mrdsgxy" path="res://sprites/box_enemy.png" id="3_q0rhr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c62t8"]
+atlas = ExtResource("2_22lmp")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3livn"]
+atlas = ExtResource("3_q0rhr")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ut5l"]
+atlas = ExtResource("3_q0rhr")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bfun"]
+atlas = ExtResource("3_q0rhr")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw12t"]
+atlas = ExtResource("3_q0rhr")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ym5g"]
+atlas = ExtResource("3_q0rhr")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwnai"]
+atlas = ExtResource("3_q0rhr")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jgefb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c62t8")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3livn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ut5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bfun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw12t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ym5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwnai")
+}],
+"loop": true,
+"name": &"running",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlyym"]
+size = Vector2(20, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvtyq"]
+size = Vector2(24, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhsj3"]
+size = Vector2(20, 2)
+
+[sub_resource type="Animation" id="Animation_mhsj3"]
+resource_name = "fade"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fyuqs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vvoay"]
+_data = {
+&"RESET": SubResource("Animation_fyuqs"),
+&"fade": SubResource("Animation_mhsj3")
+}
+
+[node name="box_enemy" type="CharacterBody2D" node_paths=PackedStringArray("anim", "animator", "kill_area", "ground_cast_1", "ground_cast_2", "queue_free_timer")]
+script = ExtResource("1_dlyym")
+anim = NodePath("AnimatedSprite2D")
+animator = NodePath("AnimationPlayer")
+kill_area = NodePath("kill_area")
+ground_cast_1 = NodePath("ground_cast_1")
+ground_cast_2 = NodePath("ground_cast_2")
+queue_free_timer = NodePath("queue_free_timer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jgefb")
+animation = &"running"
+autoplay = "running"
+offset = Vector2(0, -18.595)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13.5)
+shape = SubResource("RectangleShape2D_dlyym")
+
+[node name="kill_area" type="Area2D" parent="." groups=["kill_hitbox"]]
+position = Vector2(0, -19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill_area"]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_xvtyq")
+
+[node name="death_collider" type="Area2D" parent="."]
+position = Vector2(0, -19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death_collider"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_mhsj3")
+
+[node name="queue_free_timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vvoay")
+}
+
+[node name="ground_cast_1" type="RayCast2D" parent="."]
+position = Vector2(-11, -14)
+target_position = Vector2(0, 9)
+collision_mask = 8
+
+[node name="ground_cast_2" type="RayCast2D" parent="."]
+position = Vector2(11, -14)
+target_position = Vector2(0, 9)
+collision_mask = 8
+
+[connection signal="area_entered" from="death_collider" to="." method="_on_death_collider_area_entered"]
+[connection signal="timeout" from="queue_free_timer" to="." method="_on_queue_free_timer_timeout"]

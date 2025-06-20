@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://b1gf36s45q30l"]
+[gd_scene load_steps=73 format=3 uid="uid://b1gf36s45q30l"]
 
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bfdmc0dnw73ru" path="res://sprites/blue_tilemap.png" id="2_0wfyh"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b17ojmyow5e2x" path="res://scenes/rusted_big_spike.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://ni1fngcx4i84" path="res://scenes/plant_enemy.tscn" id="13_dgi5k"]
 [ext_resource type="PackedScene" uid="uid://bd1152v6j1pkl" path="res://scenes/rusted_little_spike.tscn" id="13_trceg"]
+[ext_resource type="PackedScene" uid="uid://bem3gxacrbuar" path="res://scenes/box_enemy.tscn" id="14_j8jky"]
 [ext_resource type="Script" uid="uid://dfpuv4o3jhve8" path="res://scripts/loop_dialogue_number.gd" id="15_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://ckeym6l54ht6h" path="res://sprites/wall_block.png" id="16_jbj1t"]
 [ext_resource type="Script" uid="uid://cbpoo80fjfr4m" path="res://scripts/dialogue_line.gd" id="16_vxglm"]
@@ -465,7 +466,7 @@ position_smoothing_enabled = true
 [node name="obstacle_spawner" type="Node" parent="."]
 script = ExtResource("5_tbgi4")
 spike_obstacles = Array[PackedScene]([ExtResource("4_jyhfs"), ExtResource("6_tefeu")])
-patrol_enemy_obstacles = Array[PackedScene]([ExtResource("31_tel4y"), ExtResource("13_dgi5k")])
+patrol_enemy_obstacles = Array[PackedScene]([ExtResource("31_tel4y"), ExtResource("13_dgi5k"), ExtResource("14_j8jky")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
