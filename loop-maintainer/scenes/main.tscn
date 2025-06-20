@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://b1gf36s45q30l"]
+[gd_scene load_steps=81 format=3 uid="uid://b1gf36s45q30l"]
 
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bfdmc0dnw73ru" path="res://sprites/blue_tilemap.png" id="2_0wfyh"]
@@ -434,6 +434,54 @@ loop_number = 4
 lines = Array[ExtResource("16_vxglm")]([SubResource("Resource_chjal"), SubResource("Resource_cjqg0"), SubResource("Resource_vchkt"), SubResource("Resource_txyw0"), SubResource("Resource_ty1g6"), SubResource("Resource_j2jfr"), SubResource("Resource_bjg73"), SubResource("Resource_vc5cj"), SubResource("Resource_bu4jf"), SubResource("Resource_o7ddy"), SubResource("Resource_nvyfr"), SubResource("Resource_0loja")])
 metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
 
+[sub_resource type="Resource" id="Resource_ids8r"]
+script = ExtResource("16_vxglm")
+text = "HALLLOOOOO"
+profile = ExtResource("17_2f3dj")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_dnhof"]
+script = ExtResource("16_vxglm")
+text = "Damn it. Can't you just leave me alone?"
+profile = ExtResource("21_qkpxi")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_1v6qk"]
+script = ExtResource("16_vxglm")
+text = "AT THIS POINT I'M JUST KARMA!!! YOU ARE COMMITING THEFT!!!"
+profile = ExtResource("17_2f3dj")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_augu2"]
+script = ExtResource("16_vxglm")
+text = "Well, you're not actualy karma so can you please just leave me alone?"
+profile = ExtResource("21_qkpxi")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_tm6hj"]
+script = ExtResource("16_vxglm")
+text = "EVERY PLACE YOU'VE JUMPED IN WILL NOW HAVE A SIGN WITH MORALS!!!"
+profile = ExtResource("22_5q0nq")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_kf5aa"]
+script = ExtResource("16_vxglm")
+text = "Huh? A sign with morals? what is that supposed to mean?"
+profile = ExtResource("18_yq6so")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_t5ykj"]
+script = ExtResource("16_vxglm")
+text = "BYEEEE!!!"
+profile = ExtResource("17_2f3dj")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_e755i"]
+script = ExtResource("15_2wyq8")
+loop_number = 5
+lines = Array[ExtResource("16_vxglm")]([SubResource("Resource_ids8r"), SubResource("Resource_dnhof"), SubResource("Resource_1v6qk"), SubResource("Resource_augu2"), SubResource("Resource_tm6hj"), SubResource("Resource_kf5aa"), SubResource("Resource_t5ykj")])
+metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eb6dy"]
 size = Vector2(7269, 271)
 
@@ -478,7 +526,7 @@ scale = Vector2(6.84, 6.84)
 [node name="dialogue_manager" type="Node" parent="." node_paths=PackedStringArray("dialogue_area")]
 script = ExtResource("8_tipki")
 pre_WIZARD_dialogue_wait_time = 0.55
-wizard_dialogue = Array[ExtResource("15_2wyq8")]([SubResource("Resource_5poiv"), SubResource("Resource_2cjbq")])
+wizard_dialogue = Array[ExtResource("15_2wyq8")]([SubResource("Resource_5poiv"), SubResource("Resource_2cjbq"), SubResource("Resource_e755i")])
 dialogue_area = NodePath("../dialogue_area")
 
 [node name="big_spike" parent="." instance=ExtResource("11_ya4ey")]

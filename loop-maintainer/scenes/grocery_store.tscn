@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ccyb2yo0pxon3"]
+[gd_scene load_steps=38 format=3 uid="uid://ccyb2yo0pxon3"]
 
 [ext_resource type="Texture2D" uid="uid://s0b8axcrevre" path="res://sprites/grocery_store_floor.png" id="1_v33jl"]
 [ext_resource type="Texture2D" uid="uid://bemb020csaa0m" path="res://sprites/cashier.png" id="2_wf4cn"]
@@ -120,6 +120,30 @@ metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 script = ExtResource("9_n8a13")
 loop_number = 3
 lines = Array[ExtResource("8_10eql")]([SubResource("Resource_g2cs3"), SubResource("Resource_joexl"), SubResource("Resource_x1n10"), SubResource("Resource_xevb8"), SubResource("Resource_rh7ml")])
+metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
+
+[sub_resource type="Resource" id="Resource_b3avl"]
+script = ExtResource("8_10eql")
+text = "Ugh. Hello sir. You know, even though I don't really care, you just not paying isn't a very decent thing to do."
+profile = ExtResource("10_dhkcc")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_eodts"]
+script = ExtResource("8_10eql")
+text = "I will need butter this time please!"
+profile = ExtResource("11_g4ymn")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_640rc"]
+script = ExtResource("8_10eql")
+text = "Take it and get out of here."
+profile = ExtResource("10_dhkcc")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_esp6c"]
+script = ExtResource("9_n8a13")
+loop_number = 5
+lines = Array[ExtResource("8_10eql")]([SubResource("Resource_b3avl"), SubResource("Resource_eodts"), SubResource("Resource_640rc")])
 metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
 
 [node name="grocery_store" type="Node2D"]
@@ -312,7 +336,7 @@ position = Vector2(-201, 0)
 
 [node name="dialogue_manager" parent="." instance=ExtResource("7_k6thg")]
 pre_dialogue_wait_time = 0.5
-start_dialogue = Array[ExtResource("9_n8a13")]([SubResource("Resource_y2ovd"), SubResource("Resource_4f4mc")])
+start_dialogue = Array[ExtResource("9_n8a13")]([SubResource("Resource_y2ovd"), SubResource("Resource_4f4mc"), SubResource("Resource_esp6c")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
