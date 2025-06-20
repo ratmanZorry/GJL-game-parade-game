@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://b1gf36s45q30l"]
+[gd_scene load_steps=71 format=3 uid="uid://b1gf36s45q30l"]
 
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bfdmc0dnw73ru" path="res://sprites/blue_tilemap.png" id="2_0wfyh"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://d3uf36e751mvi" path="res://scenes/dialogue_area.tscn" id="22_jscy8"]
 [ext_resource type="Texture2D" uid="uid://e5vgf3fhdel5" path="res://sprites/player_profile_sad_big_eyes.png" id="23_tel4y"]
 [ext_resource type="Texture2D" uid="uid://bxikbplukbayc" path="res://sprites/cashier_profile_grumpy.png" id="24_qkpxi"]
+[ext_resource type="Texture2D" uid="uid://cnkxsvou7phb5" path="res://sprites/wizard_profile_scary.png" id="25_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://d3jac5c3nvj5s" path="res://scenes/horned_enemy.tscn" id="31_tel4y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
@@ -377,15 +378,10 @@ text = "What?!? How did you know!?!"
 profile = ExtResource("21_qkpxi")
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
-[sub_resource type="Gradient" id="Gradient_vc5cj"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_nvyfr"]
-gradient = SubResource("Gradient_vc5cj")
-
 [sub_resource type="Resource" id="Resource_ty1g6"]
 script = ExtResource("16_vxglm")
 text = "I AM ALL KNOWING!!!"
-profile = SubResource("GradientTexture1D_nvyfr")
+profile = ExtResource("17_2f3dj")
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_j2jfr"]
@@ -396,8 +392,14 @@ metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_bjg73"]
 script = ExtResource("16_vxglm")
-text = "IT HAS BEEN FUNNY HOW YOU ALMOST DIDN'T SURVIVE!!! NOW EVERY PLACE YOU JUMPED ON THE WAY HERE WILL HAVE A GOOFY GOOBER IN IT!!!"
+text = "IT HAS BEEN FUNNY HOW YOU ALMOST DIDN'T SURVIVE!!!"
 profile = ExtResource("22_5q0nq")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_vc5cj"]
+script = ExtResource("16_vxglm")
+text = " NOW EVERY PLACE YOU JUMPED ON THE WAY HERE WILL HAVE A GOOFY GOOBER IN IT!!!"
+profile = ExtResource("17_2f3dj")
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_bu4jf"]
@@ -408,14 +410,26 @@ metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_o7ddy"]
 script = ExtResource("16_vxglm")
-text = "YES!!!"
+text = "YES!!! SO GOOFY!!!"
 profile = ExtResource("22_5q0nq")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_nvyfr"]
+script = ExtResource("16_vxglm")
+text = "AND YET SO DANGEROUS!!!"
+profile = ExtResource("25_5q0nq")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_0loja"]
+script = ExtResource("16_vxglm")
+text = "BYE NOW!!!"
+profile = ExtResource("17_2f3dj")
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_2cjbq"]
 script = ExtResource("15_2wyq8")
 loop_number = 4
-lines = Array[ExtResource("16_vxglm")]([SubResource("Resource_chjal"), SubResource("Resource_cjqg0"), SubResource("Resource_vchkt"), SubResource("Resource_txyw0"), SubResource("Resource_ty1g6"), SubResource("Resource_j2jfr"), SubResource("Resource_bjg73"), SubResource("Resource_bu4jf"), SubResource("Resource_o7ddy")])
+lines = Array[ExtResource("16_vxglm")]([SubResource("Resource_chjal"), SubResource("Resource_cjqg0"), SubResource("Resource_vchkt"), SubResource("Resource_txyw0"), SubResource("Resource_ty1g6"), SubResource("Resource_j2jfr"), SubResource("Resource_bjg73"), SubResource("Resource_vc5cj"), SubResource("Resource_bu4jf"), SubResource("Resource_o7ddy"), SubResource("Resource_nvyfr"), SubResource("Resource_0loja")])
 metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eb6dy"]

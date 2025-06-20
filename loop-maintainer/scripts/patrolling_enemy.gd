@@ -9,6 +9,9 @@ var isGoingRight = false
 @export var anim: AnimatedSprite2D
 @export var animator: AnimationPlayer
 @export var kill_area: Area2D
+@export var ground_cast_1: RayCast2D
+@export var ground_cast_2: RayCast2D
+
 @export var queue_free_timer: Timer
 
 func _physics_process(delta: float):
@@ -17,6 +20,9 @@ func _physics_process(delta: float):
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	
+	if not ground_cast_1.is_colliding() or not ground_cast_2.is_colliding():
+		isGoingRight = not isGoingRight
 	
 	if is_on_wall():
 		isGoingRight = not isGoingRight
