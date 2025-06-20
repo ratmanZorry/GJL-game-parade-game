@@ -1,26 +1,26 @@
-[gd_scene load_steps=14 format=3 uid="uid://d3jac5c3nvj5s"]
+[gd_scene load_steps=14 format=3 uid="uid://ni1fngcx4i84"]
 
-[ext_resource type="Texture2D" uid="uid://cfuyltyinc0rd" path="res://sprites/horned_enemy_running.png" id="1_rppp1"]
-[ext_resource type="Script" uid="uid://bmi5utxg0tmk3" path="res://scripts/patrolling_enemy.gd" id="1_xvtyq"]
-[ext_resource type="Texture2D" uid="uid://djk0on0hfr4oa" path="res://sprites/horned_enemy_dead.png" id="2_mhsj3"]
+[ext_resource type="Script" uid="uid://bmi5utxg0tmk3" path="res://scripts/patrolling_enemy.gd" id="1_t6e82"]
+[ext_resource type="Texture2D" uid="uid://1tp82gyq5xjh" path="res://sprites/plant_enemy_dead.png" id="2_8deld"]
+[ext_resource type="Texture2D" uid="uid://bcryc4l65o0od" path="res://sprites/plant_enemy_running.png" id="2_dclbj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xvtyq"]
-atlas = ExtResource("1_rppp1")
-region = Rect2(0, 0, 28, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8deld"]
+atlas = ExtResource("2_dclbj")
+region = Rect2(0, 0, 25, 27)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mhsj3"]
-atlas = ExtResource("1_rppp1")
-region = Rect2(28, 0, 28, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt70o"]
+atlas = ExtResource("2_dclbj")
+region = Rect2(25, 0, 25, 27)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fyuqs"]
-atlas = ExtResource("1_rppp1")
-region = Rect2(56, 0, 28, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sedi"]
+atlas = ExtResource("2_dclbj")
+region = Rect2(50, 0, 25, 27)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_vvoay"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_bd0qp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_mhsj3")
+"texture": ExtResource("2_8deld")
 }],
 "loop": true,
 "name": &"dead",
@@ -28,25 +28,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 0.5,
-"texture": SubResource("AtlasTexture_xvtyq")
+"texture": SubResource("AtlasTexture_8deld")
 }, {
 "duration": 0.5,
-"texture": SubResource("AtlasTexture_mhsj3")
+"texture": SubResource("AtlasTexture_bt70o")
 }, {
 "duration": 0.5,
-"texture": SubResource("AtlasTexture_fyuqs")
+"texture": SubResource("AtlasTexture_5sedi")
 }],
 "loop": true,
 "name": &"running",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rppp1"]
-radius = 7.0
-height = 14.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4mi42"]
+radius = 5.0
+height = 22.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvtyq"]
-size = Vector2(21.5, 2)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brnop"]
+size = Vector2(20, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mhsj3"]
 size = Vector2(20, 2)
@@ -88,9 +88,9 @@ _data = {
 &"fade": SubResource("Animation_mhsj3")
 }
 
-[node name="horned_enemy" type="CharacterBody2D" node_paths=PackedStringArray("anim", "animator", "kill_area", "ground_cast_1", "ground_cast_2", "queue_free_timer")]
-script = ExtResource("1_xvtyq")
-SPEED = 4500.0
+[node name="plant_enemy" type="CharacterBody2D" node_paths=PackedStringArray("anim", "animator", "kill_area", "ground_cast_1", "ground_cast_2", "queue_free_timer")]
+script = ExtResource("1_t6e82")
+SPEED = 1000.0
 anim = NodePath("AnimatedSprite2D")
 animator = NodePath("AnimationPlayer")
 kill_area = NodePath("kill_area")
@@ -99,24 +99,24 @@ ground_cast_2 = NodePath("ground_cast_2")
 queue_free_timer = NodePath("queue_free_timer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_vvoay")
-animation = &"running"
+sprite_frames = SubResource("SpriteFrames_bd0qp")
+animation = &"dead"
 autoplay = "running"
-offset = Vector2(0, -18.595)
+offset = Vector2(0, -11.98)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -14)
-shape = SubResource("CapsuleShape2D_rppp1")
+position = Vector2(-1, -10)
+shape = SubResource("CapsuleShape2D_4mi42")
 
 [node name="kill_area" type="Area2D" parent="." groups=["kill_hitbox"]]
-position = Vector2(0, -19)
+position = Vector2(0, -12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_area"]
-position = Vector2(0.25, 11)
-shape = SubResource("RectangleShape2D_xvtyq")
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_brnop")
 
 [node name="death_collider" type="Area2D" parent="."]
-position = Vector2(0, -19)
+position = Vector2(0, -20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="death_collider"]
 position = Vector2(0, -2)
@@ -131,12 +131,12 @@ libraries = {
 }
 
 [node name="ground_cast_1" type="RayCast2D" parent="."]
-position = Vector2(-6, -14)
+position = Vector2(-6, 0)
 target_position = Vector2(0, 9)
 collision_mask = 8
 
 [node name="ground_cast_2" type="RayCast2D" parent="."]
-position = Vector2(6, -14)
+position = Vector2(6, 0)
 target_position = Vector2(0, 9)
 collision_mask = 8
 
