@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://kkgfop6yrwwj"]
+
+[ext_resource type="Texture2D" uid="uid://ctxwv1qt28qxf" path="res://sprites/pay_sign.png" id="1_jlged"]
+
+[node name="sign_1" type="Node2D"]
+
+[node name="PaySign" type="Sprite2D" parent="."]
+texture = ExtResource("1_jlged")
+offset = Vector2(0, -24.02)

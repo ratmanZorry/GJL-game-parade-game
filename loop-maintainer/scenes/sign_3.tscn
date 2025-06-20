@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkti3rnn3dikb"]
+
+[ext_resource type="Texture2D" uid="uid://dcy1d0yefnqdx" path="res://sprites/U_R_bad_sign.png" id="1_y5h6w"]
+
+[node name="sign_3" type="Node2D"]
+
+[node name="URBadSign" type="Sprite2D" parent="."]
+texture = ExtResource("1_y5h6w")
+offset = Vector2(0, -15.525)

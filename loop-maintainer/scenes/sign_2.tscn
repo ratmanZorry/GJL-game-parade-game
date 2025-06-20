@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://xw6p6vkxwx7a"]
+
+[ext_resource type="Texture2D" uid="uid://j6til2b0wfn0" path="res://sprites/steal_equal_bad_sign.png" id="1_ij387"]
+
+[node name="sign_2" type="Node2D"]
+
+[node name="StealEqualBadSign" type="Sprite2D" parent="."]
+texture = ExtResource("1_ij387")
+offset = Vector2(0, -20.71)
