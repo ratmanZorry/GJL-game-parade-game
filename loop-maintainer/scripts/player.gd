@@ -4,9 +4,10 @@ extends CharacterBody2D
 @export var JUMP_VELOCITY: float = -300.0
 
 @export var hurt_time := 0.4
-@export var invincibility_time := 2.4
+
 
 @export var JUMPBUFFERTIMER: Timer
+@export var invincibility_timer: Timer
 @export var anim: AnimatedSprite2D
 @export var animator: AnimationPlayer
 
@@ -52,6 +53,20 @@ func _physics_process(delta: float):
 	else:
 		animator.play("normal")
 	
+	match health:
+		3:
+			heart_1.visible = true
+			heart_2.visible = true
+			heart_3.visible = true	
+		2:
+			heart_1.visible = true
+			heart_2.visible = true
+			heart_3.visible = false	
+		1:
+			heart_1.visible = true
+			heart_2.visible = false
+			heart_3.visible = false	
+
 	is_sitting = GameManager.loop_number == 0 and get_tree().current_scene.name == "house"
 	can_move = not is_sitting and not GameManager.is_in_dialogue
 
@@ -124,11 +139,17 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		await get_tree().create_timer(hurt_time).timeout
 		
 		is_hurt = false
+		invincibility_timer.start()
 		
 		
 	
 	if area.is_in_group("kill_hitbox") and not is_dead and health == 0:
 		is_dead = true
+		
+		heart_1.visible = false
+		heart_2.visible = false
+		heart_3.visible = false
+		
 		anim.play("death")
 		await get_tree().create_timer(0.65).timeout
 		anim.queue_free()
@@ -136,3 +157,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_dialogue_manager_dialogue_end() -> void:
 	is_sitting = false
 	can_move = true
+
+
+func _on_invincibility_timer_timeout() -> void:
+	is_invincible = false
