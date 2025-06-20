@@ -21,8 +21,11 @@ func _physics_process(delta: float):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	if not ground_cast_1.is_colliding() or not ground_cast_2.is_colliding():
-		isGoingRight = not isGoingRight
+	
+	if isGoingRight and not ground_cast_1.is_colliding():
+		isGoingRight = false
+	elif not isGoingRight and not ground_cast_2.is_colliding():
+		isGoingRight = true
 	
 	if is_on_wall():
 		isGoingRight = not isGoingRight
