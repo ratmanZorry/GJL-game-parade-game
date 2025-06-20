@@ -23,6 +23,7 @@ GameManager="*res://scripts/game_manager.gd"
 
 kill_hitbox=""
 wizard_dialogue_area=""
+instant_death=""
 
 [input]
 

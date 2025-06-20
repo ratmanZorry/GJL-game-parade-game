@@ -536,7 +536,7 @@ rotation = 0.335556
 [node name="kill_area" type="Area2D" parent="." groups=["kill_hitbox"]]
 position = Vector2(-1947, 718)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="kill_area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill_area" groups=["instant_death"]]
 position = Vector2(3624.5, 125.5)
 shape = SubResource("RectangleShape2D_eb6dy")
 

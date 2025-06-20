@@ -140,8 +140,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		
 		is_hurt = false
 		invincibility_timer.start()
-		
-		
+	
+	
+	if area.is_in_group("instant_death"):
+		health = 0
 	
 	if area.is_in_group("kill_hitbox") and not is_dead and health == 0:
 		is_dead = true
