@@ -113,6 +113,7 @@ _data = {
 }
 
 [node name="box_enemy" type="CharacterBody2D" node_paths=PackedStringArray("anim", "animator", "kill_area", "ground_cast_1", "ground_cast_2", "queue_free_timer")]
+collision_mask = 2
 script = ExtResource("1_dlyym")
 anim = NodePath("AnimatedSprite2D")
 animator = NodePath("AnimationPlayer")
@@ -154,12 +155,12 @@ libraries = {
 }
 
 [node name="ground_cast_1" type="RayCast2D" parent="."]
-position = Vector2(-11, -14)
+position = Vector2(-11, -13)
 target_position = Vector2(0, 9)
 collision_mask = 8
 
 [node name="ground_cast_2" type="RayCast2D" parent="."]
-position = Vector2(11, -14)
+position = Vector2(11, -13)
 target_position = Vector2(0, 9)
 collision_mask = 8
 

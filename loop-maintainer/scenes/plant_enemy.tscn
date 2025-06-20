@@ -89,6 +89,7 @@ _data = {
 }
 
 [node name="plant_enemy" type="CharacterBody2D" node_paths=PackedStringArray("anim", "animator", "kill_area", "ground_cast_1", "ground_cast_2", "queue_free_timer")]
+collision_mask = 2
 script = ExtResource("1_t6e82")
 SPEED = 1000.0
 anim = NodePath("AnimatedSprite2D")
