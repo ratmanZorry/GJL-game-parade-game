@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bd27q2d1ytent"]
+[gd_scene load_steps=36 format=3 uid="uid://bd27q2d1ytent"]
 
 [ext_resource type="Texture2D" uid="uid://7sllbl35ynkf" path="res://sprites/player_idle.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://b2xhjljprx6wu" path="res://scripts/player.gd" id="1_qlg0r"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://day6yfgfp3nnr" path="res://sprites/player_death.png" id="2_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://di3xufqo3wplv" path="res://sprites/player_jumping.png" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cqv5eysfrj0uk" path="res://sprites/player_sitting.png" id="6_fjrip"]
+[ext_resource type="Texture2D" uid="uid://bmgqby1p2kp7p" path="res://sprites/heart.png" id="8_smehm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
 atlas = ExtResource("2_tuyoq")
@@ -39,6 +40,10 @@ region = Rect2(186, 0, 31, 53)
 [sub_resource type="AtlasTexture" id="AtlasTexture_60mlk"]
 atlas = ExtResource("2_tuyoq")
 region = Rect2(217, 0, 31, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]
+atlas = ExtResource("2_tuyoq")
+region = Rect2(0, 0, 31, 53)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -124,6 +129,14 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ail")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_g2els")
 }, {
@@ -187,16 +200,74 @@ height = 32.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fjrip"]
 size = Vector2(6, 2)
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("JUMPBUFFERTIMER", "anim", "ground_cast_1", "ground_cast_2") groups=["player"]]
+[sub_resource type="Animation" id="Animation_smehm"]
+resource_name = "normal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ur7pv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_y4r1p"]
+resource_name = "invincible"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d2wvv"]
+_data = {
+&"RESET": SubResource("Animation_ur7pv"),
+&"invincible": SubResource("Animation_y4r1p"),
+&"normal": SubResource("Animation_smehm")
+}
+
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("JUMPBUFFERTIMER", "anim", "animator", "ground_cast_1", "ground_cast_2", "heart_1", "heart_2", "heart_3") groups=["player"]]
+position = Vector2(0, -1)
 script = ExtResource("1_qlg0r")
 JUMPBUFFERTIMER = NodePath("jump_buffer_timer")
 anim = NodePath("AnimatedSprite2D")
+animator = NodePath("AnimationPlayer")
 ground_cast_1 = NodePath("RayCast2D")
 ground_cast_2 = NodePath("RayCast2D2")
+heart_1 = NodePath("Heart_1")
+heart_2 = NodePath("Heart_2")
+heart_3 = NodePath("Heart_3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dqkch")
-animation = &"idle"
+animation = &"hurt"
 offset = Vector2(0, -15.425)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -230,6 +301,23 @@ target_position = Vector2(0, 7)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="feet"]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_fjrip")
+
+[node name="Heart_1" type="Sprite2D" parent="."]
+position = Vector2(-8, -36)
+texture = ExtResource("8_smehm")
+
+[node name="Heart_2" type="Sprite2D" parent="."]
+position = Vector2(0, -36)
+texture = ExtResource("8_smehm")
+
+[node name="Heart_3" type="Sprite2D" parent="."]
+position = Vector2(8, -36)
+texture = ExtResource("8_smehm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_d2wvv")
+}
 
 [connection signal="timeout" from="jump_buffer_timer" to="." method="_on_jump_buffer_timer_timeout"]
 [connection signal="timeout" from="jump_animation_timer" to="." method="_on_jump_animation_timer_timeout"]

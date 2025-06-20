@@ -3,8 +3,12 @@ extends CharacterBody2D
 @export var SPEED: float = 100.0
 @export var JUMP_VELOCITY: float = -300.0
 
+@export var hurt_time := 0.4
+@export var invincibility_time := 2.4
+
 @export var JUMPBUFFERTIMER: Timer
 @export var anim: AnimatedSprite2D
+@export var animator: AnimationPlayer
 
 @export var ground_cast_1: RayCast2D
 @export var ground_cast_2: RayCast2D
@@ -19,6 +23,15 @@ var was_on_floor := true
 
 var is_dead := false
 
+var is_hurt := false
+var is_invincible := false
+
+var health = 3
+
+@export var heart_1: Sprite2D
+@export var heart_2: Sprite2D
+@export var heart_3: Sprite2D
+
 func _ready():
 	if GameManager.next_player_spawn_position != Vector2.INF:
 		global_position = GameManager.next_player_spawn_position
@@ -31,9 +44,14 @@ func _ready():
 		camera.position_smoothing_enabled = true
 
 func _physics_process(delta: float):
-	if is_dead:
+	if is_dead or is_hurt:
 		return
-
+	
+	if is_invincible:
+		animator.play("invincible")
+	else:
+		animator.play("normal")
+	
 	is_sitting = GameManager.loop_number == 0 and get_tree().current_scene.name == "house"
 	can_move = not is_sitting and not GameManager.is_in_dialogue
 
@@ -96,7 +114,20 @@ func _on_jump_buffer_timer_timeout() -> void:
 	canBufferJump = false
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.is_in_group("kill_hitbox") and not is_dead:
+	if area.is_in_group("kill_hitbox") and not is_invincible and not is_hurt:
+		health -= 1
+		is_hurt = true
+		is_invincible = true
+		
+		anim.play("hurt")
+		
+		await get_tree().create_timer(hurt_time).timeout
+		
+		is_hurt = false
+		
+		
+	
+	if area.is_in_group("kill_hitbox") and not is_dead and health == 0:
 		is_dead = true
 		anim.play("death")
 		await get_tree().create_timer(0.65).timeout
