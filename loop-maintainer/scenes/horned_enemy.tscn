@@ -98,20 +98,23 @@ queue_free_timer = NodePath("queue_free_timer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vvoay")
-animation = &"dead"
+animation = &"running"
 autoplay = "running"
+offset = Vector2(0, -11.98)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_rppp1")
 
 [node name="kill_area" type="Area2D" parent="." groups=["kill_hitbox"]]
+position = Vector2(0, -12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_area"]
 position = Vector2(0, 10.5)
 shape = SubResource("RectangleShape2D_xvtyq")
 
 [node name="death_collider" type="Area2D" parent="."]
+position = Vector2(0, -12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="death_collider"]
 position = Vector2(0, -2)
