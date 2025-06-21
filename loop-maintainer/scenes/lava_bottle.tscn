@@ -114,28 +114,29 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_notqv"]
 size = Vector2(2, 28)
 
-[node name="lava_bottle" type="Node2D" node_paths=PackedStringArray("fountain_lasting_timer", "fountain_timer", "fountain", "kill_area")]
+[node name="lava_bottle" type="Node2D" node_paths=PackedStringArray("fountain_lasting_timer", "fountain_timer", "bottle", "fountain", "kill_area")]
 script = ExtResource("1_notqv")
 fountain_lasting_timer = NodePath("fountain_lasting_timer")
 fountain_timer = NodePath("fountain_timer")
+bottle = NodePath("AnimatedSprite2D")
 fountain = NodePath("lava_fountain")
 kill_area = NodePath("kill_area")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_xahrm")
 autoplay = "default"
-frame = 2
-frame_progress = 0.547457
 
 [node name="lava_fountain" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = -1
 position = Vector2(0, -21)
 sprite_frames = SubResource("SpriteFrames_pupjw")
 autoplay = "default"
-frame_progress = 0.667899
+frame_progress = 0.0913511
 
 [node name="fountain_timer" type="Timer" parent="."]
-wait_time = 0.627
+wait_time = 0.7
 one_shot = true
 autostart = true
 
