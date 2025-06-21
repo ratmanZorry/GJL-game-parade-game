@@ -10,6 +10,8 @@ var allow_spike_obstacles := true
 var allow_patrol_obstacles := false
 var allow_signs := false
 
+var player_health := 3
+
 var spike_data: Array = []
 var patrol_enemy_data: Array = []
 

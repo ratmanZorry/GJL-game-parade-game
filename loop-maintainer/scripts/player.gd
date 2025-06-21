@@ -36,6 +36,8 @@ var health = 3
 @export var heart_3: Sprite2D
 
 func _ready():
+	health = GameManager.player_health
+	
 	if GameManager.next_player_spawn_position != Vector2.INF:
 		global_position = GameManager.next_player_spawn_position
 		GameManager.next_player_spawn_position = Vector2.INF
@@ -132,7 +134,8 @@ func _on_jump_buffer_timer_timeout() -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("kill_hitbox") and not is_invincible and not is_hurt:
-		health -= 1
+		GameManager.player_health -= 1
+		health = GameManager.player_health
 		is_hurt = true
 		is_invincible = true
 		
