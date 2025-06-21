@@ -133,7 +133,7 @@ z_index = -1
 position = Vector2(0, -21)
 sprite_frames = SubResource("SpriteFrames_pupjw")
 autoplay = "default"
-frame_progress = 0.0913511
+frame_progress = 0.592632
 
 [node name="fountain_timer" type="Timer" parent="."]
 wait_time = 0.7

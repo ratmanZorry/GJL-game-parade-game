@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cty4c6jk61w40"]
+
+[ext_resource type="Texture2D" uid="uid://ytgkcn5igvt0" path="res://sprites/big_fire.png" id="1_eo4cm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x3kf0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a34n"]
+atlas = ExtResource("1_eo4cm")
+region = Rect2(0, 0, 61, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stj15"]
+atlas = ExtResource("1_eo4cm")
+region = Rect2(61, 0, 61, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tnd0h"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_7a34n")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_stj15")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="big_fire" type="Node2D" groups=["kill_hitbox"]]
+
+[node name="Area2D" type="Area2D" parent="." groups=["kill_hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_x3kf0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tnd0h")
+autoplay = "default"
+frame = 1
+frame_progress = 0.212604
+offset = Vector2(0, -13.045)

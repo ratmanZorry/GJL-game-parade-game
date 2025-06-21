@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ccyb2yo0pxon3"]
+[gd_scene load_steps=48 format=3 uid="uid://ccyb2yo0pxon3"]
 
 [ext_resource type="Texture2D" uid="uid://s0b8axcrevre" path="res://sprites/grocery_store_floor.png" id="1_v33jl"]
 [ext_resource type="Texture2D" uid="uid://bemb020csaa0m" path="res://sprites/cashier.png" id="2_wf4cn"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://cd4fq0wrklx7r" path="res://sprites/cashier_profile.png" id="10_dhkcc"]
 [ext_resource type="Texture2D" uid="uid://cxyuq4k2bimtt" path="res://sprites/player_profile_happy.png" id="11_g4ymn"]
 [ext_resource type="Texture2D" uid="uid://jxwldbsvh36v" path="res://sprites/player_profile_sad.png" id="12_n8a13"]
+[ext_resource type="Texture2D" uid="uid://cgbya280bni32" path="res://sprites/cashier_profile_angry.png" id="15_iuru6"]
+[ext_resource type="Texture2D" uid="uid://db62dxe06ikmo" path="res://sprites/cashier_profile_super_angry.png" id="16_phhnt"]
 [ext_resource type="Script" uid="uid://dgci5i08uwa23" path="res://scripts/grocery_store_event_manager.gd" id="16_y2ovd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wf4cn"]
@@ -144,6 +146,54 @@ metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 script = ExtResource("9_n8a13")
 loop_number = 5
 lines = Array[ExtResource("8_10eql")]([SubResource("Resource_b3avl"), SubResource("Resource_eodts"), SubResource("Resource_640rc")])
+metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
+
+[sub_resource type="Resource" id="Resource_jp0jl"]
+script = ExtResource("8_10eql")
+text = "Damn it, sir, you know you can 'buy' more than one thing at a time right?"
+profile = ExtResource("15_iuru6")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_mvy0y"]
+script = ExtResource("8_10eql")
+text = "Juice please!"
+profile = ExtResource("11_g4ymn")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_qipt2"]
+script = ExtResource("8_10eql")
+text = "Take it and get out of my sight!!!"
+profile = ExtResource("16_phhnt")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_gb1tf"]
+script = ExtResource("8_10eql")
+text = "You shouldn't be so angry, it's bad for your skin you know!"
+profile = ExtResource("9_6mn44")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_3ic2e"]
+script = ExtResource("8_10eql")
+text = "I swear I'm gonna-"
+profile = ExtResource("16_phhnt")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_j2ww2"]
+script = ExtResource("8_10eql")
+text = "Ugh. Just take whatever it is you want get out of here."
+profile = ExtResource("10_dhkcc")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_ybg2s"]
+script = ExtResource("8_10eql")
+text = "Noted!"
+profile = ExtResource("11_g4ymn")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_epvu0"]
+script = ExtResource("9_n8a13")
+loop_number = 7
+lines = Array[ExtResource("8_10eql")]([SubResource("Resource_jp0jl"), SubResource("Resource_mvy0y"), SubResource("Resource_qipt2"), SubResource("Resource_gb1tf"), SubResource("Resource_3ic2e"), SubResource("Resource_j2ww2"), SubResource("Resource_ybg2s")])
 metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
 
 [node name="grocery_store" type="Node2D"]
@@ -336,7 +386,7 @@ position = Vector2(-201, 0)
 
 [node name="dialogue_manager" parent="." instance=ExtResource("7_k6thg")]
 pre_dialogue_wait_time = 0.5
-start_dialogue = Array[ExtResource("9_n8a13")]([SubResource("Resource_y2ovd"), SubResource("Resource_4f4mc"), SubResource("Resource_esp6c")])
+start_dialogue = Array[ExtResource("9_n8a13")]([SubResource("Resource_y2ovd"), SubResource("Resource_4f4mc"), SubResource("Resource_esp6c"), SubResource("Resource_epvu0")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

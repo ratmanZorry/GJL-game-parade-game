@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c4bjb78kcpkhn"]
+[gd_scene load_steps=37 format=3 uid="uid://c4bjb78kcpkhn"]
 
 [ext_resource type="Texture2D" uid="uid://dcd7nwii0i1fu" path="res://sprites/house_tilemap.png" id="1_d7po0"]
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="2_qtlar"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://ddoux000vuw02" path="res://scripts/transfer_area.gd" id="8_wcu0q"]
 [ext_resource type="Texture2D" uid="uid://cxyuq4k2bimtt" path="res://sprites/player_profile_happy.png" id="9_mhx8p"]
 [ext_resource type="Texture2D" uid="uid://jxwldbsvh36v" path="res://sprites/player_profile_sad.png" id="10_65la3"]
+[ext_resource type="Texture2D" uid="uid://ds0u0gj13tp0l" path="res://sprites/player_profile_tired.png" id="11_qcuhb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qtlar"]
 texture = ExtResource("1_d7po0")
@@ -135,6 +136,48 @@ loop_number = 4
 lines = Array[ExtResource("6_ptc3g")]([SubResource("Resource_3ewhn"), SubResource("Resource_0fn05"), SubResource("Resource_82h1m"), SubResource("Resource_e5ov4"), SubResource("Resource_ep1bp")])
 metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
 
+[sub_resource type="Resource" id="Resource_3kuml"]
+script = ExtResource("6_ptc3g")
+text = "God, that was a nightmare"
+profile = ExtResource("11_qcuhb")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_lamap"]
+script = ExtResource("6_ptc3g")
+text = "Finally I can enjoy my meal, extra tasty, because what is free, is the best!"
+profile = ExtResource("9_mhx8p")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_de74l"]
+script = ExtResource("6_ptc3g")
+text = "I should make a toast to free things!"
+profile = ExtResource("9_mhx8p")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_qrght"]
+script = ExtResource("6_ptc3g")
+text = "Oh wait, I can't, I don't pay the water bill and I don't have a sink."
+profile = ExtResource("10_65la3")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_r8noe"]
+script = ExtResource("6_ptc3g")
+text = "Well, water is probably not healthy! It dosn't have anything in it! Time to go get some juice!"
+profile = ExtResource("9_mhx8p")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_ivbqp"]
+script = ExtResource("6_ptc3g")
+text = "Wine makes me dizzy"
+profile = ExtResource("10_65la3")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_nrgyv"]
+script = ExtResource("6_wcu0q")
+loop_number = 6
+lines = Array[ExtResource("6_ptc3g")]([SubResource("Resource_3kuml"), SubResource("Resource_lamap"), SubResource("Resource_de74l"), SubResource("Resource_qrght"), SubResource("Resource_r8noe"), SubResource("Resource_ivbqp")])
+metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcu0q"]
 size = Vector2(20, 112)
 
@@ -172,7 +215,7 @@ position = Vector2(520, 533)
 scale = Vector2(6.84, 6.84)
 
 [node name="dialogue_manager" parent="." instance=ExtResource("5_3bgk5")]
-start_dialogue = Array[ExtResource("6_wcu0q")]([SubResource("Resource_mhx8p"), SubResource("Resource_bhgw4"), SubResource("Resource_57tf3")])
+start_dialogue = Array[ExtResource("6_wcu0q")]([SubResource("Resource_mhx8p"), SubResource("Resource_bhgw4"), SubResource("Resource_57tf3"), SubResource("Resource_nrgyv")])
 
 [node name="transfer_area" type="Area2D" parent="."]
 script = ExtResource("8_wcu0q")
