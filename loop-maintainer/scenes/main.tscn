@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://b1gf36s45q30l"]
+[gd_scene load_steps=89 format=3 uid="uid://b1gf36s45q30l"]
 
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bfdmc0dnw73ru" path="res://sprites/blue_tilemap.png" id="2_0wfyh"]
@@ -25,9 +25,12 @@
 [ext_resource type="Texture2D" uid="uid://blr1ufeqp2vfm" path="res://sprites/wizard_profile_wide_eyed.png" id="17_2f3dj"]
 [ext_resource type="PackedScene" uid="uid://dkti3rnn3dikb" path="res://scenes/sign_3.tscn" id="17_5he1u"]
 [ext_resource type="PackedScene" uid="uid://blds3ousifp5w" path="res://scenes/transfer_area.tscn" id="17_muem4"]
+[ext_resource type="PackedScene" uid="uid://d12s04mbxk2ei" path="res://scenes/lava_bottle.tscn" id="18_5poiv"]
 [ext_resource type="FontFile" uid="uid://cw7naauc1o78l" path="res://fonts/pixeldown.ttf" id="18_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://bvch6nob3ounf" path="res://sprites/player_profile_raised_eyebrow.png" id="18_yq6so"]
+[ext_resource type="PackedScene" uid="uid://dgsa2dbfuj46b" path="res://scenes/fire.tscn" id="19_2cjbq"]
 [ext_resource type="Texture2D" uid="uid://bj6n7ua4renx4" path="res://sprites/wizard_profile.png" id="19_fv21b"]
+[ext_resource type="PackedScene" uid="uid://cty4c6jk61w40" path="res://scenes/big_fire.tscn" id="20_chjal"]
 [ext_resource type="Texture2D" uid="uid://7fsj41vaihsu" path="res://sprites/grocery_store_wall_piece.png" id="20_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://bips5r3dapnid" path="res://sprites/player_profile.png" id="20_tel4y"]
 [ext_resource type="Texture2D" uid="uid://jxwldbsvh36v" path="res://sprites/player_profile_sad.png" id="21_qkpxi"]
@@ -525,6 +528,7 @@ script = ExtResource("5_tbgi4")
 spike_obstacles = Array[PackedScene]([ExtResource("4_jyhfs"), ExtResource("6_tefeu")])
 patrol_enemy_obstacles = Array[PackedScene]([ExtResource("31_tel4y"), ExtResource("13_dgi5k"), ExtResource("14_j8jky")])
 sign_obstacles = Array[PackedScene]([ExtResource("15_pibwh"), ExtResource("16_c6pm6"), ExtResource("17_5he1u")])
+fire_obstacles = Array[PackedScene]([ExtResource("18_5poiv"), ExtResource("19_2cjbq"), ExtResource("20_chjal")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

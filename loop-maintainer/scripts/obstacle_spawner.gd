@@ -1,10 +1,11 @@
-extends Node
+extends Node2D
 
 var did_spawn_obstacles := false
 
 @export var spike_obstacles: Array[PackedScene]
 @export var patrol_enemy_obstacles: Array[PackedScene]
 @export var sign_obstacles: Array[PackedScene]
+@export var fire_obstacles: Array[PackedScene]
 
 func _ready():
 	for data in GameManager.spike_data:
@@ -47,7 +48,7 @@ func _process(delta: float) -> void:
 					var patrol_index = randi() % patrol_enemy_obstacles.size()
 					var patrol_scene = patrol_enemy_obstacles[patrol_index]
 					var patrol_instance = patrol_scene.instantiate()
-					var patrol_pos = Vector2(base_pos.x, ground_y-50)
+					var patrol_pos = Vector2(base_pos.x, ground_y - 50)
 					patrol_instance.global_position = patrol_pos
 					add_child(patrol_instance)
 
@@ -67,10 +68,16 @@ func _process(delta: float) -> void:
 					sign_instance.global_position = sign_pos
 					add_child(sign_instance)
 
-					GameManager.patrol_enemy_data.append({
-						"position": sign_pos,
-						"scene_index": sign_index
-					})
+			if GameManager.allow_fire_obstacles and fire_obstacles.size() > 0:
+				var base_pos = item + Vector2(48, -32)
+				var ground_y = get_ground_y(base_pos)
+				if ground_y != -1.0:
+					var fire_index = randi() % fire_obstacles.size()
+					var fire_scene = fire_obstacles[fire_index]
+					var fire_instance = fire_scene.instantiate()
+					var fire_pos = Vector2(base_pos.x, ground_y)
+					fire_instance.global_position = fire_pos
+					add_child(fire_instance)
 
 		GameManager.should_spawn_obstacles = false
 		did_spawn_obstacles = true

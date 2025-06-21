@@ -9,6 +9,7 @@ var allow_spike_obstacles := true
 
 var allow_patrol_obstacles := false
 var allow_signs := false
+var allow_fire_obstacles := false
 
 var player_health := 3
 
