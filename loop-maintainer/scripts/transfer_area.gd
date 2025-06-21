@@ -6,17 +6,17 @@ var transfer_scene: PackedScene
 @export var transfer_position: Vector2
 
 func _on_body_entered(body: Node2D) -> void:
-	
-	transfer_scene = load(transfer_scene_path)
-	if not body is CharacterBody2D:
+	if not body.is_in_group("player"):
 		return
 
-	if transfer_scene_path == null:
-		print("no scene path was entered")
+	print("Loading scene path:", transfer_scene_path)
+	transfer_scene = load(transfer_scene_path)
+	if transfer_scene == null:
+		print("Failed to load scene:", transfer_scene_path)
+		return
 
-	if body.is_in_group("player"):
-		GameManager.next_player_spawn_position = transfer_position
-		await get_tree().create_timer(0.1).timeout
-		get_tree().change_scene_to_packed(transfer_scene)
+	GameManager.next_player_spawn_position = transfer_position
+	await get_tree().create_timer(0.1).timeout
+	get_tree().change_scene_to_packed(transfer_scene)
 
 	set_deferred("monitoring", false)

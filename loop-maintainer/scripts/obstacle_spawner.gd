@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 					var patrol_index = randi() % patrol_enemy_obstacles.size()
 					var patrol_scene = patrol_enemy_obstacles[patrol_index]
 					var patrol_instance = patrol_scene.instantiate()
-					var patrol_pos = Vector2(base_pos.x, ground_y)
+					var patrol_pos = Vector2(base_pos.x, ground_y-50)
 					patrol_instance.global_position = patrol_pos
 					add_child(patrol_instance)
 
