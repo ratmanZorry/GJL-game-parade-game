@@ -1,0 +1,156 @@
+[gd_scene load_steps=20 format=3 uid="uid://d12s04mbxk2ei"]
+
+[ext_resource type="Script" uid="uid://cnyl28cjq1pno" path="res://scripts/lava_bottle.gd" id="1_notqv"]
+[ext_resource type="Texture2D" uid="uid://l5tywmnpyvoy" path="res://sprites/lava_bottle.png" id="1_yaqie"]
+[ext_resource type="Texture2D" uid="uid://cqsj5hppk17ox" path="res://sprites/lava_fountain.png" id="2_8orau"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8orau"]
+atlas = ExtResource("1_yaqie")
+region = Rect2(0, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_notqv"]
+atlas = ExtResource("1_yaqie")
+region = Rect2(16, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uea3i"]
+atlas = ExtResource("1_yaqie")
+region = Rect2(32, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ito47"]
+atlas = ExtResource("1_yaqie")
+region = Rect2(48, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ga2kl"]
+atlas = ExtResource("1_yaqie")
+region = Rect2(64, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwogu"]
+atlas = ExtResource("1_yaqie")
+region = Rect2(80, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwmjc"]
+atlas = ExtResource("1_yaqie")
+region = Rect2(96, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwio0"]
+atlas = ExtResource("1_yaqie")
+region = Rect2(112, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eln62"]
+atlas = ExtResource("1_yaqie")
+region = Rect2(128, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vy6ji"]
+atlas = ExtResource("1_yaqie")
+region = Rect2(144, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fetkf"]
+atlas = ExtResource("1_yaqie")
+region = Rect2(160, 0, 16, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xahrm"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_8orau")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_notqv")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_uea3i")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ito47")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ga2kl")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_nwogu")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_uwmjc")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_uwio0")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_eln62")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_vy6ji")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_fetkf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xahrm"]
+atlas = ExtResource("2_8orau")
+region = Rect2(0, 0, 12, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt864"]
+atlas = ExtResource("2_8orau")
+region = Rect2(12, 0, 12, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pupjw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xahrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt864")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_notqv"]
+size = Vector2(2, 28)
+
+[node name="lava_bottle" type="Node2D" node_paths=PackedStringArray("fountain_lasting_timer", "fountain_timer", "fountain", "kill_area")]
+script = ExtResource("1_notqv")
+fountain_lasting_timer = NodePath("fountain_lasting_timer")
+fountain_timer = NodePath("fountain_timer")
+fountain = NodePath("lava_fountain")
+kill_area = NodePath("kill_area")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xahrm")
+autoplay = "default"
+frame = 2
+frame_progress = 0.547457
+
+[node name="lava_fountain" type="AnimatedSprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -21)
+sprite_frames = SubResource("SpriteFrames_pupjw")
+autoplay = "default"
+frame_progress = 0.281476
+
+[node name="fountain_timer" type="Timer" parent="."]
+wait_time = 0.627
+one_shot = true
+autostart = true
+
+[node name="fountain_lasting_timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4.495, 4.495)
+
+[node name="kill_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill_area" groups=["kill_hitbox"]]
+position = Vector2(0, -21)
+shape = SubResource("RectangleShape2D_notqv")
+
+[connection signal="timeout" from="fountain_timer" to="." method="_on_fountain_timer_timeout"]
+[connection signal="timeout" from="fountain_lasting_timer" to="." method="_on_fountain_lasting_timer_timeout"]
