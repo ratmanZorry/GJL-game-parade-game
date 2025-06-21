@@ -8,7 +8,7 @@ var can_meet_wizard := false
 var allow_spike_obstacles := true
 
 var allow_patrol_obstacles := false
-#var allow_flying_obstacles := false  # example for future types
+var allow_signs := false
 
 var spike_data: Array = []
 var patrol_enemy_data: Array = []

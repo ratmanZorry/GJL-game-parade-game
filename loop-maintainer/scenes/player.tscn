@@ -326,4 +326,5 @@ wait_time = 2.4
 [connection signal="timeout" from="jump_buffer_timer" to="." method="_on_jump_buffer_timer_timeout"]
 [connection signal="timeout" from="jump_animation_timer" to="." method="_on_jump_animation_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="timeout" from="invincibility_timer" to="." method="_on_invincibility_timer_timeout"]

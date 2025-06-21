@@ -24,6 +24,8 @@ var was_on_floor := true
 
 var is_dead := false
 
+var can_add_jump_locations := true
+
 var is_hurt := false
 var is_invincible := false
 
@@ -122,7 +124,7 @@ func Jump():
 	velocity.y = JUMP_VELOCITY
 	anim.play("jumping")
 	
-	if ground_cast_1.is_colliding() and ground_cast_2.is_colliding():
+	if ground_cast_1.is_colliding() and ground_cast_2.is_colliding() and can_add_jump_locations:
 		JumpLocationManager.jump_locations.append(global_position)
 
 func _on_jump_buffer_timer_timeout() -> void:
@@ -141,6 +143,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		is_hurt = false
 		invincibility_timer.start()
 	
+	if area.is_in_group("no_obstacle_area"):
+		can_add_jump_locations = false
 	
 	if area.is_in_group("instant_death"):
 		health = 0
@@ -155,6 +159,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		anim.play("death")
 		await get_tree().create_timer(0.65).timeout
 		anim.queue_free()
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area.is_in_group("no_obstacle_area"):
+		can_add_jump_locations = true
 
 func _on_dialogue_manager_dialogue_end() -> void:
 	is_sitting = false

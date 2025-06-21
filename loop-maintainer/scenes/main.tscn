@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://b1gf36s45q30l"]
+[gd_scene load_steps=83 format=3 uid="uid://b1gf36s45q30l"]
 
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bfdmc0dnw73ru" path="res://sprites/blue_tilemap.png" id="2_0wfyh"]
@@ -494,6 +494,12 @@ size = Vector2(4, 62)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pm3ni"]
 size = Vector2(4, 112)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8jky"]
+size = Vector2(228, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmb1v"]
+size = Vector2(816, 144)
+
 [node name="main" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -692,6 +698,19 @@ position = Vector2(2481, 15)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dialogue_area"]
 position = Vector2(-93, -44)
 shape = SubResource("RectangleShape2D_pm3ni")
+
+[node name="no_obstacle_area" type="Area2D" parent="." groups=["no_obstacle_area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="no_obstacle_area"]
+position = Vector2(-158, 3.5)
+shape = SubResource("RectangleShape2D_j8jky")
+
+[node name="no_obstacle_area2" type="Area2D" parent="." groups=["no_obstacle_area"]]
+position = Vector2(2704, -28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="no_obstacle_area2"]
+position = Vector2(-309, 11)
+shape = SubResource("RectangleShape2D_kmb1v")
 
 [connection signal="dialogue" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue"]
 [connection signal="dialogue_end" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue_end"]

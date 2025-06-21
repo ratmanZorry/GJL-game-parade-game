@@ -4,6 +4,7 @@ var did_spawn_obstacles := false
 
 @export var spike_obstacles: Array[PackedScene]
 @export var patrol_enemy_obstacles: Array[PackedScene]
+@export var sign_obstacles: Array[PackedScene]
 
 
 
@@ -50,6 +51,19 @@ func _process(delta: float) -> void:
 				GameManager.patrol_enemy_data.append({
 					"position": patrol_pos,
 					"scene_index": patrol_index
+				})
+
+			if GameManager.allow_signs:
+				var sign_index = randi() % sign_obstacles.size()
+				var sign_scene = sign_obstacles[sign_index]
+				var sign_instance = sign_scene.instantiate()
+				var sign_pos = item + Vector2(48, 0)
+				sign_instance.global_position = sign_pos
+				add_child(sign_instance)
+
+				GameManager.patrol_enemy_data.append({
+					"position": sign_pos,
+					"scene_index": sign_index
 				})
 
 		GameManager.should_spawn_obstacles = false
