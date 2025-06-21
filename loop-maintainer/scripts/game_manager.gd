@@ -14,4 +14,4 @@ var spike_data: Array = []
 var patrol_enemy_data: Array = []
 
 var next_player_spawn_position: Vector2 = Vector2.INF
-var loop_number = 0
+var loop_number = 3
