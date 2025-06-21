@@ -76,7 +76,7 @@ metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
 [sub_resource type="Resource" id="Resource_we41u"]
 script = ExtResource("8_10eql")
-text = "couldn't care less sir have a good day."
+text = "Couldn't care less sir, just take some the cheese and have a good day."
 profile = ExtResource("10_dhkcc")
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
