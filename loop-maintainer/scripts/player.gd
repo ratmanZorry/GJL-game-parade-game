@@ -149,7 +149,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("instant_death"):
 		health = 0
 	
-	if area.is_in_group("kill_hitbox") and not is_dead and health == 0:
+	if not is_dead and health == 0:
 		is_dead = true
 		
 		heart_1.visible = false
@@ -158,7 +158,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		
 		anim.play("death")
 		await get_tree().create_timer(0.65).timeout
-		anim.queue_free()
+		anim.visible = false
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.is_in_group("no_obstacle_area"):
