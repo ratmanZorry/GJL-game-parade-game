@@ -5,5 +5,6 @@
 [node name="sign_3" type="Node2D"]
 
 [node name="URBadSign" type="Sprite2D" parent="."]
+z_index = -2
 texture = ExtResource("1_y5h6w")
 offset = Vector2(0, -15.525)

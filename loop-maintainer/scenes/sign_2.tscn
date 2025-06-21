@@ -5,5 +5,6 @@
 [node name="sign_2" type="Node2D"]
 
 [node name="StealEqualBadSign" type="Sprite2D" parent="."]
+z_index = -2
 texture = ExtResource("1_ij387")
 offset = Vector2(0, -20.71)
