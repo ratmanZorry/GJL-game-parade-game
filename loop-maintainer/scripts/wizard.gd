@@ -11,7 +11,7 @@ func _on_dialogue_area_body_entered(body: Node2D) -> void:
 		print("damn it")
 		self.visible = true
 		anim.play("poof_in")
-		await get_tree().create_timer(0.275).timeout
+		await get_tree().create_timer(0.27).timeout
 		anim.play("idle")
 	
 

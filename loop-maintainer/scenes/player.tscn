@@ -1,11 +1,13 @@
-[gd_scene load_steps=44 format=3 uid="uid://bd27q2d1ytent"]
+[gd_scene load_steps=46 format=3 uid="uid://bd27q2d1ytent"]
 
 [ext_resource type="Texture2D" uid="uid://7sllbl35ynkf" path="res://sprites/player_idle.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://b2xhjljprx6wu" path="res://scripts/player.gd" id="1_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://b4kea0vatdtpe" path="res://music&sfx/jump.wav" id="2_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://26lqdvwlj612" path="res://sprites/player_walking.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://cs7jm1vbfso7l" path="res://sprites/player_falling.png" id="2_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://day6yfgfp3nnr" path="res://sprites/player_death.png" id="2_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://vsfvrebfeeuq" path="res://scenes/end.tscn" id="2_y4r1p"]
+[ext_resource type="AudioStream" uid="uid://ckg0kgvjl41gu" path="res://music&sfx/hitHurt.wav" id="3_3v2ag"]
 [ext_resource type="Texture2D" uid="uid://di3xufqo3wplv" path="res://sprites/player_jumping.png" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cqv5eysfrj0uk" path="res://sprites/player_sitting.png" id="6_fjrip"]
 [ext_resource type="Texture2D" uid="uid://coj0qo4pm4il1" path="res://sprites/player_poof.png" id="6_ur7pv"]
@@ -307,7 +309,7 @@ _data = {
 &"normal": SubResource("Animation_smehm")
 }
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("JUMPBUFFERTIMER", "invincibility_timer", "anim", "animator", "ground_cast_1", "ground_cast_2", "heart_1", "heart_2", "heart_3") groups=["player"]]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("JUMPBUFFERTIMER", "invincibility_timer", "anim", "animator", "ground_cast_1", "ground_cast_2", "audio", "heart_1", "heart_2", "heart_3") groups=["player"]]
 position = Vector2(0, -1)
 script = ExtResource("1_qlg0r")
 JUMPBUFFERTIMER = NodePath("jump_buffer_timer")
@@ -316,6 +318,9 @@ anim = NodePath("AnimatedSprite2D")
 animator = NodePath("AnimationPlayer")
 ground_cast_1 = NodePath("RayCast2D")
 ground_cast_2 = NodePath("RayCast2D2")
+audio = NodePath("AudioStreamPlayer")
+jump_sound = ExtResource("2_d2wvv")
+hurt_sound = ExtResource("3_3v2ag")
 end_scene = ExtResource("2_y4r1p")
 heart_1 = NodePath("Heart_1")
 heart_2 = NodePath("Heart_2")
@@ -377,6 +382,8 @@ libraries = {
 
 [node name="invincibility_timer" type="Timer" parent="."]
 wait_time = 2.4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="timeout" from="jump_buffer_timer" to="." method="_on_jump_buffer_timer_timeout"]
 [connection signal="timeout" from="jump_animation_timer" to="." method="_on_jump_animation_timer_timeout"]

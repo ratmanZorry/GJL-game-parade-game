@@ -15,6 +15,10 @@ extends CharacterBody2D
 
 @export var camera: Camera2D
 
+@export var audio: AudioStreamPlayer
+@export var jump_sound: AudioStreamWAV
+@export var hurt_sound: AudioStreamWAV
+
 @export var end_scene: PackedScene
 
 var is_sitting := false
@@ -138,6 +142,7 @@ func Jump():
 	velocity.y = JUMP_VELOCITY
 	if not GameManager.did_game_end:
 		anim.play("jumping")
+		random_pitch_audio(0.6, 1, jump_sound)
 	
 	if ground_cast_1.is_colliding() and ground_cast_2.is_colliding() and can_add_jump_locations and get_tree().current_scene.name == "main":
 		JumpLocationManager.jump_locations.append(global_position)
@@ -148,6 +153,7 @@ func _on_jump_buffer_timer_timeout() -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("kill_hitbox") and not is_invincible and not is_hurt:
 		GameManager.player_health -= 1
+		random_pitch_audio(0.5, 2, hurt_sound)
 		health = GameManager.player_health
 		is_hurt = true
 		is_invincible = true
@@ -202,3 +208,8 @@ func end_game_sequence() -> void:
 	anim.play("bug")
 	await get_tree().create_timer(3).timeout
 	get_tree().change_scene_to_packed(end_scene)
+
+func random_pitch_audio(low: float, high: float, stream: AudioStreamWAV):
+	audio.stream = stream
+	audio.pitch_scale = randf_range(low, high)
+	audio.play()
