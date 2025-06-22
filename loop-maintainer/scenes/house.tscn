@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c4bjb78kcpkhn"]
+[gd_scene load_steps=39 format=3 uid="uid://c4bjb78kcpkhn"]
 
 [ext_resource type="Texture2D" uid="uid://dcd7nwii0i1fu" path="res://sprites/house_tilemap.png" id="1_d7po0"]
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="2_qtlar"]
@@ -78,7 +78,19 @@ metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
 
 [sub_resource type="Resource" id="Resource_qcuhb"]
 script = ExtResource("6_ptc3g")
-text = "Nice! I finaly got home! Oh wait, I forgot, I don't have anything to put that cheese on"
+text = "Nice! I finaly got home!"
+profile = ExtResource("7_wcu0q")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_c2gpw"]
+script = ExtResource("6_ptc3g")
+text = "Oh wait"
+profile = ExtResource("7_wcu0q")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_4jkga"]
+script = ExtResource("6_ptc3g")
+text = "I forgot, I don't have anything to put that cheese on"
 profile = ExtResource("7_wcu0q")
 metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 
@@ -97,7 +109,7 @@ metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
 [sub_resource type="Resource" id="Resource_bhgw4"]
 script = ExtResource("6_wcu0q")
 loop_number = 2
-lines = Array[ExtResource("6_ptc3g")]([SubResource("Resource_qcuhb"), SubResource("Resource_7685u"), SubResource("Resource_3853c")])
+lines = Array[ExtResource("6_ptc3g")]([SubResource("Resource_qcuhb"), SubResource("Resource_c2gpw"), SubResource("Resource_4jkga"), SubResource("Resource_7685u"), SubResource("Resource_3853c")])
 metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
 
 [sub_resource type="Resource" id="Resource_3ewhn"]
