@@ -126,7 +126,7 @@ func Jump():
 	velocity.y = JUMP_VELOCITY
 	anim.play("jumping")
 	
-	if ground_cast_1.is_colliding() and ground_cast_2.is_colliding() and can_add_jump_locations:
+	if ground_cast_1.is_colliding() and ground_cast_2.is_colliding() and can_add_jump_locations and get_tree().current_scene.name == "main":
 		JumpLocationManager.jump_locations.append(global_position)
 
 func _on_jump_buffer_timer_timeout() -> void:
@@ -151,6 +151,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	
 	if area.is_in_group("instant_death"):
 		health = 0
+		GameManager.player_health = 0
 	
 	if not is_dead and health == 0:
 		is_dead = true

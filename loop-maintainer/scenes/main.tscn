@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://b1gf36s45q30l"]
+[gd_scene load_steps=108 format=3 uid="uid://b1gf36s45q30l"]
 
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bfdmc0dnw73ru" path="res://sprites/blue_tilemap.png" id="2_0wfyh"]
@@ -36,10 +36,15 @@
 [ext_resource type="Texture2D" uid="uid://jxwldbsvh36v" path="res://sprites/player_profile_sad.png" id="21_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://c5u2fsnqsgr6u" path="res://scenes/wizard.tscn" id="21_yc10j"]
 [ext_resource type="Texture2D" uid="uid://tf3m737pxyue" path="res://sprites/wizard_profile_devios.png" id="22_5q0nq"]
+[ext_resource type="Texture2D" uid="uid://bskfphwvny6b1" path="res://sprites/menu.png" id="22_cjqg0"]
 [ext_resource type="PackedScene" uid="uid://d3uf36e751mvi" path="res://scenes/dialogue_area.tscn" id="22_jscy8"]
+[ext_resource type="Script" uid="uid://3wp11q2iv14b" path="res://scripts/death_menu.gd" id="22_nvyfr"]
 [ext_resource type="Texture2D" uid="uid://e5vgf3fhdel5" path="res://sprites/player_profile_sad_big_eyes.png" id="23_tel4y"]
+[ext_resource type="Texture2D" uid="uid://buknqxhkrxmbd" path="res://sprites/greed_button.png" id="23_txyw0"]
 [ext_resource type="Texture2D" uid="uid://bxikbplukbayc" path="res://sprites/cashier_profile_grumpy.png" id="24_qkpxi"]
+[ext_resource type="Texture2D" uid="uid://clmcr62ohna8x" path="res://sprites/greed_button_pressed.png" id="24_vc5cj"]
 [ext_resource type="Texture2D" uid="uid://cnkxsvou7phb5" path="res://sprites/wizard_profile_scary.png" id="25_5q0nq"]
+[ext_resource type="FontFile" uid="uid://8ayy0h8vxv5e" path="res://fonts/DePixelBreit.ttf" id="25_vc5cj"]
 [ext_resource type="PackedScene" uid="uid://d3jac5c3nvj5s" path="res://scenes/horned_enemy.tscn" id="31_tel4y"]
 [ext_resource type="Texture2D" uid="uid://cjklp0dywbbgb" path="res://sprites/player_profile_grumpy.png" id="34_2cjbq"]
 [ext_resource type="Texture2D" uid="uid://jfg6rm54sd1n" path="res://sprites/sky.png" id="43_chjal"]
@@ -291,6 +296,82 @@ sources/2 = SubResource("TileSetAtlasSource_trceg")
 sources/4 = SubResource("TileSetAtlasSource_jkv2x")
 sources/5 = SubResource("TileSetAtlasSource_jbj1t")
 sources/6 = SubResource("TileSetAtlasSource_yc10j")
+
+[sub_resource type="Animation" id="Animation_cjqg0"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vchkt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(559, 892)]
+}
+
+[sub_resource type="Animation" id="Animation_txyw0"]
+resource_name = "rize"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26, 0.48),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(559, 892), Vector2(559, 238), Vector2(559, 346)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vc5cj"]
+_data = {
+&"RESET": SubResource("Animation_vchkt"),
+&"default": SubResource("Animation_cjqg0"),
+&"rize": SubResource("Animation_txyw0")
+}
 
 [sub_resource type="Resource" id="Resource_fv21b"]
 script = ExtResource("16_vxglm")
@@ -582,6 +663,52 @@ fire_obstacles = Array[PackedScene]([ExtResource("18_5poiv"), ExtResource("19_2c
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+root_node = NodePath("death_menu")
+libraries = {
+&"": SubResource("AnimationLibrary_vc5cj")
+}
+autoplay = "default"
+
+[node name="death_menu" type="Sprite2D" parent="CanvasLayer/AnimationPlayer" node_paths=PackedStringArray("animator", "tip_text")]
+visible = false
+position = Vector2(559, 892)
+scale = Vector2(3.42, 3.42)
+texture = ExtResource("22_cjqg0")
+script = ExtResource("22_nvyfr")
+animator = NodePath("..")
+tip_text = NodePath("RichTextLabel")
+tips = Array[String](["try strategizeing your jumps!", "want to try again?", "man that sucks", "death is only the beggining!", "frustration? more like opportunity!", "consistency is key!"])
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/AnimationPlayer/death_menu"]
+offset_left = -65.7895
+offset_top = -52.0468
+offset_right = 1075.21
+offset_bottom = 235.953
+scale = Vector2(0.125, 0.125)
+theme_override_fonts/normal_font = ExtResource("18_gqmmt")
+theme_override_font_sizes/normal_font_size = 126
+text = "try strategizeing your jumps!"
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/AnimationPlayer/death_menu"]
+offset_left = -50.2924
+offset_top = -0.584795
+offset_right = 36.7076
+offset_bottom = 39.4152
+texture_normal = ExtResource("23_txyw0")
+texture_pressed = ExtResource("24_vc5cj")
+
+[node name="Label" type="Label" parent="CanvasLayer/AnimationPlayer/death_menu/TextureButton"]
+layout_mode = 0
+offset_left = 4.67836
+offset_top = 12.8655
+offset_right = 916.678
+offset_bottom = 156.865
+scale = Vector2(0.085, 0.085)
+theme_override_fonts/font = ExtResource("25_vc5cj")
+theme_override_font_sizes/font_size = 141
+text = "start over"
+
 [node name="dialogue_box" parent="CanvasLayer" instance=ExtResource("7_o6xl0")]
 visible = false
 position = Vector2(520, 533)
@@ -646,7 +773,7 @@ z_index = -1
 position = Vector2(974, -29)
 rotation = 0.335556
 
-[node name="kill_area" type="Area2D" parent="." groups=["kill_hitbox"]]
+[node name="kill_area" type="Area2D" parent="." groups=["instant_death"]]
 position = Vector2(-1947, 718)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_area" groups=["instant_death"]]
@@ -784,6 +911,7 @@ repeat_times = 13
 z_index = -122
 texture = ExtResource("43_chjal")
 
+[connection signal="button_up" from="CanvasLayer/AnimationPlayer/death_menu/TextureButton" to="CanvasLayer/AnimationPlayer/death_menu" method="_on_texture_button_button_up"]
 [connection signal="dialogue" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue"]
 [connection signal="dialogue_end" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue_end"]
 [connection signal="dialogue_end" from="dialogue_manager" to="wizard" method="_on_dialogue_manager_dialogue_end"]
