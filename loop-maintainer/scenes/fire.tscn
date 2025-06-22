@@ -6,22 +6,22 @@
 radius = 5.0
 height = 16.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_52nqi"]
+atlas = ExtResource("1_52nqi")
+region = Rect2(0, 0, 36, 36)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_xqmqg"]
 atlas = ExtResource("1_52nqi")
-region = Rect2(0, 0, 36, 26)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g5mbl"]
-atlas = ExtResource("1_52nqi")
-region = Rect2(36, 0, 36, 26)
+region = Rect2(36, 0, 36, 36)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rach5"]
 animations = [{
 "frames": [{
 "duration": 0.5,
-"texture": SubResource("AtlasTexture_xqmqg")
+"texture": SubResource("AtlasTexture_52nqi")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g5mbl")
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_xqmqg")
 }],
 "loop": true,
 "name": &"default",
@@ -39,5 +39,6 @@ shape = SubResource("CapsuleShape2D_52nqi")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rach5")
 autoplay = "default"
-frame_progress = 0.859878
-offset = Vector2(0, -13.045)
+frame = 1
+frame_progress = 0.354871
+offset = Vector2(0, -7.765)
