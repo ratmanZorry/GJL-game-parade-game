@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://b1gf36s45q30l"]
+[gd_scene load_steps=98 format=3 uid="uid://b1gf36s45q30l"]
 
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bfdmc0dnw73ru" path="res://sprites/blue_tilemap.png" id="2_0wfyh"]
@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://bxikbplukbayc" path="res://sprites/cashier_profile_grumpy.png" id="24_qkpxi"]
 [ext_resource type="Texture2D" uid="uid://cnkxsvou7phb5" path="res://sprites/wizard_profile_scary.png" id="25_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://d3jac5c3nvj5s" path="res://scenes/horned_enemy.tscn" id="31_tel4y"]
+[ext_resource type="Texture2D" uid="uid://cjklp0dywbbgb" path="res://sprites/player_profile_grumpy.png" id="34_2cjbq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
 texture = ExtResource("2_0wfyh")
@@ -488,6 +489,54 @@ loop_number = 6
 lines = Array[ExtResource("16_vxglm")]([SubResource("Resource_ids8r"), SubResource("Resource_dnhof"), SubResource("Resource_1v6qk"), SubResource("Resource_augu2"), SubResource("Resource_tm6hj"), SubResource("Resource_kf5aa"), SubResource("Resource_t5ykj")])
 metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
 
+[sub_resource type="Resource" id="Resource_od4ux"]
+script = ExtResource("16_vxglm")
+text = "HALOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
+profile = ExtResource("19_fv21b")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_xhfw6"]
+script = ExtResource("16_vxglm")
+text = "Please don't hurt me again!"
+profile = ExtResource("23_tel4y")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_1epgm"]
+script = ExtResource("16_vxglm")
+text = "YOU ARE THE MOST FORGETFUL BEING IN THE WORLD!!!"
+profile = ExtResource("22_5q0nq")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_152kg"]
+script = ExtResource("16_vxglm")
+text = "SERIOSLY, HOW CAN YOU FORGET TO BUY STUFF FOUR TIMES IN A ROW?!?"
+profile = ExtResource("19_fv21b")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_r4e17"]
+script = ExtResource("16_vxglm")
+text = "Ouch. By the way, what did those signs say? The writing was awful"
+profile = ExtResource("34_2cjbq")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_y57op"]
+script = ExtResource("16_vxglm")
+text = "..."
+profile = ExtResource("25_5q0nq")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_mlv25"]
+script = ExtResource("16_vxglm")
+text = "NOW EVERY PLACE YOU HAVE JUMPED IN WILL HAVE HELLFIRE IN IT!!! BYEEEEEE!!!"
+profile = ExtResource("22_5q0nq")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_ro3en"]
+script = ExtResource("15_2wyq8")
+loop_number = 8
+lines = Array[ExtResource("16_vxglm")]([SubResource("Resource_od4ux"), SubResource("Resource_xhfw6"), SubResource("Resource_1epgm"), SubResource("Resource_152kg"), SubResource("Resource_r4e17"), SubResource("Resource_y57op"), SubResource("Resource_mlv25")])
+metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eb6dy"]
 size = Vector2(7269, 271)
 
@@ -540,7 +589,7 @@ scale = Vector2(6.84, 6.84)
 [node name="dialogue_manager" type="Node" parent="." node_paths=PackedStringArray("dialogue_area")]
 script = ExtResource("8_tipki")
 pre_WIZARD_dialogue_wait_time = 0.55
-wizard_dialogue = Array[ExtResource("15_2wyq8")]([SubResource("Resource_5poiv"), SubResource("Resource_2cjbq"), SubResource("Resource_e755i")])
+wizard_dialogue = Array[ExtResource("15_2wyq8")]([SubResource("Resource_5poiv"), SubResource("Resource_2cjbq"), SubResource("Resource_e755i"), SubResource("Resource_ro3en")])
 dialogue_area = NodePath("../dialogue_area")
 
 [node name="big_spike" parent="." instance=ExtResource("11_ya4ey")]
