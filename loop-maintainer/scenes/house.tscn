@@ -1,5 +1,6 @@
-[gd_scene load_steps=45 format=3 uid="uid://c4bjb78kcpkhn"]
+[gd_scene load_steps=50 format=3 uid="uid://c4bjb78kcpkhn"]
 
+[ext_resource type="Script" uid="uid://cotpx5338c4rj" path="res://scripts/house.gd" id="1_7685u"]
 [ext_resource type="Texture2D" uid="uid://dcd7nwii0i1fu" path="res://sprites/house_tilemap.png" id="1_d7po0"]
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="2_qtlar"]
 [ext_resource type="Texture2D" uid="uid://cumobmconwi5d" path="res://sprites/cardboard_box.png" id="3_rk7hg"]
@@ -12,6 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://cxyuq4k2bimtt" path="res://sprites/player_profile_happy.png" id="9_mhx8p"]
 [ext_resource type="Texture2D" uid="uid://jxwldbsvh36v" path="res://sprites/player_profile_sad.png" id="10_65la3"]
 [ext_resource type="Texture2D" uid="uid://ds0u0gj13tp0l" path="res://sprites/player_profile_tired.png" id="11_qcuhb"]
+[ext_resource type="Texture2D" uid="uid://htej6xakadll" path="res://sprites/cheese.png" id="14_3853c"]
+[ext_resource type="Texture2D" uid="uid://cpwd3dqy7tgqw" path="res://sprites/bread.png" id="15_bhgw4"]
+[ext_resource type="Texture2D" uid="uid://b6k2c6b3bi54u" path="res://sprites/butter.png" id="16_3ewhn"]
+[ext_resource type="Texture2D" uid="uid://cwgetrs76yctq" path="res://sprites/juice.png" id="17_0fn05"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qtlar"]
 texture = ExtResource("1_d7po0")
@@ -229,7 +234,12 @@ metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcu0q"]
 size = Vector2(20, 112)
 
-[node name="house" type="Node2D"]
+[node name="house" type="Node2D" node_paths=PackedStringArray("cheese", "bread", "butter", "juice")]
+script = ExtResource("1_7685u")
+cheese = NodePath("Cheese")
+bread = NodePath("Bread")
+butter = NodePath("Butter")
+juice = NodePath("Juice")
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -2
@@ -273,6 +283,23 @@ transfer_position = Vector2(-100, 48)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="transfer_area"]
 position = Vector2(123, -8)
 shape = SubResource("RectangleShape2D_wcu0q")
+
+[node name="Cheese" type="Sprite2D" parent="."]
+position = Vector2(22, 44)
+texture = ExtResource("14_3853c")
+
+[node name="Bread" type="Sprite2D" parent="."]
+position = Vector2(34, 40)
+rotation = 0.468342
+texture = ExtResource("15_bhgw4")
+
+[node name="Butter" type="Sprite2D" parent="."]
+position = Vector2(50, 45)
+texture = ExtResource("16_3ewhn")
+
+[node name="Juice" type="Sprite2D" parent="."]
+position = Vector2(61, 41)
+texture = ExtResource("17_0fn05")
 
 [connection signal="dialogue" from="dialogue_manager" to="CanvasLayer/dialogue_box" method="_on_dialogue_manager_dialogue"]
 [connection signal="dialogue_end" from="dialogue_manager" to="player" method="_on_dialogue_manager_dialogue_end"]
