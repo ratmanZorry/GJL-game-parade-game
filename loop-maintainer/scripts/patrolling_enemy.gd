@@ -4,7 +4,11 @@ extends CharacterBody2D
 @export var can_die := true
 var is_dead
 
-var isGoingRight = false
+var isGoingRight := false
+
+var can_turn_around := true
+
+
 
 @export var anim: AnimatedSprite2D
 @export var animator: AnimationPlayer
@@ -12,6 +16,7 @@ var isGoingRight = false
 @export var ground_cast_1: RayCast2D
 @export var ground_cast_2: RayCast2D
 
+@export var turn_around_cooldown: Timer
 @export var queue_free_timer: Timer
 
 func _physics_process(delta: float):
@@ -22,11 +27,13 @@ func _physics_process(delta: float):
 		velocity += get_gravity() * delta
 	
 	
-	if not ground_cast_1.is_colliding() or not ground_cast_2.is_colliding():
+	if not ground_cast_1.is_colliding() or not ground_cast_2.is_colliding() and can_turn_around:
 		isGoingRight = not isGoingRight
 	
-	if is_on_wall():
+	if is_on_wall() and can_turn_around:
 		isGoingRight = not isGoingRight
+		can_turn_around = false
+		turn_around_cooldown.start()
 		velocity.x = 0
 	
 	anim.flip_h = !isGoingRight
@@ -51,3 +58,7 @@ func _on_death_collider_area_entered(area: Area2D) -> void:
 
 func _on_queue_free_timer_timeout() -> void:
 	queue_free()
+
+
+func _on_turn_around_cooldown_timeout() -> void:
+	can_turn_around = true

@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bihcofmgfbupm"]
+[gd_scene load_steps=7 format=3 uid="uid://bihcofmgfbupm"]
 
 [ext_resource type="Texture2D" uid="uid://d0ou2onld0tm8" path="res://sprites/main_menu.png" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://bxb3pvskrjt41" path="res://scripts/main_menu.gd" id="1_wu84c"]
+[ext_resource type="PackedScene" uid="uid://c4bjb78kcpkhn" path="res://scenes/house.tscn" id="2_8ln24"]
+[ext_resource type="Texture2D" uid="uid://b2kc5j00ikav5" path="res://sprites/menu_button.png" id="2_bqqt6"]
+[ext_resource type="PackedScene" uid="uid://ba40e2o23dtyv" path="res://scenes/credits.tscn" id="3_rtw2f"]
+[ext_resource type="FontFile" uid="uid://cw7naauc1o78l" path="res://fonts/pixeldown.ttf" id="3_wu84c"]
 
 [node name="main_menu" type="Node2D"]
+script = ExtResource("1_wu84c")
+house = ExtResource("2_8ln24")
+credits = ExtResource("3_rtw2f")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -15,10 +23,42 @@ texture = ExtResource("1_l6cm7")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
+offset_left = -142.0
+offset_top = 159.0
+offset_right = 143.0
+offset_bottom = 381.0
 grow_horizontal = 2
 
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+[node name="start" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("2_bqqt6")
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/start"]
+layout_mode = 0
+offset_left = 17.0
+offset_right = 674.0
+offset_bottom = 301.0
+scale = Vector2(0.365, 0.365)
+theme_override_fonts/font = ExtResource("3_wu84c")
+theme_override_font_sizes/font_size = 271
+text = "start"
+
+[node name="credits" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_bqqt6")
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/credits"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 13.0
+offset_right = 866.0
+offset_bottom = 314.0
+scale = Vector2(0.265, 0.265)
+theme_override_fonts/font = ExtResource("3_wu84c")
+theme_override_font_sizes/font_size = 271
+text = "credits"
+
+[connection signal="button_up" from="CanvasLayer/VBoxContainer/start" to="." method="_on_start_button_up"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="button_up" from="CanvasLayer/VBoxContainer/credits" to="." method="_on_credits_button_up"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/credits" to="." method="_on_credits_pressed"]
