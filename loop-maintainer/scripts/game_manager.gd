@@ -13,7 +13,7 @@ var allow_fire_obstacles := false
 
 var did_game_end := false
 
-var player_health := 3
+var player_health := 100
 
 var spike_data: Array = []
 var patrol_enemy_data: Array = []

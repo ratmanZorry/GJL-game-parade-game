@@ -26,6 +26,15 @@ func _ready():
 			inst.global_position = pos
 			add_child(inst)
 
+	for data in GameManager.fire_obstacle_data:
+		var index = data["scene_index"]
+		var pos = data["position"]
+		if index < fire_obstacles.size():
+			var scene = fire_obstacles[index]
+			var inst = scene.instantiate()
+			inst.global_position = pos
+			add_child(inst)
+
 func _process(delta: float) -> void:
 	if GameManager.should_spawn_obstacles and not did_spawn_obstacles:
 		for item in JumpLocationManager.jump_locations:
@@ -35,7 +44,6 @@ func _process(delta: float) -> void:
 				var spike_instance = spike_scene.instantiate()
 				spike_instance.global_position = item
 				add_child(spike_instance)
-
 				GameManager.spike_data.append({
 					"position": item,
 					"scene_index": spike_index
@@ -51,7 +59,6 @@ func _process(delta: float) -> void:
 					var patrol_pos = Vector2(base_pos.x, ground_y - 50)
 					patrol_instance.global_position = patrol_pos
 					add_child(patrol_instance)
-
 					GameManager.patrol_enemy_data.append({
 						"position": patrol_pos,
 						"scene_index": patrol_index
@@ -78,6 +85,10 @@ func _process(delta: float) -> void:
 					var fire_pos = Vector2(base_pos.x, ground_y)
 					fire_instance.global_position = fire_pos
 					add_child(fire_instance)
+					GameManager.fire_obstacle_data.append({
+						"position": fire_pos,
+						"scene_index": fire_index
+					})
 
 		GameManager.should_spawn_obstacles = false
 		did_spawn_obstacles = true
@@ -88,7 +99,6 @@ func get_ground_y(start_pos: Vector2, max_distance: int = 64) -> float:
 	params.from = start_pos
 	params.to = start_pos + Vector2(0, max_distance)
 	params.collision_mask = 1
-
 	var result = space_state.intersect_ray(params)
 	if result:
 		return result.position.y
