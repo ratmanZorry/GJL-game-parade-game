@@ -5,7 +5,6 @@ extends CharacterBody2D
 
 @export var hurt_time := 0.4
 
-
 @export var JUMPBUFFERTIMER: Timer
 @export var invincibility_timer: Timer
 @export var anim: AnimatedSprite2D
@@ -53,36 +52,33 @@ func _ready():
 func _physics_process(delta: float):
 	if is_dead or is_hurt:
 		return
-	
+
 	if GameManager.did_game_end and not did_turn_into_bug:
-		can_move = false
-		
-		anim.play("poof")
-		await get_tree().create_timer(0.25).timeout
-		anim.play("bug")
-		
-	
+		await get_tree().create_timer(0.4).timeout
+		end_game_sequence()
+
 	if is_invincible:
 		animator.play("invincible")
 	else:
 		animator.play("normal")
 	
-	match health:
-		3:
-			heart_1.visible = true
-			heart_2.visible = true
-			heart_3.visible = true	
-		2:
-			heart_1.visible = true
-			heart_2.visible = true
-			heart_3.visible = false	
-		1:
-			heart_1.visible = true
-			heart_2.visible = false
-			heart_3.visible = false	
+	if not GameManager.did_game_end:
+		match health:
+			3:
+				heart_1.visible = true
+				heart_2.visible = true
+				heart_3.visible = true	
+			2:
+				heart_1.visible = true
+				heart_2.visible = true
+				heart_3.visible = false	
+			1:
+				heart_1.visible = true
+				heart_2.visible = false
+				heart_3.visible = false	
 
 	is_sitting = GameManager.loop_number == 0 and get_tree().current_scene.name == "house"
-	can_move = not is_sitting and not GameManager.is_in_dialogue
+	can_move = not is_sitting and not GameManager.is_in_dialogue and not GameManager.did_game_end
 
 	if is_sitting:
 		anim.play("sitting")
@@ -101,22 +97,23 @@ func _physics_process(delta: float):
 	
 	if Input.is_action_just_released("jump") and not is_on_floor() and velocity.y < 0:
 		velocity.y = 0
-	
-	var direction := Input.get_axis("left", "right")
-	if direction and can_move:
-		velocity.x = direction * SPEED
-		anim.flip_h = direction < 0
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if is_on_floor() and not was_on_floor:
-		if direction and can_move:
+	if can_move:
+		var direction := Input.get_axis("left", "right")
+		if direction:
+			velocity.x = direction * SPEED
+			anim.flip_h = direction < 0
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	if is_on_floor() and not was_on_floor and not GameManager.did_game_end:
+		if can_move and velocity.x != 0 and not GameManager.did_game_end:
 			anim.play("walking")
 		else:
 			anim.play("idle")
 
-	if is_on_floor():
-		if direction and can_move:
+	if is_on_floor() and not GameManager.did_game_end:
+		if can_move and velocity.x != 0:
 			anim.play("walking")
 		else:
 			anim.play("idle")
@@ -183,6 +180,17 @@ func _on_dialogue_manager_dialogue_end() -> void:
 	is_sitting = false
 	can_move = true
 
-
 func _on_invincibility_timer_timeout() -> void:
 	is_invincible = false
+
+func end_game_sequence() -> void:
+	can_move = false
+	did_turn_into_bug = true
+	
+	heart_1.visible = false
+	heart_2.visible = false
+	heart_3.visible = false
+	
+	anim.play("poof")
+	await get_tree().create_timer(0.45).timeout
+	anim.play("bug")
