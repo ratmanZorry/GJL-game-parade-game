@@ -126,14 +126,15 @@ kill_area = NodePath("kill_area")
 visible = false
 sprite_frames = SubResource("SpriteFrames_xahrm")
 autoplay = "default"
+offset = Vector2(0, -9.075)
 
 [node name="lava_fountain" type="AnimatedSprite2D" parent="."]
 visible = false
 z_index = -1
-position = Vector2(0, -21)
+position = Vector2(0, -29.5)
 sprite_frames = SubResource("SpriteFrames_pupjw")
 autoplay = "default"
-frame_progress = 0.592632
+frame_progress = 0.303248
 
 [node name="fountain_timer" type="Timer" parent="."]
 wait_time = 0.7
@@ -147,7 +148,8 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4.495, 4.495)
 
-[node name="kill_area" type="Area2D" parent="."]
+[node name="kill_area" type="Area2D" parent="." groups=["kill_hitbox"]]
+position = Vector2(0, -8.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_area" groups=["kill_hitbox"]]
 position = Vector2(0, -21)
