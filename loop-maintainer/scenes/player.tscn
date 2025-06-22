@@ -309,7 +309,7 @@ _data = {
 &"normal": SubResource("Animation_smehm")
 }
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("JUMPBUFFERTIMER", "invincibility_timer", "anim", "animator", "ground_cast_1", "ground_cast_2", "audio", "heart_1", "heart_2", "heart_3") groups=["player"]]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("JUMPBUFFERTIMER", "invincibility_timer", "anim", "animator", "ground_cast_1", "ground_cast_2", "audio", "heart_1", "heart_2", "heart_3", "heart_4", "heart_5") groups=["player"]]
 position = Vector2(0, -1)
 script = ExtResource("1_qlg0r")
 JUMPBUFFERTIMER = NodePath("jump_buffer_timer")
@@ -325,6 +325,8 @@ end_scene = ExtResource("2_y4r1p")
 heart_1 = NodePath("Heart_1")
 heart_2 = NodePath("Heart_2")
 heart_3 = NodePath("Heart_3")
+heart_4 = NodePath("Heart_4")
+heart_5 = NodePath("Heart_5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dqkch")
@@ -364,15 +366,23 @@ position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_fjrip")
 
 [node name="Heart_1" type="Sprite2D" parent="."]
-position = Vector2(-8, -36)
+position = Vector2(-15.5, -36)
 texture = ExtResource("8_smehm")
 
 [node name="Heart_2" type="Sprite2D" parent="."]
-position = Vector2(0, -36)
+position = Vector2(-7.5, -36)
 texture = ExtResource("8_smehm")
 
 [node name="Heart_3" type="Sprite2D" parent="."]
+position = Vector2(0.5, -36)
+texture = ExtResource("8_smehm")
+
+[node name="Heart_4" type="Sprite2D" parent="."]
 position = Vector2(8, -36)
+texture = ExtResource("8_smehm")
+
+[node name="Heart_5" type="Sprite2D" parent="."]
+position = Vector2(16, -36)
 texture = ExtResource("8_smehm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

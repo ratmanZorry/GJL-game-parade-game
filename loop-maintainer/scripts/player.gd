@@ -41,6 +41,8 @@ var health = 3
 @export var heart_1: Sprite2D
 @export var heart_2: Sprite2D
 @export var heart_3: Sprite2D
+@export var heart_4: Sprite2D
+@export var heart_5: Sprite2D
 
 func _ready():
 	health = GameManager.player_health
@@ -70,18 +72,36 @@ func _physics_process(delta: float):
 	
 	if not GameManager.did_game_end:
 		match health:
+			5:
+				heart_1.visible = true
+				heart_2.visible = true
+				heart_3.visible = true	
+				heart_4.visible = true
+				heart_5.visible = true
+			4:
+				heart_1.visible = true
+				heart_2.visible = true
+				heart_3.visible = true	
+				heart_4.visible = true
+				heart_5.visible = false
 			3:
 				heart_1.visible = true
 				heart_2.visible = true
 				heart_3.visible = true	
+				heart_4.visible = false
+				heart_5.visible = false
 			2:
 				heart_1.visible = true
 				heart_2.visible = true
-				heart_3.visible = false	
+				heart_3.visible = false
+				heart_4.visible = false
+				heart_5.visible = false
 			1:
 				heart_1.visible = true
 				heart_2.visible = false
-				heart_3.visible = false	
+				heart_3.visible = false
+				heart_4.visible = false
+				heart_5.visible = false
 
 	is_sitting = GameManager.loop_number == 0 and get_tree().current_scene.name == "house"
 	can_move = not is_sitting and not GameManager.is_in_dialogue and not GameManager.did_game_end

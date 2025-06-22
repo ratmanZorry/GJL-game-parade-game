@@ -13,7 +13,7 @@ var allow_fire_obstacles := false
 
 var did_game_end := false
 
-var player_health := 3
+var player_health := 5
 
 var spike_data: Array = []
 var patrol_enemy_data: Array = []
@@ -24,7 +24,7 @@ var loop_number = 0
 
 func reset_game_state():
 	loop_number = 0
-	player_health = 3
+	player_health = 5
 	next_player_spawn_position = Vector2.INF
 	should_spawn_obstacles = false
 	is_in_dialogue = false
