@@ -52,7 +52,7 @@ func _ready():
 func _physics_process(delta: float):
 	if is_dead or is_hurt:
 		return
-
+	
 	if GameManager.did_game_end and not did_turn_into_bug:
 		await get_tree().create_timer(0.4).timeout
 		end_game_sequence()
@@ -105,6 +105,9 @@ func _physics_process(delta: float):
 			anim.flip_h = direction < 0
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
 
 	if is_on_floor() and not was_on_floor and not GameManager.did_game_end:
 		if can_move and velocity.x != 0 and not GameManager.did_game_end:
@@ -122,7 +125,7 @@ func _physics_process(delta: float):
 			anim.play("falling")
 		if velocity.y < 0 and not GameManager.did_game_end:
 			anim.play("jumping")
-
+	
 	move_and_slide()
 	was_on_floor = is_on_floor()
 
@@ -186,11 +189,12 @@ func _on_invincibility_timer_timeout() -> void:
 func end_game_sequence() -> void:
 	can_move = false
 	did_turn_into_bug = true
-	
+	velocity = Vector2.ZERO
+
 	heart_1.visible = false
 	heart_2.visible = false
 	heart_3.visible = false
-	
+
 	anim.play("poof")
 	await get_tree().create_timer(0.45).timeout
 	anim.play("bug")
