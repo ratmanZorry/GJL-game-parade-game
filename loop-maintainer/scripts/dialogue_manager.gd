@@ -67,6 +67,10 @@ func _on_dialogue_area_body_entered(body: Node2D) -> void:
 							GameManager.allow_spike_obstacles = false
 							GameManager.allow_signs = false
 							GameManager.allow_fire_obstacles = true
+						10:
+							GameManager.did_game_end = true
+							
 					
-					GameManager.should_spawn_obstacles = true
-					return
+					if not GameManager.did_game_end:
+						GameManager.should_spawn_obstacles = true
+						return

@@ -29,6 +29,8 @@ var can_add_jump_locations := true
 var is_hurt := false
 var is_invincible := false
 
+var did_turn_into_bug := false
+
 var health = 3
 
 @export var heart_1: Sprite2D
@@ -51,6 +53,14 @@ func _ready():
 func _physics_process(delta: float):
 	if is_dead or is_hurt:
 		return
+	
+	if GameManager.did_game_end and not did_turn_into_bug:
+		can_move = false
+		
+		anim.play("poof")
+		await get_tree().create_timer(0.25).timeout
+		anim.play("bug")
+		
 	
 	if is_invincible:
 		animator.play("invincible")
@@ -111,9 +121,9 @@ func _physics_process(delta: float):
 		else:
 			anim.play("idle")
 	else:
-		if velocity.y > 0:
+		if velocity.y > 0 and not GameManager.did_game_end:
 			anim.play("falling")
-		else:
+		if velocity.y < 0 and not GameManager.did_game_end:
 			anim.play("jumping")
 
 	move_and_slide()
@@ -124,7 +134,8 @@ func Jump():
 		return
 	
 	velocity.y = JUMP_VELOCITY
-	anim.play("jumping")
+	if not GameManager.did_game_end:
+		anim.play("jumping")
 	
 	if ground_cast_1.is_colliding() and ground_cast_2.is_colliding() and can_add_jump_locations and get_tree().current_scene.name == "main":
 		JumpLocationManager.jump_locations.append(global_position)
