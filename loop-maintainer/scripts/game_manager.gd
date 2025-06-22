@@ -11,6 +11,8 @@ var allow_patrol_obstacles := false
 var allow_signs := false
 var allow_fire_obstacles := false
 
+var did_game_end := false
+
 var player_health := 3
 
 var spike_data: Array = []

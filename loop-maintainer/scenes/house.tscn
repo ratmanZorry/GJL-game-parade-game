@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c4bjb78kcpkhn"]
+[gd_scene load_steps=45 format=3 uid="uid://c4bjb78kcpkhn"]
 
 [ext_resource type="Texture2D" uid="uid://dcd7nwii0i1fu" path="res://sprites/house_tilemap.png" id="1_d7po0"]
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="2_qtlar"]
@@ -190,6 +190,42 @@ loop_number = 6
 lines = Array[ExtResource("6_ptc3g")]([SubResource("Resource_3kuml"), SubResource("Resource_lamap"), SubResource("Resource_de74l"), SubResource("Resource_qrght"), SubResource("Resource_r8noe"), SubResource("Resource_ivbqp")])
 metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
 
+[sub_resource type="Resource" id="Resource_r2srw"]
+script = ExtResource("6_ptc3g")
+text = "Man, I almost died"
+profile = ExtResource("11_qcuhb")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_k27xr"]
+script = ExtResource("6_ptc3g")
+text = "Good thing I'm here now, and I finaly can eat my delicios meal"
+profile = ExtResource("7_wcu0q")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_8cron"]
+script = ExtResource("6_ptc3g")
+text = "Though something is missing, but what is it?"
+profile = ExtResource("7_wcu0q")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_p4eap"]
+script = ExtResource("6_ptc3g")
+text = "Oh right! A table! I can't just put food on my box and sit on the floor! Thats savage!"
+profile = ExtResource("9_mhx8p")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_80gfe"]
+script = ExtResource("6_ptc3g")
+text = "Well, I'm sure another trip to the grocery store won't hurt!"
+profile = ExtResource("9_mhx8p")
+metadata/_custom_type_script = "uid://cbpoo80fjfr4m"
+
+[sub_resource type="Resource" id="Resource_q425y"]
+script = ExtResource("6_wcu0q")
+loop_number = 8
+lines = Array[ExtResource("6_ptc3g")]([SubResource("Resource_r2srw"), SubResource("Resource_k27xr"), SubResource("Resource_8cron"), SubResource("Resource_p4eap"), SubResource("Resource_80gfe")])
+metadata/_custom_type_script = "uid://dfpuv4o3jhve8"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcu0q"]
 size = Vector2(20, 112)
 
@@ -227,7 +263,7 @@ position = Vector2(520, 533)
 scale = Vector2(6.84, 6.84)
 
 [node name="dialogue_manager" parent="." instance=ExtResource("5_3bgk5")]
-start_dialogue = Array[ExtResource("6_wcu0q")]([SubResource("Resource_mhx8p"), SubResource("Resource_bhgw4"), SubResource("Resource_57tf3"), SubResource("Resource_nrgyv")])
+start_dialogue = Array[ExtResource("6_wcu0q")]([SubResource("Resource_mhx8p"), SubResource("Resource_bhgw4"), SubResource("Resource_57tf3"), SubResource("Resource_nrgyv"), SubResource("Resource_q425y")])
 
 [node name="transfer_area" type="Area2D" parent="."]
 script = ExtResource("8_wcu0q")
