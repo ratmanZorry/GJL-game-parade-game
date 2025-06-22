@@ -5,8 +5,8 @@ extends Node2D
 
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_packed(house)
+	SceneController.go_to_house()
 
 
 func _on_credits_pressed() -> void:
-	get_tree().change_scene_to_packed(credits)
+	SceneController.go_to_credits()
