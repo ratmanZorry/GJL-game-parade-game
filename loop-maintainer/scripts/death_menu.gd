@@ -5,6 +5,8 @@ extends Sprite2D
 
 @export var tips: Array[String]
 
+@export var home: PackedScene
+
 var did_player_die := false
 
 func _ready() -> void:
@@ -18,4 +20,5 @@ func _process(delta: float) -> void:
 		animator.play("rize")
 
 func _on_texture_button_button_up() -> void:
-	pass
+	GameManager.reset_game_state()
+	get_tree().change_scene_to_packed(home)

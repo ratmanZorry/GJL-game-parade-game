@@ -1,0 +1,104 @@
+[gd_scene load_steps=4 format=3 uid="uid://vsfvrebfeeuq"]
+
+[ext_resource type="Texture2D" uid="uid://w2nbiwevv7m2" path="res://sprites/goo.png" id="1_mwn6m"]
+[ext_resource type="FontFile" uid="uid://ca0gisfl1am5b" path="res://fonts/DePixelBreitFett.ttf" id="2_3d26k"]
+[ext_resource type="FontFile" uid="uid://duaxrb8xivtgx" path="res://fonts/PIXEL-LI.TTF" id="3_p7m4f"]
+
+[node name="end" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Goo" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(129, 174)
+scale = Vector2(5, 5)
+texture = ExtResource("1_mwn6m")
+
+[node name="Goo2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(129, 494)
+scale = Vector2(5, 5)
+texture = ExtResource("1_mwn6m")
+
+[node name="Goo3" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(449, 174)
+scale = Vector2(5, 5)
+texture = ExtResource("1_mwn6m")
+
+[node name="Goo4" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(449, 494)
+scale = Vector2(5, 5)
+texture = ExtResource("1_mwn6m")
+
+[node name="Goo5" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(769, 174)
+scale = Vector2(5, 5)
+texture = ExtResource("1_mwn6m")
+
+[node name="Goo6" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(769, 494)
+scale = Vector2(5, 5)
+texture = ExtResource("1_mwn6m")
+
+[node name="Goo7" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1089, 174)
+scale = Vector2(5, 5)
+texture = ExtResource("1_mwn6m")
+
+[node name="Goo9" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(129, -146)
+scale = Vector2(5, 5)
+texture = ExtResource("1_mwn6m")
+
+[node name="Goo10" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(449, -146)
+scale = Vector2(5, 5)
+texture = ExtResource("1_mwn6m")
+
+[node name="Goo11" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(769, -146)
+scale = Vector2(5, 5)
+texture = ExtResource("1_mwn6m")
+
+[node name="Goo12" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1089, -146)
+scale = Vector2(5, 5)
+texture = ExtResource("1_mwn6m")
+
+[node name="Goo8" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1089, 494)
+scale = Vector2(5, 5)
+texture = ExtResource("1_mwn6m")
+
+[node name="you_won" type="Label" parent="CanvasLayer"]
+offset_left = 99.0
+offset_top = 22.0
+offset_right = 3178.0
+offset_bottom = 262.0
+scale = Vector2(0.365, 0.503)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3d26k")
+theme_override_font_sizes/font_size = 191
+text = "YOU WON!"
+
+[node name="kinda" type="Label" parent="CanvasLayer"]
+offset_left = 448.0
+offset_top = 140.0
+offset_right = 3527.0
+offset_bottom = 380.0
+scale = Vector2(0.125, 0.172)
+theme_override_colors/font_color = Color(0.336608, 0.336608, 0.336608, 1)
+theme_override_fonts/font = ExtResource("2_3d26k")
+theme_override_font_sizes/font_size = 191
+text = "kinda..."
+
+[node name="if_you_got_this_far" type="Label" parent="CanvasLayer"]
+offset_left = 74.0
+offset_top = 345.0
+offset_right = 5147.0
+offset_bottom = 1557.0
+scale = Vector2(0.345, 0.345)
+theme_override_colors/font_color = Color(0.653333, 0.766908, 0.998002, 1)
+theme_override_fonts/font = ExtResource("3_p7m4f")
+theme_override_font_sizes/font_size = 191
+text = "if you got this far please share a 
+screenshot of this screen in the game's 
+comments!"

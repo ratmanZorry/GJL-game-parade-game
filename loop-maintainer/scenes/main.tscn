@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://b1gf36s45q30l"]
+[gd_scene load_steps=123 format=3 uid="uid://b1gf36s45q30l"]
 
 [ext_resource type="PackedScene" uid="uid://bd27q2d1ytent" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bfdmc0dnw73ru" path="res://sprites/blue_tilemap.png" id="2_0wfyh"]
@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://bskfphwvny6b1" path="res://sprites/menu.png" id="22_cjqg0"]
 [ext_resource type="PackedScene" uid="uid://d3uf36e751mvi" path="res://scenes/dialogue_area.tscn" id="22_jscy8"]
 [ext_resource type="Script" uid="uid://3wp11q2iv14b" path="res://scripts/death_menu.gd" id="22_nvyfr"]
+[ext_resource type="PackedScene" uid="uid://c4bjb78kcpkhn" path="res://scenes/house.tscn" id="23_o7ddy"]
 [ext_resource type="Texture2D" uid="uid://e5vgf3fhdel5" path="res://sprites/player_profile_sad_big_eyes.png" id="23_tel4y"]
 [ext_resource type="Texture2D" uid="uid://buknqxhkrxmbd" path="res://sprites/greed_button.png" id="23_txyw0"]
 [ext_resource type="Texture2D" uid="uid://bxikbplukbayc" path="res://sprites/cashier_profile_grumpy.png" id="24_qkpxi"]
@@ -743,6 +744,7 @@ script = ExtResource("22_nvyfr")
 animator = NodePath("..")
 tip_text = NodePath("RichTextLabel")
 tips = Array[String](["try strategizeing your jumps!", "want to try again?", "man that sucks", "death is only the beggining!", "frustration? more like opportunity!", "consistency is key!"])
+home = ExtResource("23_o7ddy")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/AnimationPlayer/death_menu"]
 offset_left = -65.7895

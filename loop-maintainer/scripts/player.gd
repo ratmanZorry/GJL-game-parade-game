@@ -15,6 +15,8 @@ extends CharacterBody2D
 
 @export var camera: Camera2D
 
+@export var end_scene: PackedScene
+
 var is_sitting := false
 @export var can_move := true
 
@@ -157,10 +159,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		is_hurt = false
 		invincibility_timer.start()
 	
-	if area.is_in_group("no_obstacle_area"):
+	if area and area.is_in_group("no_obstacle_area"):
 		can_add_jump_locations = false
 	
-	if area.is_in_group("instant_death"):
+	if area and area.is_in_group("instant_death"):
 		health = 0
 		GameManager.player_health = 0
 	
@@ -198,3 +200,5 @@ func end_game_sequence() -> void:
 	anim.play("poof")
 	await get_tree().create_timer(0.45).timeout
 	anim.play("bug")
+	await get_tree().create_timer(3).timeout
+	get_tree().change_scene_to_packed(end_scene)
