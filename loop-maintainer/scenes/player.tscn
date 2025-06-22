@@ -1,10 +1,11 @@
-[gd_scene load_steps=43 format=3 uid="uid://bd27q2d1ytent"]
+[gd_scene load_steps=44 format=3 uid="uid://bd27q2d1ytent"]
 
 [ext_resource type="Texture2D" uid="uid://7sllbl35ynkf" path="res://sprites/player_idle.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://b2xhjljprx6wu" path="res://scripts/player.gd" id="1_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://26lqdvwlj612" path="res://sprites/player_walking.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://cs7jm1vbfso7l" path="res://sprites/player_falling.png" id="2_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://day6yfgfp3nnr" path="res://sprites/player_death.png" id="2_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://vsfvrebfeeuq" path="res://scenes/end.tscn" id="2_y4r1p"]
 [ext_resource type="Texture2D" uid="uid://di3xufqo3wplv" path="res://sprites/player_jumping.png" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cqv5eysfrj0uk" path="res://sprites/player_sitting.png" id="6_fjrip"]
 [ext_resource type="Texture2D" uid="uid://coj0qo4pm4il1" path="res://sprites/player_poof.png" id="6_ur7pv"]
@@ -315,6 +316,7 @@ anim = NodePath("AnimatedSprite2D")
 animator = NodePath("AnimationPlayer")
 ground_cast_1 = NodePath("RayCast2D")
 ground_cast_2 = NodePath("RayCast2D2")
+end_scene = ExtResource("2_y4r1p")
 heart_1 = NodePath("Heart_1")
 heart_2 = NodePath("Heart_2")
 heart_3 = NodePath("Heart_3")

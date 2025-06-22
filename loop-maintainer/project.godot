@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 JumpLocationManager="*res://scripts/jump_location_manager.gd"
 GameManager="*res://scripts/game_manager.gd"
 SceneController="*res://scripts/scene_controller.gd"
+music="*res://scenes/music.tscn"
 
 [global_group]
 
