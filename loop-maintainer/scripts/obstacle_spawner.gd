@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var did_spawn_obstacles := false
 

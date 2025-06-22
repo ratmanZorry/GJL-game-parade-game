@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Loop maintainer"
-run/main_scene="uid://b1gf36s45q30l"
+run/main_scene="uid://c4bjb78kcpkhn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [autoload]
